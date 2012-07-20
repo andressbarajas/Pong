@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>background.png</Source>
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>blank.png</Source>
+      <Name>blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\blank.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>gradient.png</Source>
+      <Name>gradient</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\gradient.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>menufont.spritefont</Source>
+      <Name>menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\menufont.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>gamefont.spritefont</Source>
+      <Name>gamefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\gamefont.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>tree.png</Source>
+      <Name>tree</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\tree.xnb</Output>
+      <Time>2012-07-09T18:13:24.1681639-07:00</Time>
+    </Item>
+    <Item>
+      <Source>ground.png</Source>
+      <Name>ground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\ground.xnb</Output>
+      <Time>2012-07-09T18:52:39.3098703-07:00</Time>
+    </Item>
+    <Item>
+      <Source>bush.png</Source>
+      <Name>bush</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bush.xnb</Output>
+      <Time>2012-07-09T19:09:50.516852-07:00</Time>
+    </Item>
+    <Item>
+      <Source>panel.png</Source>
+      <Name>panel</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\panel.xnb</Output>
+      <Time>2012-07-11T23:15:08.75886-07:00</Time>
+    </Item>
+    <Item>
+      <Source>flyaway.png</Source>
+      <Name>flyaway</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\flyaway.xnb</Output>
+      <Time>2012-07-16T20:14:19.2855752-07:00</Time>
+    </Item>
+    <Item>
+      <Source>blackduck.png</Source>
+      <Name>blackduck</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="PremultiplyAlpha">False</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\blackduck.xnb</Output>
+      <Time>2012-07-12T21:20:22.3455909-07:00</Time>
+    </Item>
+    <Item>
+      <Source>laughdog.png</Source>
+      <Name>laughdog</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\laughdog.xnb</Output>
+      <Time>2012-07-17T04:34:01.0187594-07:00</Time>
+    </Item>
+    <Item>
+      <Source>walkdog.png</Source>
+      <Name>walkdog</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\walkdog.xnb</Output>
+      <Time>2012-07-17T04:55:39.1770098-07:00</Time>
+    </Item>
+    <Item>
+      <Source>wingflaps.wav</Source>
+      <Name>wingflaps</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\wingflaps.xnb</Output>
+      <Time>2012-07-17T17:17:43.7103076-07:00</Time>
+    </Item>
+    <Item>
+      <Source>quack.wav</Source>
+      <Name>quack</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\quack.xnb</Output>
+      <Time>2012-07-17T17:26:41.6286937-07:00</Time>
+    </Item>
+    <Item>
+      <Source>startround.wav</Source>
+      <Name>startround</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\startround.xnb</Output>
+      <Time>2012-07-17T22:27:08.8742353-07:00</Time>
+    </Item>
+    <Item>
+      <Source>doglaugh.wav</Source>
+      <Name>doglaugh</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\doglaugh.xnb</Output>
+      <Time>2012-07-18T17:12:35.150311-07:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-06-30T01:04:39.4130546-07:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
