@@ -32,6 +32,13 @@ namespace GameStateManagement
             set { m_currScene.Y_Pos = value; }
         }
 
+        public int Current_Scene
+        {
+            get { return m_curr_scene_num; }
+        }
+
+        private int m_curr_scene_num = -1;
+
         #endregion 
 
         #region Fields
@@ -55,16 +62,24 @@ namespace GameStateManagement
         {
             if (m_manager_state != DrawableState.Finished)
             {
-                if (m_currScene.Scene_State == DrawableState.Finished)
+                if (m_currScene == null)
+                {
+                    m_currScene = m_sceneQ.Dequeue(); // Grab the first animation
+                    m_curr_scene_num = 0;
+                }
+                else if (m_currScene.Scene_State == DrawableState.Finished)
                 {
                     if (m_sceneQ.Count == 0) // Ran out of scenes to perform, reset stuff
                     {
                         m_currScene.ResetScene(); // So it wont stay finished for the next time around
                         m_manager_state = DrawableState.Finished;
+                        m_currScene = null;
+                        m_curr_scene_num = -1;
                         return;
                     }
                     else // On to the next animation
                     {
+                        m_curr_scene_num++;
                         m_currScene.ResetScene(); // So it wont stay finished for the next time around
                         m_currScene = m_sceneQ.Dequeue();
                     }
@@ -103,8 +118,6 @@ namespace GameStateManagement
                 m_scenes[i] = scenes[i];
                 m_sceneQ.Enqueue(m_sceneList[scenes[i]]);
             }
-
-            m_currScene = m_sceneQ.Dequeue(); // Grab the first animation
         }
 
         public void Reset()

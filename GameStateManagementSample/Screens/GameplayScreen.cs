@@ -42,6 +42,7 @@ namespace GameStateManagement
         Texture2D flyingaway;
         Texture2D laughingdog;
         Texture2D walkingdog;
+        Texture2D flyawaysign;
 
         /* * * * * * * * * * * * SOUNDS * * * * * * * * * * * */
 
@@ -72,6 +73,10 @@ namespace GameStateManagement
         Rectangle boxrec = new Rectangle(224, 64, 832, 512);
         //Start position for duck
         Rectangle startpos;
+
+        Rectangle m_background_color_rect = new Rectangle(128, 64, 1024, 612);
+
+        Sprite m_fly_sign = new Sprite();
 
 
         /**************************/
@@ -128,6 +133,8 @@ namespace GameStateManagement
             flyingaway = content.Load<Texture2D>("flyaway");
             laughingdog = content.Load<Texture2D>("laughdog");
             walkingdog = content.Load<Texture2D>("walkdog");
+            flyawaysign = content.Load<Texture2D>("flyawaysign");
+
             startround = content.Load<SoundEffect>("startround");
             doglaugh = content.Load<SoundEffect>("doglaugh");
             //flapwing = content.Load<SoundEffect>("wingflaps");
@@ -178,8 +185,8 @@ namespace GameStateManagement
             awayduck.SetFrame(3, 8, null);
 
             ldog.BuildAnimation(laughingdog, 1, 2, true, new int[2] { 0, 1 });
-            ldog.SetFrame(0, 8, null);
-            ldog.SetFrame(1, 8, null);
+            ldog.SetFrame(0, 5, null);
+            ldog.SetFrame(1, 5, null);
            
             sprdog.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 5 });
             sprdog.SetFrame(0, 100, null);
@@ -211,9 +218,9 @@ namespace GameStateManagement
             m_intro.Scene_State = DrawableState.Active;
 
             /* Intermission Animation */
-            m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, -47, 1.0f), doglaugh);
+            m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, -47, 1.4f), doglaugh);
             m_dog_laugh.AddAnimation(new TimeOutDrawable(ldog, 60));
-            m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, 47, 1.0f));
+            m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, 47, 1.6f));
 
             boundingbox = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
             boundingbox.SetData(new Color[] { Color.White });
@@ -248,9 +255,11 @@ namespace GameStateManagement
                 m_pongBall.SetCurrentAnimation(0);
             }
 
-            //m_pongBall.X_Vel = 1;
-            //    m_pongBall.Y_Vel = -1;
-            
+            // FLY AWAY SIGN
+            m_fly_sign.Sprite_Texture = flyawaysign;
+            m_fly_sign.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_fly_sign.Sprite_Texture.Width / 2;
+            m_fly_sign.Y_Pos = 320;
+            //m_fly_sign.Draw_State = DrawableState.Active;
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
             // while, giving you a chance to admire the beautiful loading screen.
@@ -294,7 +303,8 @@ namespace GameStateManagement
                 pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
 
             if (!m_paused)
-            {   
+            {
+
                 if(m_intro.Scene_State != DrawableState.Finished) {
                     if (!m_played_intro)
                     {
@@ -319,7 +329,7 @@ namespace GameStateManagement
                         m_flyaway.Clear();
                         awayduck.X_Pos = m_pongBall.X_Pos;
                         awayduck.Y_Pos = m_pongBall.Y_Pos;
-                        m_flyaway.AddAnimation(new DirXYMover(awayduck, 0, -(m_pongBall.Y_Pos - 32), m_pongBall.Curr_Vel_Mag));
+                        m_flyaway.AddAnimation(new DirXYMover(awayduck, 0, -m_pongBall.Y_Pos, 2.0f)); //m_pongBall.Curr_Vel_Mag));
                         m_flyaway.BuildScene(new int[1] { 0 });
                         m_flyaway.Scene_State = DrawableState.Active;
                           
@@ -407,7 +417,7 @@ namespace GameStateManagement
         public override void Draw(GameTime gameTime)
         {
             // This game has a blue background. Why? Because!
-            ScreenManager.GraphicsDevice.Clear(new Color(49, 192, 250, 255));
+            ScreenManager.GraphicsDevice.Clear(Color.Black);//new Color(49, 192, 250, 255));
             /*
             if (m_pongBall.Ball_State == BallState.DeadBall &&
                          !m_finished_intermission &&
@@ -420,6 +430,17 @@ namespace GameStateManagement
             //spriteBatch.Begin();
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
 
+            if (m_intermission.Current_Scene == 0)
+            {
+                spriteBatch.Draw(boundingbox, m_background_color_rect, new Color(247, 206, 176, 255));
+                m_fly_sign.Draw(spriteBatch);
+               
+            }
+            else //247, 206, 176
+            {
+                spriteBatch.Draw(boundingbox, m_background_color_rect, new Color(49, 192, 250, 255));
+            }
+
             // Draw tree
             spriteBatch.Draw(tree, new Vector2(250, 300), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
             
@@ -427,7 +448,7 @@ namespace GameStateManagement
             spriteBatch.Draw(bush, new Vector2(950, 420), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
 
             // Draw Duck(ball)
-            //m_pongBall.Draw(spriteBatch);
+            m_pongBall.Draw(spriteBatch);
 
             // Draw Intermission
             m_intermission.Draw(spriteBatch);
@@ -445,9 +466,9 @@ namespace GameStateManagement
             // Draw Intro
             m_intro.Draw(spriteBatch);
 
-            m_pongBall.Draw(spriteBatch);
+           // spriteBatch.Draw(boundingbox, m_background_color_rect, Color.PaleGoldenrod);
 
-            spriteBatch.Draw(boundingbox, boxrec, new Color(0, 0, 0, 128));
+            //spriteBatch.Draw(boundingbox, boxrec, new Color(0, 0, 0, 128));
 
             //spriteBatch.Draw(boundingbox, startpos, Color.Beige);
 

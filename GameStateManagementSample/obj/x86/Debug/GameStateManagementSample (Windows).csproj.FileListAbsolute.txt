@@ -32,3 +32,4 @@ C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSamp
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\quack.xnb
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\startround.xnb
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\doglaugh.xnb
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\flyawaysign.xnb

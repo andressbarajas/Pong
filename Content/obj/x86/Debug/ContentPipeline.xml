@@ -157,6 +157,15 @@
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\doglaugh.xnb</Output>
       <Time>2012-07-18T17:12:35.150311-07:00</Time>
     </Item>
+    <Item>
+      <Source>flyawaysign.png</Source>
+      <Name>flyawaysign</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\flyawaysign.xnb</Output>
+      <Time>2012-07-20T01:21:53.8031754-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

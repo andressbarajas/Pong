@@ -49,11 +49,7 @@ namespace GameStateManagement
                                                     m_currAnim.Rotation,
                                                     m_effect);
 
-                /* Update rect of pong ball */
-               // m_pongBallTransform = Matrix.CreateScale(Ball_Scale) * 
-               //                       Matrix.CreateTranslation(new Vector3((float)X_Pos,(float)Y_Pos, 0.0f));
-
-                PongBall_Rect = m_currAnimBData.m_rect; //CollisionUtils.CalculateBoundingRectangle(new Rectangle(0, 0, m_currAnim.Width, m_currAnim.Height), m_pongBallTransform);
+                PongBall_Rect = m_currAnimBData.m_rect; 
                 m_pongBallTransform = m_currAnimBData.m_transformation;
 
                 /* Detect Collisions */
