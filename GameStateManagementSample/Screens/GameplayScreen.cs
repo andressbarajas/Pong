@@ -43,6 +43,11 @@ namespace GameStateManagement
         Texture2D laughingdog;
         Texture2D walkingdog;
         Texture2D flyawaysign;
+        Texture2D duckcount;
+        Texture2D score;
+        Texture2D clouds;
+        Texture2D duckcall;
+        Texture2D shot;
 
         /* * * * * * * * * * * * SOUNDS * * * * * * * * * * * */
 
@@ -55,7 +60,7 @@ namespace GameStateManagement
         /* * * * * * * * * * * ANIMATIONS * * * * * * * * * */
         
         AnimatedSprite dscduck = new AnimatedSprite();  // Descend Flight Duck
-        AnimatedSprite ascduck = new AnimatedSprite(); // Ascend Flight Duck
+        AnimatedSprite ascduck = new AnimatedSprite();  // Ascend Flight Duck
         AnimatedSprite awayduck = new AnimatedSprite(); // Flyaway Duck
         AnimatedSprite ldog = new AnimatedSprite();     // Laughing Dog Animation
         AnimatedSprite wdog = new AnimatedSprite();     // Walking Dog Animation (with sound)
@@ -77,7 +82,11 @@ namespace GameStateManagement
         Rectangle m_background_color_rect = new Rectangle(128, 64, 1024, 612);
 
         Sprite m_fly_sign = new Sprite();
-
+        Sprite m_count = new Sprite();
+        Sprite m_score = new Sprite();
+        Sprite m_cloud = new Sprite();
+        Sprite m_shot = new Sprite();
+        Sprite m_duckcall = new Sprite();
 
         /**************************/
         bool m_paused = false;
@@ -134,6 +143,11 @@ namespace GameStateManagement
             laughingdog = content.Load<Texture2D>("laughdog");
             walkingdog = content.Load<Texture2D>("walkdog");
             flyawaysign = content.Load<Texture2D>("flyawaysign");
+            duckcount = content.Load<Texture2D>("duckcount");
+            score = content.Load<Texture2D>("score");
+            clouds = content.Load<Texture2D>("clouds");
+            duckcall = content.Load<Texture2D>("duckcall");
+            shot = content.Load<Texture2D>("shot");
 
             startround = content.Load<SoundEffect>("startround");
             doglaugh = content.Load<SoundEffect>("doglaugh");
@@ -185,8 +199,8 @@ namespace GameStateManagement
             awayduck.SetFrame(3, 8, null);
 
             ldog.BuildAnimation(laughingdog, 1, 2, true, new int[2] { 0, 1 });
-            ldog.SetFrame(0, 5, null);
-            ldog.SetFrame(1, 5, null);
+            ldog.SetFrame(0, 6, null);
+            ldog.SetFrame(1, 6, null);
            
             sprdog.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 5 });
             sprdog.SetFrame(0, 100, null);
@@ -197,7 +211,7 @@ namespace GameStateManagement
             wdog.SetFrame(2, 8, null);
             wdog.SetFrame(3, 8, null);
             wdog.X_Pos = 150;
-            wdog.Y_Pos = 550;
+            wdog.Y_Pos = 535;
             
             sdog.BuildAnimation(walkingdog, 1, 8, true, new int[6] { 1, 0, 1, 0, 1, 0 });
             sdog.SetFrame(0, 8, null);
@@ -259,6 +273,28 @@ namespace GameStateManagement
             m_fly_sign.Sprite_Texture = flyawaysign;
             m_fly_sign.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_fly_sign.Sprite_Texture.Width / 2;
             m_fly_sign.Y_Pos = 320;
+
+
+            m_count.Sprite_Texture = duckcount;
+            m_count.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_count.Sprite_Texture.Width / 2;
+            m_count.Y_Pos = 600;
+
+            m_score.Sprite_Texture = score;
+            m_score.X_Pos = 138;
+            m_score.Y_Pos = 600-2;
+
+            m_cloud.Sprite_Texture = clouds;
+            m_cloud.X_Pos = 268;
+            m_cloud.Y_Pos = 608;
+
+            m_duckcall.Sprite_Texture = duckcall;
+            m_duckcall.X_Pos = 268 + 90;
+            m_duckcall.Y_Pos = 608;
+
+            m_shot.Sprite_Texture = shot;
+            m_shot.X_Pos = 268 + 2*90;
+            m_shot.Y_Pos = 608;
+
             //m_fly_sign.Draw_State = DrawableState.Active;
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
@@ -304,7 +340,6 @@ namespace GameStateManagement
 
             if (!m_paused)
             {
-
                 if(m_intro.Scene_State != DrawableState.Finished) {
                     if (!m_played_intro)
                     {
@@ -334,7 +369,7 @@ namespace GameStateManagement
                         m_flyaway.Scene_State = DrawableState.Active;
                           
                         /* Laughing Dog */
-                        ldog.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2;
+                        ldog.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - ldog.Width / 2;
                         ldog.Y_Pos = 530;
                         m_dog_laugh.BuildScene(new int[3] { 0, 1, 2 });
                         m_dog_laugh.Scene_State = DrawableState.Active;
@@ -466,6 +501,16 @@ namespace GameStateManagement
             // Draw Intro
             m_intro.Draw(spriteBatch);
 
+            m_count.Draw(spriteBatch);
+
+            m_score.Draw(spriteBatch);
+
+            m_cloud.Draw(spriteBatch);
+
+            m_duckcall.Draw(spriteBatch);
+
+            m_shot.Draw(spriteBatch);
+
            // spriteBatch.Draw(boundingbox, m_background_color_rect, Color.PaleGoldenrod);
 
             //spriteBatch.Draw(boundingbox, boxrec, new Color(0, 0, 0, 128));
@@ -483,20 +528,6 @@ namespace GameStateManagement
             //spriteBatch.Draw(boundingbox, newbound[4], Color.White);
 
             //spriteBatch.Draw(boundingbox, newbound[5], Color.White);
-
-            
-
-            //wdog.Draw(spriteBatch);
-            //sdog.Draw(spriteBatch);
-            //ltest.Draw(spriteBatch);
-            //wscene.Draw(spriteBatch);
-            //spriteBatch.DrawString(gameFont, "// TODO", playerPosition, Color.Green);
-
-            //spriteBatch.DrawString(gameFont, "Insert Gameplay Here",
-            //                       enemyPosition, Color.DarkRed);
-
-            //dscduck.Draw(spriteBatch);
-            
 
             spriteBatch.End();
 

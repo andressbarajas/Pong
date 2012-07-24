@@ -16,3 +16,8 @@ Content\quack.xnb
 Content\startround.xnb
 Content\doglaugh.xnb
 Content\flyawaysign.xnb
+Content\duckcount.xnb
+Content\score.xnb
+Content\clouds.xnb
+Content\duckcall.xnb
+Content\shot.xnb

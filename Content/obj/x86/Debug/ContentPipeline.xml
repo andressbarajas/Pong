@@ -166,6 +166,51 @@
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\flyawaysign.xnb</Output>
       <Time>2012-07-20T01:21:53.8031754-07:00</Time>
     </Item>
+    <Item>
+      <Source>duckcount.png</Source>
+      <Name>duckcount</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\duckcount.xnb</Output>
+      <Time>2012-07-23T22:00:36.9572199-07:00</Time>
+    </Item>
+    <Item>
+      <Source>score.png</Source>
+      <Name>score</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\score.xnb</Output>
+      <Time>2012-07-23T22:04:14.1976453-07:00</Time>
+    </Item>
+    <Item>
+      <Source>clouds.png</Source>
+      <Name>clouds</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\clouds.xnb</Output>
+      <Time>2012-07-23T21:51:13.2389771-07:00</Time>
+    </Item>
+    <Item>
+      <Source>duckcall.png</Source>
+      <Name>duckcall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\duckcall.xnb</Output>
+      <Time>2012-07-23T21:53:47.9098237-07:00</Time>
+    </Item>
+    <Item>
+      <Source>shot.png</Source>
+      <Name>shot</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\shot.xnb</Output>
+      <Time>2012-07-23T21:47:24.7689093-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
