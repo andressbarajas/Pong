@@ -74,6 +74,7 @@
     <Compile Include="DirXYMover.cs" />
     <Compile Include="Drawable.cs" />
     <Compile Include="DuckHuntBall.cs" />
+    <Compile Include="DuckPopulation.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="CollisionUtils.cs" />
     <Compile Include="LinearXYMover.cs" />
