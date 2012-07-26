@@ -23,6 +23,7 @@ namespace GameStateManagement
         Active,
         OutofBounds,
         DeadBall,
+        Limbo,
     }
 
     public abstract class PongBall

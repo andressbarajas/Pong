@@ -72,7 +72,7 @@ namespace GameStateManagement
 
         AnimationScene m_dog_laugh = new AnimationScene();
         AnimationScene m_flyaway = new AnimationScene();
-        AnimationScene wscene = new AnimationScene();
+        //AnimationScene wscene = new AnimationScene();
 
         // Needed
         Rectangle boxrec = new Rectangle(224, 64, 832, 512);
@@ -348,15 +348,15 @@ namespace GameStateManagement
                     }
                     m_intro.Update();  
                 }
-                else if (m_intro.Scene_State == DrawableState.Finished && 
-                         m_pongBall.Ball_State != BallState.DeadBall)
+                if (m_intro.Scene_State == DrawableState.Finished && 
+                         m_pongBall.Ball_State != BallState.DeadBall) // BallsAlive() )
                 {
-                    m_pongBall.Update(m_player1.Texture_Data, m_player2.Texture_Data);
+                    m_pongBall.Update(m_player1.Texture_Data, m_player2.Texture_Data); // UpdateBalls(m_player1.Texture_Data, m_player2.Texture_Data);
                 }
-         
-                else if (m_pongBall.Ball_State == BallState.DeadBall &&
-                         !m_finished_intermission && 
-                         m_intro.Scene_State == DrawableState.Finished)
+
+                if (m_pongBall.Ball_State == BallState.DeadBall && // m_intro.Scene_State == DrawableState.Finished && 
+                         !m_finished_intermission &&                    // (BallsDead() || 
+                         m_intro.Scene_State == DrawableState.Finished) // Intermission())
                 {
                     if (!m_built_intermission)
                     {
@@ -393,8 +393,8 @@ namespace GameStateManagement
                         m_finished_intermission = true;
                     }
                 }
-                else if (m_intermission.Manager_State == DrawableState.Finished && 
-                         m_pongBall.Ball_State == BallState.DeadBall)
+                else if (m_intermission.Manager_State == DrawableState.Finished &&  // !Intermission() &&
+                         m_pongBall.Ball_State == BallState.DeadBall) // BallsDead()
                 {
                     m_pongBall.ResetBall();
                     m_intermission.ClearList();

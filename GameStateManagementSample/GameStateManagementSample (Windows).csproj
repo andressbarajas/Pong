@@ -69,6 +69,7 @@
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="AnimationManager.cs" />
     <Compile Include="AnimationScene.cs" />
+    <Compile Include="Blinker.cs" />
     <Compile Include="Boundary.cs" />
     <Compile Include="CollisionData.cs" />
     <Compile Include="DirXYMover.cs" />
