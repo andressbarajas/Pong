@@ -35,6 +35,16 @@ namespace GameStateManagement
 
         private Rectangle m_rect = new Rectangle();
 
+        public int Width
+        {
+            get { return m_texture.Width; }
+        }
+
+        public int Height
+        {
+            get { return m_texture.Height; }
+        }
+
         #endregion
 
         #region Initialization
@@ -72,8 +82,8 @@ namespace GameStateManagement
         {
             if (Draw_State != DrawableState.Finished)
             {
-                spriteBatch.Draw(m_texture, new Rectangle((int)X_Pos, (int)Y_Pos, m_texture.Width, m_texture.Height), Tint);
-                //spriteBatch.Draw(m_texture, new Vector2(X_Pos,Y_Pos), m_src_rect, Tint, Rotation, Origin, Scale, Effects, 0);
+                //spriteBatch.Draw(m_texture, new Rectangle((int)X_Pos, (int)Y_Pos, m_texture.Width, m_texture.Height), Tint);
+                spriteBatch.Draw(m_texture, new Vector2(X_Pos,Y_Pos), null, Tint, Rotation, Origin, Scale, Effects, 0);
             }
         }
 

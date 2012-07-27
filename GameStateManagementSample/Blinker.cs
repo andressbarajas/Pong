@@ -12,34 +12,41 @@ namespace GameStateManagement
     {
         private int m_frame_cnt = 0;
         private int m_frames;
+        private Color m_init_color;
+        private Color m_color;
 
-        public Blinker(Drawable sprite, int frames) : base(sprite)
+        public Blinker(Drawable sprite, Color color, int frames) : base(sprite)
         {
+            m_color = color;
             m_frames = frames;
+            m_init_color = sprite.Tint;
         }
 
         public override void Update()
         {
+            Color color;
+
             if (Draw_State != DrawableState.Finished)
             {
-                Color color;
                 ++m_frame_cnt;
 
                 if (m_frame_cnt >= m_frames)
                 {
                     color = Tint;
-                    if (color.A == 0)
+                    if (color == m_color) 
                     {
-                        color.A = 255;
-                        Tint = color;
+                        Tint = m_init_color;
                     }
                     else
                     {
-                        color.A = 0;
-                        Tint = color;
+                        Tint = m_color;
                     }
                     m_frame_cnt = 0;
                 }
+            }
+            else
+            {
+                Tint = m_init_color;
             }
 
             m_drawable_sprite.Update();

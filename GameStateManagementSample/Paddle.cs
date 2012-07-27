@@ -45,7 +45,7 @@ namespace GameStateManagement
         private int m_xpos, m_ypos; 
         private Rectangle m_scrn_boundary;
         private Texture2D m_texture;
-        Color[] m_colordata;
+        private Color[] m_colordata;
 
         #endregion
 

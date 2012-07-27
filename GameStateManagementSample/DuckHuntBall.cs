@@ -27,7 +27,7 @@ namespace GameStateManagement
 
         public override void Update(CollisionData p1paddle, CollisionData p2paddle) 
         {
-            if (Ball_State != BallState.DeadBall)
+            if (Ball_State != BallState.DeadBall && Ball_State != BallState.Limbo)
             {
                 /* Update Position */
                 X_Pos += (int)X_Vel;

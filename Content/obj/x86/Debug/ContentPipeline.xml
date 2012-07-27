@@ -211,6 +211,24 @@
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\shot.xnb</Output>
       <Time>2012-07-23T21:47:24.7689093-07:00</Time>
     </Item>
+    <Item>
+      <Source>duck.png</Source>
+      <Name>duck</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\duck.xnb</Output>
+      <Time>2012-07-23T14:28:16.4351744-07:00</Time>
+    </Item>
+    <Item>
+      <Source>bitfont.png</Source>
+      <Name>bitfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bitfont.xnb</Output>
+      <Time>2012-07-27T00:34:47.1371884-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

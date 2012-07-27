@@ -132,6 +132,7 @@ namespace GameStateManagement
 
         public void ClearList()
         {
+            m_curr_scene_num = -1;
             m_sceneList.Clear();
         }
 

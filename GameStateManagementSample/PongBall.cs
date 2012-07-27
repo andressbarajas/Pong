@@ -153,8 +153,8 @@ namespace GameStateManagement
         public virtual void Update(CollisionData player1, CollisionData player2) { }
         
         public void Draw(SpriteBatch spritebatch)
-        {          
-            if(m_ball_state != BallState.DeadBall) // Dont draw the ball if we dont need to
+        {
+            if (m_ball_state != BallState.DeadBall && m_ball_state != BallState.Limbo) // Dont draw the ball if we dont need to
             {
                 m_currAnim.Draw(spritebatch);
             }

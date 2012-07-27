@@ -14,6 +14,12 @@ namespace GameStateManagement
     {
         #region Properties
 
+        public class Duck
+        {
+            public int m_ball_index = -1;
+            public Drawable m_spr;
+        }
+
         public int DuckCount
         {
             get { return m_duck_count; }
@@ -56,6 +62,11 @@ namespace GameStateManagement
             get { return m_pongballs[1].Ball_State; }
         }
 
+        public int IntermissionScene
+        {
+            get { return m_intermission2.Current_Scene; }
+        }
+
         #endregion
 
         #region Fields
@@ -63,10 +74,10 @@ namespace GameStateManagement
         /* * * * * * * * * * * TEXTURES * * * * * * * * * * * */
 
         private Texture2D m_duck_txt;
+        private Texture2D m_countbg_txt;
+        private Texture2D m_duckcount_txt;
         private Texture2D m_flyingaway_txt;
         private Texture2D m_laughingdog_txt;
-        private Texture2D m_duckcount_txt;
-        private Texture2D m_countbg_txt;
 
         /* * * * * * * * * * * * SOUNDS * * * * * * * * * * * */
 
@@ -76,30 +87,28 @@ namespace GameStateManagement
 
         /* * * * * * * * * * * ANIMATIONS * * * * * * * * * */
 
-        private AnimatedSprite m_flyawayduck_anim_1 = new AnimatedSprite();  // Flyaway Duck inter 1
-        private AnimatedSprite m_flyawayduck_anim_2 = new AnimatedSprite();  // Flyaway Duck inter 1
-        private AnimatedSprite m_laughdog_anim = new AnimatedSprite();     // Laughing Dog Animation
+        private AnimatedSprite m_laughdog_anim;       // Laughing Dog Animation
+        private AnimatedSprite m_flyawayduck_anim_1;  // Flyaway Duck inter 1
+        private AnimatedSprite m_flyawayduck_anim_2;  // Flyaway Duck inter 2
 
         /* * * * * * * * * ANIMATION SCENE * * * * * * * * */
 
-        private AnimationScene m_flyaway_scn = new AnimationScene();
-        private AnimationScene m_flyaway_scn_inter = new AnimationScene();
-        private AnimationScene m_dog_laugh_scn_inter = new AnimationScene();
+        private AnimationScene m_flyaway_scn;
+        private AnimationScene m_flyaway_scn_inter;
+        private AnimationScene m_dog_laugh_scn_inter;
         
         /* * * * * * * * * INTERMISSION * * * * * * * * * */
 
-        private AnimationManager m_intermission1 = new AnimationManager();
-        private AnimationManager m_intermission2 = new AnimationManager();
-         
-        private Sprite m_counter_spr;
-        private ContentManager m_content;
-        private Drawable[] m_ducks = new Drawable[10];
-        private List<DuckHuntBall> m_pongballs = new List<DuckHuntBall>();
+        private AnimationManager m_intermission1;
+        private AnimationManager m_intermission2;
 
-        private bool m_built1 = false;
-        private bool m_built2 = false;
-        private bool m_built_intermission = false;
-        private bool m_finished_intermission = false;
+        private bool m_built1;
+        private bool m_built2;
+        private ContentManager m_content;
+        private CollisionData[] m_boundary;
+        private Sprite m_counter_spr;
+        private Duck[] m_ducks = new Duck[10];
+        private List<DuckHuntBall> m_pongballs = new List<DuckHuntBall>();
 
         #endregion
 
@@ -107,17 +116,12 @@ namespace GameStateManagement
 
         public DuckPopulation(ContentManager content, CollisionData[] boundary)
         {
-            m_duck_count = 10;
             m_content = content;
+            m_boundary = boundary;
 
             LoadContent();
 
-            BuildAnimations();
-
-            // Build duckhuntballs
-            m_pongballs.Add(BuildDuck(boundary));
-            m_pongballs.Add(BuildDuck(boundary));
-  
+            Reset();
         }
 
         #endregion
@@ -126,8 +130,27 @@ namespace GameStateManagement
 
         public void UpdateCounter()
         {
+            Sprite temp;
+
             // current duck is blinking 
             // past ducks are red 
+            for (int i = 9; i >= 0; i--)
+            {
+                if (m_ducks[i].m_ball_index != -1)
+                {
+                    if (m_pongballs[m_ducks[i].m_ball_index].Ball_State == BallState.Limbo)
+                    {
+                        temp = new Sprite();
+                        temp.Sprite_Texture = m_duckcount_txt;
+                        temp.X_Pos = m_ducks[i].m_spr.X_Pos;
+                        temp.Y_Pos = m_ducks[i].m_spr.Y_Pos;
+                        m_ducks[i].m_spr = temp;
+                        m_ducks[i].m_spr.Tint = new Color(222, 41, 0, 255);  //222, 41, 0
+                        m_ducks[i].m_ball_index = -1;
+                    }
+                    m_ducks[i].m_spr.Update();
+                }
+            }
         }
 
         public void DrawCounter(SpriteBatch spritebatch)
@@ -136,94 +159,23 @@ namespace GameStateManagement
 
             for (int i = 0; i < m_ducks.Length; i++)
             {
-                m_ducks[i].Draw(spritebatch);
+                m_ducks[i].m_spr.Draw(spritebatch);
             }
         }
 
         public void UpdateIntermission()
         {
-           
-            // Build intermission
-
-            if (!m_built1 && ((m_pongballs[0].Ball_State == BallState.Active &&
-                    m_pongballs[1].Ball_State == BallState.DeadBall) ||
-                    (m_pongballs[0].Ball_State == BallState.DeadBall &&
-                    m_pongballs[1].Ball_State == BallState.Active)))
-            {
-                // Make intermission with flyaway 
-                if (m_pongballs[0].Ball_State == BallState.DeadBall) 
-                {
-                    m_flyawayduck_anim_1.X_Pos = m_pongballs[0].X_Pos;
-                    m_flyawayduck_anim_1.Y_Pos = m_pongballs[0].Y_Pos;
-
-                    m_flyaway_scn.AddAnimation(new DirXYMover(m_flyawayduck_anim_1, 0, -(m_pongballs[0].Y_Pos + m_flyawayduck_anim_1.Height), 2.0f)); //m_pongBall.Curr_Vel_Mag));                       
-                }
-                else
-                {
-                    m_flyawayduck_anim_1.X_Pos = m_pongballs[1].X_Pos;
-                    m_flyawayduck_anim_1.Y_Pos = m_pongballs[1].Y_Pos;
-
-                    m_flyaway_scn.AddAnimation(new DirXYMover(m_flyawayduck_anim_1, 0, -(m_pongballs[1].Y_Pos + m_flyawayduck_anim_1.Height), 2.0f)); //m_pongBall.Curr_Vel_Mag));
-                }
-
-                m_flyaway_scn.BuildScene(new int[1] { 0 });
-                m_flyaway_scn.Scene_State = DrawableState.Active;
-
-                m_intermission1.AddScene(m_flyaway_scn);
-                m_intermission1.Build(new int[1] { 0 });
-                m_intermission1.Manager_State = DrawableState.Active;
-
-                // DeadBall is now in limbo mode
-                m_built1 = true;
-            }
-            else if (!m_built2 && ((m_pongballs[0].Ball_State == BallState.DeadBall &&
-                    m_pongballs[1].Ball_State == BallState.Limbo) ||
-                    (m_pongballs[0].Ball_State == BallState.Limbo &&
-                    m_pongballs[1].Ball_State == BallState.DeadBall)))
-            {
-                // Make intermission with flyaway duck and laughing dog
-                if (m_pongballs[0].Ball_State == BallState.DeadBall)
-                {
-                    m_flyawayduck_anim_1.X_Pos = m_pongballs[0].X_Pos;
-                    m_flyawayduck_anim_1.Y_Pos = m_pongballs[0].Y_Pos;
-
-                    m_flyaway_scn_inter.AddAnimation(new DirXYMover(m_flyawayduck_anim_1, 0, -(m_pongballs[0].Y_Pos + m_flyawayduck_anim_1.Height), 2.0f)); //m_pongBall.Curr_Vel_Mag));                       
-                }
-                else
-                {
-                    m_flyawayduck_anim_1.X_Pos = m_pongballs[1].X_Pos;
-                    m_flyawayduck_anim_1.Y_Pos = m_pongballs[1].Y_Pos;
-
-                    m_flyaway_scn_inter.AddAnimation(new DirXYMover(m_flyawayduck_anim_1, 0, -(m_pongballs[1].Y_Pos + m_flyawayduck_anim_1.Height), 2.0f)); //m_pongBall.Curr_Vel_Mag));
-                }
-
-                /* Flyaway Duck */
-                m_flyaway_scn_inter.BuildScene(new int[1] { 0 });
-                m_flyaway_scn_inter.Scene_State = DrawableState.Active;
-
-                /* Laughing Dog */
-                m_laughdog_anim.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_laughdog_anim.Width / 2;
-                m_laughdog_anim.Y_Pos = 530;
-                m_dog_laugh_scn_inter.BuildScene(new int[3] { 0, 1, 2 });
-                m_dog_laugh_scn_inter.Scene_State = DrawableState.Active;
-
-                /* Intermission */
-                m_intermission2.AddScene(m_flyaway_scn_inter);
-                m_intermission2.AddScene(m_dog_laugh_scn_inter);
-                m_intermission2.Build(new int[2] { 0, 1 });
-                m_intermission2.Manager_State = DrawableState.Active;
-
-                m_built2 = true;
-            }
-
             m_intermission1.Update();
             m_intermission2.Update();
 
-            if (!Intermission())
+            if (m_intermission1.Manager_State == DrawableState.Finished)
             {
                 m_built1 = false;
-                m_built2 = false;
                 m_intermission1.ClearList();
+            }
+            if (m_intermission2.Manager_State == DrawableState.Finished)
+            {
+                m_built2 = false;
                 m_intermission2.ClearList();
             }
         }
@@ -253,19 +205,133 @@ namespace GameStateManagement
         // Release another ball on the screen only when there isnt already two in play
         public void ReleaseDuck()
         {
-            if (m_pongballs[0].Ball_State == BallState.DeadBall ||
-                m_pongballs[0].Ball_State == BallState.Limbo)
+            if (m_duck_count > 0)
             {
-                m_pongballs[0].ResetBall();
-                // Set location if need to
-                m_pongballs[0].Ball_State = BallState.Active;
+                if (m_pongballs[0].Ball_State == BallState.DeadBall ||
+                    m_pongballs[0].Ball_State == BallState.Limbo)
+                {
+                    m_pongballs[0].ResetBall();
+                    if ((m_pongballs[0].X_Vel > 0 && m_pongballs[0].Y_Vel < 0) || (m_pongballs[0].X_Vel < 0 && m_pongballs[0].Y_Vel < 0))
+                    {
+                        m_pongballs[0].SetCurrentAnimation(1);
+                    }
+                    else
+                    {
+                        m_pongballs[0].SetCurrentAnimation(0);
+                    }
+
+                    SetCurrentDucktoBlink(0);
+                    m_pongballs[0].Ball_State = BallState.Active;
+
+                    if (m_pongballs[1].Ball_State == BallState.DeadBall && !Intermission())
+                    {
+                        m_pongballs[1].Ball_State = BallState.Limbo;
+                    }
+                }
+                else if (m_pongballs[1].Ball_State == BallState.DeadBall ||
+                         m_pongballs[1].Ball_State == BallState.Limbo)
+                {
+                    m_pongballs[1].ResetBall();
+                    if ((m_pongballs[1].X_Vel > 0 && m_pongballs[1].Y_Vel < 0) || (m_pongballs[1].X_Vel < 0 && m_pongballs[1].Y_Vel < 0))
+                    {
+                        m_pongballs[1].SetCurrentAnimation(1);
+                    }
+                    else
+                    {
+                        m_pongballs[1].SetCurrentAnimation(0);
+                    }
+
+                    SetCurrentDucktoBlink(1);
+                    m_pongballs[1].Ball_State = BallState.Active;
+
+                    if (m_pongballs[0].Ball_State == BallState.DeadBall && !Intermission())
+                    {
+                        m_pongballs[0].Ball_State = BallState.Limbo;
+                    }
+                }
             }
-            else if (m_pongballs[1].Ball_State == BallState.DeadBall ||
-                     m_pongballs[1].Ball_State == BallState.Limbo)
+        }
+
+        public void BuildIntermission()
+        {
+            // Build intermission
+            if (!m_built1 && ((m_pongballs[0].Ball_State == BallState.Active || m_pongballs[0].Ball_State == BallState.OutofBounds) &&
+                               m_pongballs[1].Ball_State == BallState.DeadBall) ||
+                              (m_pongballs[1].Ball_State == BallState.Active || m_pongballs[1].Ball_State == BallState.OutofBounds) &&
+                               m_pongballs[0].Ball_State == BallState.DeadBall)
             {
-                m_pongballs[0].ResetBall();
-                // Set location if need to
-                m_pongballs[1].Ball_State = BallState.Active;
+                // Make intermission with flyaway 
+                if (m_pongballs[0].Ball_State == BallState.DeadBall)
+                {
+                    m_pongballs[0].Ball_State = BallState.Limbo;
+                    m_flyawayduck_anim_1.X_Pos = m_pongballs[0].X_Pos;
+                    m_flyawayduck_anim_1.Y_Pos = m_pongballs[0].Y_Pos;
+
+                    m_flyaway_scn.Clear();
+                    m_flyaway_scn.AddAnimation(new DirXYMover(m_flyawayduck_anim_1, 0, -(m_pongballs[0].Y_Pos + m_flyawayduck_anim_1.Height), 4.5f)); //m_pongBall.Curr_Vel_Mag));                       
+                }
+                else
+                {
+                    m_pongballs[1].Ball_State = BallState.Limbo;
+                    m_flyawayduck_anim_1.X_Pos = m_pongballs[1].X_Pos;
+                    m_flyawayduck_anim_1.Y_Pos = m_pongballs[1].Y_Pos;
+
+                    m_flyaway_scn.Clear();
+                    m_flyaway_scn.AddAnimation(new DirXYMover(m_flyawayduck_anim_1, 0, -(m_pongballs[1].Y_Pos + m_flyawayduck_anim_1.Height), 4.5f)); //m_pongBall.Curr_Vel_Mag));
+                }
+
+                m_flyaway_scn.BuildScene(new int[1] { 0 });
+                m_flyaway_scn.Scene_State = DrawableState.Active;
+
+                m_intermission1.AddScene(m_flyaway_scn);
+                m_intermission1.Build(new int[1] { 0 });
+                m_intermission1.Manager_State = DrawableState.Active;
+
+                // DeadBall is now in limbo mode
+                m_built1 = true;
+            }
+            else if (!m_built2 && ((m_pongballs[0].Ball_State == BallState.DeadBall &&
+                                   (m_pongballs[1].Ball_State == BallState.OutofBounds || m_pongballs[1].Ball_State == BallState.Limbo)) ||
+                                   (m_pongballs[1].Ball_State == BallState.DeadBall &&
+                                   (m_pongballs[0].Ball_State == BallState.OutofBounds || m_pongballs[0].Ball_State == BallState.Limbo))))
+            {
+                // Make intermission with flyaway duck and laughing dog
+                if (m_pongballs[0].Ball_State == BallState.DeadBall)
+                {
+                    m_pongballs[0].Ball_State = BallState.Limbo;
+                    m_flyawayduck_anim_2.X_Pos = m_pongballs[0].X_Pos;
+                    m_flyawayduck_anim_2.Y_Pos = m_pongballs[0].Y_Pos;
+
+                    m_flyaway_scn_inter.Clear();
+                    m_flyaway_scn_inter.AddAnimation(new DirXYMover(m_flyawayduck_anim_2, 0, -(m_pongballs[0].Y_Pos + m_flyawayduck_anim_2.Height), 4.5f)); //m_pongBall.Curr_Vel_Mag));                       
+                }
+                else
+                {
+                    m_pongballs[1].Ball_State = BallState.Limbo;
+                    m_flyawayduck_anim_2.X_Pos = m_pongballs[1].X_Pos;
+                    m_flyawayduck_anim_2.Y_Pos = m_pongballs[1].Y_Pos;
+
+                    m_flyaway_scn_inter.Clear();
+                    m_flyaway_scn_inter.AddAnimation(new DirXYMover(m_flyawayduck_anim_2, 0, -(m_pongballs[1].Y_Pos + m_flyawayduck_anim_2.Height), 4.5f)); //m_pongBall.Curr_Vel_Mag));
+                }
+
+                /* Flyaway Duck */
+                m_flyaway_scn_inter.BuildScene(new int[1] { 0 });
+                m_flyaway_scn_inter.Scene_State = DrawableState.Active;
+
+                /* Laughing Dog */
+                m_laughdog_anim.X_Pos = 612 - m_laughdog_anim.Width / 2;
+                m_laughdog_anim.Y_Pos = 530;
+                m_dog_laugh_scn_inter.BuildScene(new int[3] { 0, 1, 2 });
+                m_dog_laugh_scn_inter.Scene_State = DrawableState.Active;
+
+                /* Intermission */
+                m_intermission2.AddScene(m_flyaway_scn_inter);
+                m_intermission2.AddScene(m_dog_laugh_scn_inter);
+                m_intermission2.Build(new int[2] { 0, 1 });
+                m_intermission2.Manager_State = DrawableState.Active;
+
+                m_built2 = true;
             }
         }
 
@@ -283,6 +349,12 @@ namespace GameStateManagement
                     m_pongballs[1].Ball_State != BallState.Limbo);
         }
 
+        public bool BallsLimbo()
+        {
+            return (m_pongballs[0].Ball_State == BallState.Limbo &&
+                    m_pongballs[1].Ball_State == BallState.Limbo);
+        }
+
         public bool Intermission()
         {
             return (m_intermission1.Manager_State == DrawableState.Active || m_intermission2.Manager_State == DrawableState.Active);
@@ -290,7 +362,28 @@ namespace GameStateManagement
 
         public bool GameOver()
         {
-            return (m_duck_count == 0) ? true : false;
+            return (m_duck_count == 0 && !BallsAlive() && !Intermission()) ? true : false;
+        }
+
+        public void Reset()
+        {
+            m_built1 = false;
+            m_built2 = false;
+            m_duck_count = 10;
+            m_laughdog_anim = new AnimatedSprite();
+            m_flyawayduck_anim_1 = new AnimatedSprite();  // Flyaway Duck inter 1
+            m_flyawayduck_anim_2 = new AnimatedSprite();  // Flyaway Duck inter 2
+            m_flyaway_scn = new AnimationScene();
+            m_flyaway_scn_inter = new AnimationScene();
+            m_dog_laugh_scn_inter = new AnimationScene();
+            m_intermission1 = new AnimationManager();
+            m_intermission2 = new AnimationManager();
+            m_counter_spr = new Sprite();
+
+            BuildAnimations();
+            m_pongballs.Clear();
+            m_pongballs.Add(BuildDuck(m_boundary));
+            m_pongballs.Add(BuildDuck(m_boundary));
         }
 
         #endregion
@@ -299,12 +392,12 @@ namespace GameStateManagement
 
         private void LoadContent()
         {
-             /*  LOAD SOUNDS AND TEXTURES */
-            
+             /*  LOAD SOUNDS AND TEXTURES */ 
             m_duck_txt = m_content.Load<Texture2D>("blackduck");
             m_flyingaway_txt = m_content.Load<Texture2D>("flyaway");
             m_laughingdog_txt = m_content.Load<Texture2D>("laughdog");
-            m_duckcount_txt = m_content.Load<Texture2D>("duckcount");
+            m_duckcount_txt = m_content.Load<Texture2D>("duck");
+            m_countbg_txt = m_content.Load<Texture2D>("duckcount");
            
             m_doglaugh_snd = m_content.Load<SoundEffect>("doglaugh");
             //m_flapwing_snd = m_content.Load<SoundEffect>("wingflaps");
@@ -317,8 +410,8 @@ namespace GameStateManagement
             int x, y;
             Sprite temp;
 
-            x = 500; 
-            y = 600;
+            x = 706; 
+            y = 630;
 
             // Create the ducks for the counter
             for (int i = 0; i < 10; i++)
@@ -327,13 +420,15 @@ namespace GameStateManagement
                 temp.Sprite_Texture = m_duckcount_txt;
                 temp.X_Pos = x;
                 temp.Y_Pos = y;
-                temp.Draw_State = DrawableState.Active;
-                m_ducks[i] = temp;
+                //temp.Draw_State = DrawableState.Active;
+                m_ducks[i] = new Duck();
+                m_ducks[i].m_spr = temp;
                 x -= (m_duckcount_txt.Width + 2);
             }
 
             m_counter_spr.Sprite_Texture = m_countbg_txt;
-            // Set location
+            m_counter_spr.X_Pos = 640 - (m_countbg_txt.Width/2);
+            m_counter_spr.Y_Pos = 600;
 
             //            Intermission Stuff
 
@@ -402,17 +497,21 @@ namespace GameStateManagement
             ascduck.SetFrame(14, 5, null);
             ascduck.SetFrame(15, 5, m_flapwing_snd);
 
-            duckball = new DuckHuntBall(0, 540, boundary);
+            duckball = new DuckHuntBall(640, 540, boundary);
             duckball.AddAnimation(dscduck);
             duckball.AddAnimation(ascduck);
-            duckball.Ball_State = BallState.DeadBall;
+            duckball.Ball_State = BallState.Limbo;
 
             return duckball;
         }
 
-        private void SetBlinkerToCurrentDuck()
+        private void SetCurrentDucktoBlink(int index)
         {
-            //m_ducks[m_duck_count - 1] = new Blinker(m_ducks[m_duck_count - 1], frames);
+            if (m_duck_count > 0)
+            {
+                m_ducks[--m_duck_count].m_ball_index = index;
+                m_ducks[m_duck_count].m_spr = new Blinker(m_ducks[m_duck_count].m_spr, new Color(0,0,0,0),15);
+            }
         }
 
         #endregion

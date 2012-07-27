@@ -94,18 +94,29 @@ namespace GameStateManagement
         bool m_built_intermission = false;
         bool m_finished_intermission = false;
 
+        DuckPopulation m_ducks;
+
         Rectangle[] newbound;
         CollisionData[] bounddata;
 
-        Paddle m_player1;
-        Paddle m_player2;
+        Player m_player1;
+        Player m_player2;
+
+        Texture2D[] m_player_textures = new Texture2D[5];
 
         DuckHuntBall m_pongBall;
         AnimationScene m_intro = new AnimationScene();
         
         AnimationManager m_intermission = new AnimationManager();
 
+        private SpriteFont m_num;
+
         /****************************/
+
+        private KeyboardState p1keyOldState;
+        private KeyboardState p2keyOldState;
+        private GamePadState p1padOldState;
+        private GamePadState p2padOldState;
 
         float pauseAlpha;
 
@@ -137,17 +148,20 @@ namespace GameStateManagement
             tree = content.Load<Texture2D>("tree");
             ground = content.Load<Texture2D>("ground");
             bush = content.Load<Texture2D>("bush");
-            paddle = content.Load<Texture2D>("panel");
+            m_player_textures[0] = content.Load<Texture2D>("panel");
             duck = content.Load<Texture2D>("blackduck");
             flyingaway = content.Load<Texture2D>("flyaway");
             laughingdog = content.Load<Texture2D>("laughdog");
             walkingdog = content.Load<Texture2D>("walkdog");
             flyawaysign = content.Load<Texture2D>("flyawaysign");
             duckcount = content.Load<Texture2D>("duckcount");
-            score = content.Load<Texture2D>("score");
-            clouds = content.Load<Texture2D>("clouds");
-            duckcall = content.Load<Texture2D>("duckcall");
-            shot = content.Load<Texture2D>("shot");
+            m_player_textures[1] = content.Load<Texture2D>("score");
+            m_player_textures[2] = content.Load<Texture2D>("clouds");
+            m_player_textures[3] = content.Load<Texture2D>("duckcall");
+            m_player_textures[4] = content.Load<Texture2D>("shot");
+
+
+            m_num = content.Load<SpriteFont>("bitfont");
 
             startround = content.Load<SoundEffect>("startround");
             doglaugh = content.Load<SoundEffect>("doglaugh");
@@ -241,8 +255,10 @@ namespace GameStateManagement
 
             startpos = new Rectangle(ScreenManager.GraphicsDevice.Viewport.Width / 2, 564, 1, 1);
 
-            m_player1 = new Paddle(1, paddle, boxrec);
-            m_player2 = new Paddle(0, paddle, boxrec);
+            m_player1 = new Player(1); //Paddle(1, paddle, boxrec);
+            m_player1.LoadContent(m_player_textures, m_num, boxrec);
+            m_player2 = new Player(0); //Paddle(0, paddle, boxrec);
+            m_player2.LoadContent(m_player_textures, m_num, boxrec);
 
             newbound = Boundary.CreateBoundRects(boxrec);
             bounddata = new CollisionData[newbound.Length];
@@ -253,6 +269,8 @@ namespace GameStateManagement
             bounddata[3] = new CollisionData(newbound[3]);
             bounddata[4] = new CollisionData(newbound[4]);
             bounddata[5] = new CollisionData(newbound[5]);
+
+            m_ducks = new DuckPopulation(content, bounddata);
 
             /* Setup Pong Ball */
             m_pongBall = new DuckHuntBall(startpos.X, 540, bounddata);
@@ -349,18 +367,24 @@ namespace GameStateManagement
                     m_intro.Update();  
                 }
                 if (m_intro.Scene_State == DrawableState.Finished && 
-                         m_pongBall.Ball_State != BallState.DeadBall) // BallsAlive() )
+                    m_ducks.BallsAlive()) //m_pongBall.Ball_State != BallState.DeadBall)
                 {
-                    m_pongBall.Update(m_player1.Texture_Data, m_player2.Texture_Data); // UpdateBalls(m_player1.Texture_Data, m_player2.Texture_Data);
+                    m_ducks.UpdateBalls(m_player1.CData, m_player2.CData);// m_pongBall.Update(m_player1.Texture_Data, m_player2.Texture_Data); 
                 }
 
-                if (m_pongBall.Ball_State == BallState.DeadBall && // m_intro.Scene_State == DrawableState.Finished && 
-                         !m_finished_intermission &&                    // (BallsDead() || 
-                         m_intro.Scene_State == DrawableState.Finished) // Intermission())
+                if (m_intro.Scene_State == DrawableState.Finished &&  //m_pongBall.Ball_State == BallState.DeadBall && // 
+                    m_ducks.BallsDead())
                 {
+                    m_ducks.BuildIntermission();
+                }
+
+                if (m_intro.Scene_State == DrawableState.Finished &&  //m_pongBall.Ball_State == BallState.DeadBall && // 
+                  // (m_ducks.BallsDead() ||      //!m_finished_intermission &&                     
+                    m_ducks.Intermission())//)      //m_intro.Scene_State == DrawableState.Finished) 
+                {    /*
                     if (!m_built_intermission)
                     {
-                        /* Flyaway Duck */
+                        // Flyaway Duck 
                         m_flyaway.Clear();
                         awayduck.X_Pos = m_pongBall.X_Pos;
                         awayduck.Y_Pos = m_pongBall.Y_Pos;
@@ -368,13 +392,13 @@ namespace GameStateManagement
                         m_flyaway.BuildScene(new int[1] { 0 });
                         m_flyaway.Scene_State = DrawableState.Active;
                           
-                        /* Laughing Dog */
+                        // Laughing Dog 
                         ldog.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - ldog.Width / 2;
                         ldog.Y_Pos = 530;
                         m_dog_laugh.BuildScene(new int[3] { 0, 1, 2 });
                         m_dog_laugh.Scene_State = DrawableState.Active;
 
-                        /* Intermission */
+                        // Intermission 
                         m_intermission.AddScene(m_flyaway);
                         m_intermission.AddScene(m_dog_laugh);
                         m_intermission.Build(new int[2] { 0, 1 });
@@ -392,14 +416,27 @@ namespace GameStateManagement
                     {
                         m_finished_intermission = true;
                     }
+                      * */
+
+                    m_ducks.UpdateIntermission();
                 }
-                else if (m_intermission.Manager_State == DrawableState.Finished &&  // !Intermission() &&
-                         m_pongBall.Ball_State == BallState.DeadBall) // BallsDead()
+                else if (!m_ducks.Intermission() && //m_intermission.Manager_State == DrawableState.Finished &&  // 
+                         m_ducks.BallsLimbo()) //m_pongBall.Ball_State == BallState.DeadBall) // 
                 {
+                    /*
                     m_pongBall.ResetBall();
                     m_intermission.ClearList();
                     m_built_intermission = false;
                     m_finished_intermission = false;
+                     * */
+                    m_ducks.ReleaseDuck();
+                }
+
+                if (m_intro.Scene_State == DrawableState.Finished)
+                {
+                    m_ducks.UpdateCounter();
+                    m_player1.UpdateItems();
+                    m_player2.UpdateItems();
                 }
             }
         }
@@ -431,18 +468,35 @@ namespace GameStateManagement
                                        !gamePadState2.IsConnected &&
                                        input.GamePadWasConnected[1];
 
-            if (input.IsPauseGame(null) || gamePadDisconnected)
+            if ((input.IsPauseGame(null) || gamePadDisconnected) && m_intro.Scene_State == DrawableState.Finished)// || m_ducks.GameOver())
             {
                 m_paused = true;
                 ScreenManager.AddScreen(new PauseMenuScreen(), null);
             }
 
-            else if (m_pongBall.Ball_State != BallState.OutofBounds && m_intro.Scene_State == DrawableState.Finished)
+            if (keyboardState1.IsKeyDown(Keys.G) && 
+                p1keyOldState.IsKeyUp(Keys.G) &&
+                m_intro.Scene_State == DrawableState.Finished && 
+                !m_ducks.Intermission() && 
+                m_player1.DuckCallNum != 0)
+            {
+                m_ducks.ReleaseDuck();
+                m_player1.DuckCallNum -= 1;
+            }
+
+            if (m_intro.Scene_State == DrawableState.Finished) // &&
+                //m_pongBall.Ball_State != BallState.OutofBounds && )
             {
                 m_paused = false;
-                m_player1.Update(keyboardState1, gamePadState1);
-                m_player2.Update(keyboardState2, gamePadState2);
+                m_player1.UpdatePaddle(keyboardState1, gamePadState1);
+                m_player2.UpdatePaddle(keyboardState2, gamePadState2);
             }
+
+            // Save old state
+            p1keyOldState = keyboardState1;
+            p2keyOldState = keyboardState2;
+            p1padOldState = gamePadState1;
+            p2padOldState = gamePadState2;
         }
 
 
@@ -465,13 +519,12 @@ namespace GameStateManagement
             //spriteBatch.Begin();
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
 
-            if (m_intermission.Current_Scene == 0)
+            if (m_ducks.IntermissionScene == 0)
             {
                 spriteBatch.Draw(boundingbox, m_background_color_rect, new Color(247, 206, 176, 255));
-                m_fly_sign.Draw(spriteBatch);
-               
+                m_fly_sign.Draw(spriteBatch);      
             }
-            else //247, 206, 176
+            else 
             {
                 spriteBatch.Draw(boundingbox, m_background_color_rect, new Color(49, 192, 250, 255));
             }
@@ -483,10 +536,12 @@ namespace GameStateManagement
             spriteBatch.Draw(bush, new Vector2(950, 420), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
 
             // Draw Duck(ball)
-            m_pongBall.Draw(spriteBatch);
+            //m_pongBall.Draw(spriteBatch);
+            m_ducks.DrawBalls(spriteBatch);
 
             // Draw Intermission
-            m_intermission.Draw(spriteBatch);
+            //m_intermission.Draw(spriteBatch);
+            m_ducks.DrawIntermission(spriteBatch);
 
             // Draw left ground + grass
             spriteBatch.Draw(ground, new Vector2(128, 500), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
@@ -495,25 +550,34 @@ namespace GameStateManagement
             spriteBatch.Draw(ground, new Vector2(640, 500), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
 
             // Draw Paddles 
-            m_player1.Draw(spriteBatch);
-            m_player2.Draw(spriteBatch);
+            m_player1.DrawPaddle(spriteBatch);
+            m_player2.DrawPaddle(spriteBatch);
 
             // Draw Intro
             m_intro.Draw(spriteBatch);
 
-            m_count.Draw(spriteBatch);
+            m_ducks.DrawCounter(spriteBatch);
 
-            m_score.Draw(spriteBatch);
+            m_player1.DrawItems(spriteBatch);
+            m_player2.DrawItems(spriteBatch);
 
-            m_cloud.Draw(spriteBatch);
+            //int t = 2000;
 
-            m_duckcall.Draw(spriteBatch);
+            //spriteBatch.DrawString(m_num, t.ToString(), new Vector2(320, 320), Color.Red);
 
-            m_shot.Draw(spriteBatch);
+            //m_count.Draw(spriteBatch);
+
+            //m_score.Draw(spriteBatch);
+
+            //m_cloud.Draw(spriteBatch);
+
+            //m_duckcall.Draw(spriteBatch);
+
+            //m_shot.Draw(spriteBatch);
 
            // spriteBatch.Draw(boundingbox, m_background_color_rect, Color.PaleGoldenrod);
 
-            //spriteBatch.Draw(boundingbox, boxrec, new Color(0, 0, 0, 128));
+            //spriteBatch.Draw(boundingbox, boxrec, Color.Black); //new Color(0, 0, 0, 255));
 
             //spriteBatch.Draw(boundingbox, startpos, Color.Beige);
 
