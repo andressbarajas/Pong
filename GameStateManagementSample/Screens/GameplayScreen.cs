@@ -255,9 +255,9 @@ namespace GameStateManagement
 
             startpos = new Rectangle(ScreenManager.GraphicsDevice.Viewport.Width / 2, 564, 1, 1);
 
-            m_player1 = new Player(1); //Paddle(1, paddle, boxrec);
+            m_player1 = new Player(0); //Paddle(1, paddle, boxrec);
             m_player1.LoadContent(m_player_textures, m_num, boxrec);
-            m_player2 = new Player(0); //Paddle(0, paddle, boxrec);
+            m_player2 = new Player(1); //Paddle(0, paddle, boxrec);
             m_player2.LoadContent(m_player_textures, m_num, boxrec);
 
             newbound = Boundary.CreateBoundRects(boxrec);
@@ -473,15 +473,98 @@ namespace GameStateManagement
                 m_paused = true;
                 ScreenManager.AddScreen(new PauseMenuScreen(), null);
             }
-
-            if (keyboardState1.IsKeyDown(Keys.G) && 
-                p1keyOldState.IsKeyUp(Keys.G) &&
+            /*
+             // Handle Cloud Input
+             // (Player 1)
+            if (((keyboardState1.IsKeyDown(Keys.D) &&                   // Handle Keyboard
+                p1keyOldState.IsKeyUp(Keys.D)) ||
+                (gamePadState1.Buttons.X == ButtonState.Pressed &&      // Handle Gamepad
+                p1padOldState.Buttons.X == ButtonState.Released)) &&
                 m_intro.Scene_State == DrawableState.Finished && 
                 !m_ducks.Intermission() && 
-                m_player1.DuckCallNum != 0)
+                m_player1.CloudNum != 0 &&
+                m_ducks.BallsAlive())
+            {
+               
+                // Play duck call sound
+                m_player1.CloudNum -= 1;
+            }
+
+            // (Player 2)
+            if (((keyboardState2.IsKeyDown(Keys.OemComma) &&                   // Handle Keyboard
+                p2keyOldState.IsKeyUp(Keys.OemComma)) ||
+                (gamePadState2.Buttons.X == ButtonState.Pressed &&      // Handle Gamepad
+                p2padOldState.Buttons.X == ButtonState.Released)) &&
+                m_intro.Scene_State == DrawableState.Finished &&
+                !m_ducks.Intermission() &&
+                m_player2.CloudNum != 0 &&
+                m_ducks.BallsAlive())
             {
                 m_ducks.ReleaseDuck();
+                // Play duck call sound
+                m_player2.CloudNum -= 1;
+            }
+             */
+
+            // Handle Duck Calls
+            // (Player 1)
+            if (((keyboardState1.IsKeyDown(Keys.F) &&                   // Handle Keyboard
+                p1keyOldState.IsKeyUp(Keys.F)) ||
+                (gamePadState1.Buttons.Y == ButtonState.Pressed &&      // Handle Gamepad
+                p1padOldState.Buttons.Y == ButtonState.Released)) &&
+                m_intro.Scene_State == DrawableState.Finished && 
+                !m_ducks.Intermission() && 
+                m_player1.DuckCallNum != 0 &&
+                m_ducks.OneBallAlive())
+            {
+                m_ducks.ReleaseDuck();
+                // Play duck call sound
                 m_player1.DuckCallNum -= 1;
+            }
+
+            // (Player 2)
+            if (((keyboardState2.IsKeyDown(Keys.OemPeriod) &&                   // Handle Keyboard
+                p2keyOldState.IsKeyUp(Keys.OemPeriod)) ||
+                (gamePadState2.Buttons.Y == ButtonState.Pressed &&      // Handle Gamepad
+                p2padOldState.Buttons.Y == ButtonState.Released)) &&
+                m_intro.Scene_State == DrawableState.Finished &&
+                !m_ducks.Intermission() &&
+                m_player2.DuckCallNum != 0 &&
+                m_ducks.OneBallAlive())
+            {
+                m_ducks.ReleaseDuck();
+                // Play duck call sound
+                m_player2.DuckCallNum -= 1;
+            }
+
+            // Handle Shot Input
+            // (Player 1)
+            if (((keyboardState1.IsKeyDown(Keys.G) &&                   // Handle Keyboard
+                p1keyOldState.IsKeyUp(Keys.G)) ||
+                (gamePadState1.Buttons.B == ButtonState.Pressed &&      // Handle Gamepad
+                p1padOldState.Buttons.B == ButtonState.Released)) &&
+                m_intro.Scene_State == DrawableState.Finished &&
+                !m_ducks.Intermission() &&
+                m_player1.ShotNum != 0 &&
+                m_ducks.BallsAlive())
+            {
+                // Play shot sound
+                m_player1.ShotNum -= 1;
+            }
+
+            // (Player 2)
+            if (((keyboardState2.IsKeyDown(Keys.OemQuestion) &&                   // Handle Keyboard
+                p2keyOldState.IsKeyUp(Keys.OemQuestion)) ||
+                (gamePadState2.Buttons.B == ButtonState.Pressed &&      // Handle Gamepad
+                p2padOldState.Buttons.B == ButtonState.Released)) &&
+                m_intro.Scene_State == DrawableState.Finished &&
+                !m_ducks.Intermission() &&
+                m_player2.ShotNum != 0 &&
+                m_ducks.BallsAlive())
+            {
+                
+                // Play shot sound
+                m_player2.ShotNum -= 1;
             }
 
             if (m_intro.Scene_State == DrawableState.Finished) // &&

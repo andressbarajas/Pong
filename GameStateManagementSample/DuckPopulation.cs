@@ -349,6 +349,16 @@ namespace GameStateManagement
                     m_pongballs[1].Ball_State != BallState.Limbo);
         }
 
+        public bool OneBallAlive()
+        {
+            return ((m_pongballs[0].Ball_State == BallState.Active &&
+                    (m_pongballs[1].Ball_State != BallState.Active ||
+                    m_pongballs[1].Ball_State != BallState.OutofBounds)) ||
+                    (m_pongballs[1].Ball_State == BallState.Active &&
+                    (m_pongballs[0].Ball_State != BallState.Active ||
+                    m_pongballs[0].Ball_State != BallState.OutofBounds))); 
+        }
+
         public bool BallsLimbo()
         {
             return (m_pongballs[0].Ball_State == BallState.Limbo &&

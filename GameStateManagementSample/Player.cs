@@ -76,10 +76,13 @@ namespace GameStateManagement
             if (m_player == 0)
             {
                 m_score = new Score(138, 598, textures[1], font);
+                
                 //m_cloud = new Cloud(268, 608, textures[2], font);
+                //m_cloud.NumUses = 5;
                 m_duckcall = new DuckCall(358, 608, textures[3], font);
                 m_duckcall.NumUses = 3;
                 m_shot = new Shot(448, 608, textures[4], font);
+                m_shot.NumUses = 5;
                 
             }
             else if (m_player == 1)
@@ -87,11 +90,13 @@ namespace GameStateManagement
                 
                 m_shot = new Shot(781, 608, textures[4], font);
                 m_shot.Effects = SpriteEffects.FlipHorizontally;
+                m_shot.NumUses = 5;
                 m_duckcall = new DuckCall(871, 608, textures[3], font);
-                m_duckcall.NumUses = 3;
+                m_duckcall.NumUses = 2;
                 m_duckcall.Effects = SpriteEffects.FlipHorizontally;
                 //m_cloud = new Cloud(961, 608, textures[2], font);
                 //m_cloud.Effects = SpriteEffects.FlipHorizontally;
+                //m_cloud.NumUses = 5;
                 m_score = new Score(1036, 598, textures[1], font); 
             }
         }
