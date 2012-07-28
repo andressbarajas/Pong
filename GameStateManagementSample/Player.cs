@@ -69,13 +69,13 @@ namespace GameStateManagement
             m_player = player; 
         }
 
-        public void LoadContent(Texture2D[] textures, SpriteFont font, Rectangle boundary)
+        public void LoadContent(Texture2D[] textures, SpriteFont font, SpriteFont font2, Rectangle boundary)
         {
             m_paddle = new Paddle(m_player, textures[0], boundary);
 
             if (m_player == 0)
             {
-                m_score = new Score(138, 598, textures[1], font);
+                m_score = new Score(138, 598, textures[1], font2);
                 
                 //m_cloud = new Cloud(268, 608, textures[2], font);
                 //m_cloud.NumUses = 5;
@@ -97,7 +97,7 @@ namespace GameStateManagement
                 //m_cloud = new Cloud(961, 608, textures[2], font);
                 //m_cloud.Effects = SpriteEffects.FlipHorizontally;
                 //m_cloud.NumUses = 5;
-                m_score = new Score(1036, 598, textures[1], font); 
+                m_score = new Score(1036, 598, textures[1], font2); 
             }
         }
 

@@ -110,6 +110,7 @@ namespace GameStateManagement
         AnimationManager m_intermission = new AnimationManager();
 
         private SpriteFont m_num;
+        private SpriteFont m_score_fnt;
 
         /****************************/
 
@@ -162,6 +163,7 @@ namespace GameStateManagement
 
 
             m_num = content.Load<SpriteFont>("bitfont");
+            m_score_fnt = content.Load<SpriteFont>("bigfont");
 
             startround = content.Load<SoundEffect>("startround");
             doglaugh = content.Load<SoundEffect>("doglaugh");
@@ -256,9 +258,9 @@ namespace GameStateManagement
             startpos = new Rectangle(ScreenManager.GraphicsDevice.Viewport.Width / 2, 564, 1, 1);
 
             m_player1 = new Player(0); //Paddle(1, paddle, boxrec);
-            m_player1.LoadContent(m_player_textures, m_num, boxrec);
+            m_player1.LoadContent(m_player_textures, m_num, m_score_fnt, boxrec);
             m_player2 = new Player(1); //Paddle(0, paddle, boxrec);
-            m_player2.LoadContent(m_player_textures, m_num, boxrec);
+            m_player2.LoadContent(m_player_textures, m_num, m_score_fnt, boxrec);
 
             newbound = Boundary.CreateBoundRects(boxrec);
             bounddata = new CollisionData[newbound.Length];
@@ -375,6 +377,25 @@ namespace GameStateManagement
                 if (m_intro.Scene_State == DrawableState.Finished &&  //m_pongBall.Ball_State == BallState.DeadBall && // 
                     m_ducks.BallsDead())
                 {
+                    if (m_ducks.DuckOneState == BallState.DeadBall && m_ducks.DuckOneDir == Direction.Right)
+                    {
+                        m_player1.ScoreNum += 1;
+                    }
+                    else if (m_ducks.DuckOneState == BallState.DeadBall && m_ducks.DuckOneDir == Direction.Left)
+                    {
+                        m_player2.ScoreNum += 1;
+                    }
+
+                    if (m_ducks.DuckTwoState == BallState.DeadBall && m_ducks.DuckTwoDir == Direction.Right)
+                    {
+                        m_player1.ScoreNum += 1;
+                    }
+                    else if (m_ducks.DuckTwoState == BallState.DeadBall && m_ducks.DuckTwoDir == Direction.Left)
+                    {
+                        m_player2.ScoreNum += 1;
+                    }
+
+
                     m_ducks.BuildIntermission();
                 }
 

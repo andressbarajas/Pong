@@ -229,6 +229,15 @@
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bitfont.xnb</Output>
       <Time>2012-07-27T00:34:47.1371884-07:00</Time>
     </Item>
+    <Item>
+      <Source>bigfont.png</Source>
+      <Name>bigfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bigfont.xnb</Output>
+      <Time>2012-07-27T17:16:56.4306869-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
