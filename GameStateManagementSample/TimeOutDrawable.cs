@@ -10,10 +10,12 @@ namespace GameStateManagement
 {
     public class TimeOutDrawable : SpriteDecorator
     {
+        private bool m_draw;
         private int m_ticks = 0;
         private int m_total_ticks;
 
-        public TimeOutDrawable(Drawable sprite, int ticks) : base(sprite) {
+        public TimeOutDrawable(Drawable sprite, int ticks, bool draw) : base(sprite) {
+            m_draw = draw;
             m_total_ticks = ticks;
         }
 
@@ -33,12 +35,22 @@ namespace GameStateManagement
 
             m_drawable_sprite.Update();
         }
-
+        
         public override void Draw(SpriteBatch spriteBatch)
         {
-            m_drawable_sprite.Draw(spriteBatch);
+            if (m_draw)
+            {
+                m_drawable_sprite.Draw(spriteBatch);
+            }
+            else
+            {
+                if (Draw_State != DrawableState.Finished)
+                {
+                    m_drawable_sprite.Draw(spriteBatch);
+                }
+            }
         }
-
+        
         public override void Reset()
         {
             m_ticks = 0;

@@ -33,13 +33,13 @@ namespace GameStateManagement
             set { m_duckcall.NumUses = value; }
         }
 
-        /*
+        
         public int CloudNum
         {
             get { return m_cloud.NumUses; }
             set { m_cloud.NumUses = value; }
         }
-         * */
+         
 
         public int ScoreNum
         {
@@ -56,7 +56,7 @@ namespace GameStateManagement
         private Paddle m_paddle;
         private Shot m_shot;
         private DuckCall m_duckcall;
-        //public Cloud m_cloud;
+        public Cloud m_cloud;
         private Score m_score;
         //private ContentManager m_content;
 
@@ -77,8 +77,8 @@ namespace GameStateManagement
             {
                 m_score = new Score(138, 598, textures[1], font2);
                 
-                //m_cloud = new Cloud(268, 608, textures[2], font);
-                //m_cloud.NumUses = 5;
+                m_cloud = new Cloud(268, 608, textures[2], font);
+                m_cloud.NumUses = 5;
                 m_duckcall = new DuckCall(358, 608, textures[3], font);
                 m_duckcall.NumUses = 3;
                 m_shot = new Shot(448, 608, textures[4], font);
@@ -94,9 +94,9 @@ namespace GameStateManagement
                 m_duckcall = new DuckCall(871, 608, textures[3], font);
                 m_duckcall.NumUses = 2;
                 m_duckcall.Effects = SpriteEffects.FlipHorizontally;
-                //m_cloud = new Cloud(961, 608, textures[2], font);
-                //m_cloud.Effects = SpriteEffects.FlipHorizontally;
-                //m_cloud.NumUses = 5;
+                m_cloud = new Cloud(961, 608, textures[2], font);
+                m_cloud.Effects = SpriteEffects.FlipHorizontally;
+                m_cloud.NumUses = 5;
                 m_score = new Score(1036, 598, textures[1], font2); 
             }
         }
@@ -118,7 +118,7 @@ namespace GameStateManagement
         public void UpdateItems()
         {
             m_score.Update();
-            //m_cloud.Update();
+            m_cloud.Update();
             m_duckcall.Update();
             m_shot.Update();
         }
@@ -126,7 +126,7 @@ namespace GameStateManagement
         public void DrawItems(SpriteBatch spritebatch)
         {
             m_score.Draw(spritebatch);
-            //m_cloud.Draw(spritebatch);
+            m_cloud.Draw(spritebatch);
             m_duckcall.Draw(spritebatch);
             m_shot.Draw(spritebatch);
         }

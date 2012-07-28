@@ -472,7 +472,7 @@ namespace GameStateManagement
             // Set location
 
             m_dog_laugh_scn_inter.AddAnimation(new DirXYMover(m_laughdog_anim, 0, -47, 1.4f), m_doglaugh_snd);
-            m_dog_laugh_scn_inter.AddAnimation(new TimeOutDrawable(m_laughdog_anim, 60));
+            m_dog_laugh_scn_inter.AddAnimation(new TimeOutDrawable(m_laughdog_anim, 60, true));
             m_dog_laugh_scn_inter.AddAnimation(new DirXYMover(m_laughdog_anim, 0, 47, 1.6f));
 
         }

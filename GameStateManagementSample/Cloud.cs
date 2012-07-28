@@ -8,16 +8,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameStateManagement
 {
-    public class Shot : ScreenItem
+    public class Cloud : ScreenItem
     {
-        public Shot(int x, int y, Texture2D sprTexture, SpriteFont font)
+        public Cloud(int x, int y, Texture2D texture, SpriteFont font)
         {
             Vector2 temp;
 
             m_font = font;
 
             m_icon = new Sprite();
-            m_icon.Sprite_Texture = sprTexture;
+            m_icon.Sprite_Texture = texture;
             m_icon.X_Pos = x;
             m_icon.Y_Pos = y;
 

@@ -71,6 +71,7 @@
     <Compile Include="AnimationScene.cs" />
     <Compile Include="Blinker.cs" />
     <Compile Include="Boundary.cs" />
+    <Compile Include="Cloud.cs" />
     <Compile Include="CollisionData.cs" />
     <Compile Include="DirXYMover.cs" />
     <Compile Include="Drawable.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="DuckPopulation.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="CollisionUtils.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="LinearXYMover.cs" />
     <Compile Include="LogXYMover.cs" />

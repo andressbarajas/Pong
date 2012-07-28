@@ -48,6 +48,7 @@ namespace GameStateManagement
         Texture2D clouds;
         Texture2D duckcall;
         Texture2D shot;
+        Texture2D flash;
 
         /* * * * * * * * * * * * SOUNDS * * * * * * * * * * * */
 
@@ -106,6 +107,8 @@ namespace GameStateManagement
 
         DuckHuntBall m_pongBall;
         AnimationScene m_intro = new AnimationScene();
+
+        Drawable m_flash;
         
         AnimationManager m_intermission = new AnimationManager();
 
@@ -239,21 +242,27 @@ namespace GameStateManagement
 
             /*   INTRO ANIMATION MADE */
             m_intro.AddAnimation(new DirXYMover(wdog, 180, 0, 1.7f));
-            m_intro.AddAnimation(new TimeOutDrawable(sdog, 49));
+            m_intro.AddAnimation(new TimeOutDrawable(sdog, 49, true));
             m_intro.AddAnimation(new DirXYMover(wdog, 180, 0, 1.7f));
-            m_intro.AddAnimation(new TimeOutDrawable(sdog, 49));
+            m_intro.AddAnimation(new TimeOutDrawable(sdog, 49, true));
             m_intro.AddAnimation(new DirXYMover(wdog, 10, 0, 1.7f));
-            m_intro.AddAnimation(new TimeOutDrawable(sprdog, 49));
+            m_intro.AddAnimation(new TimeOutDrawable(sprdog, 49, true));
             m_intro.BuildScene(new int[6] { 0, 1, 2, 3, 4, 5 });
             m_intro.Scene_State = DrawableState.Active;
 
             /* Intermission Animation */
             m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, -47, 1.4f), doglaugh);
-            m_dog_laugh.AddAnimation(new TimeOutDrawable(ldog, 60));
+            m_dog_laugh.AddAnimation(new TimeOutDrawable(ldog, 60, true));
             m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, 47, 1.6f));
 
             boundingbox = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
             boundingbox.SetData(new Color[] { Color.White });
+
+            flash = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
+            flash.SetData(new Color[] { new Color(255, 255, 255, 128) });
+
+            m_flash = new TimeOutDrawable(new Image(128, 64, 1024, 612, flash), 5, false);
+            m_flash.Draw_State = DrawableState.Finished;
 
             startpos = new Rectangle(ScreenManager.GraphicsDevice.Viewport.Width / 2, 564, 1, 1);
 
@@ -455,6 +464,7 @@ namespace GameStateManagement
 
                 if (m_intro.Scene_State == DrawableState.Finished)
                 {
+                    m_flash.Update();
                     m_ducks.UpdateCounter();
                     m_player1.UpdateItems();
                     m_player2.UpdateItems();
@@ -494,7 +504,7 @@ namespace GameStateManagement
                 m_paused = true;
                 ScreenManager.AddScreen(new PauseMenuScreen(), null);
             }
-            /*
+            
              // Handle Cloud Input
              // (Player 1)
             if (((keyboardState1.IsKeyDown(Keys.D) &&                   // Handle Keyboard
@@ -525,7 +535,7 @@ namespace GameStateManagement
                 // Play duck call sound
                 m_player2.CloudNum -= 1;
             }
-             */
+            
 
             // Handle Duck Calls
             // (Player 1)
@@ -596,6 +606,7 @@ namespace GameStateManagement
                         m_ducks.DuckTwoDir = Direction.Right;
                     }
                 }
+                m_flash.Reset();
                 // Play shot sound
                 m_player1.ShotNum -= 1;
             }
@@ -637,6 +648,7 @@ namespace GameStateManagement
                         m_ducks.DuckTwoDir = Direction.Right;
                     }
                 }
+                m_flash.Reset();
                 // Play shot sound
                 m_player2.ShotNum -= 1;
             }
@@ -717,6 +729,8 @@ namespace GameStateManagement
 
             m_player1.DrawItems(spriteBatch);
             m_player2.DrawItems(spriteBatch);
+
+            m_flash.Draw(spriteBatch);
 
             //int t = 2000;
 
