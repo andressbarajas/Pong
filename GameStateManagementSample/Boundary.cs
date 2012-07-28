@@ -13,7 +13,7 @@ namespace GameStateManagement
     {
         public static Rectangle[] CreateBoundRects(Rectangle boundary) 
         {
-            Rectangle[] temp = new Rectangle[6];
+            Rectangle[] temp = new Rectangle[10];
 
             temp[0].X = boundary.Left;
             temp[0].Y = boundary.Top - 1;
@@ -35,7 +35,7 @@ namespace GameStateManagement
             temp[3].Width = 1;
             temp[3].Height = boundary.Height;
 
-            temp[4].X = boundary.Left-62;
+            temp[4].X = boundary.Left - 62;
             temp[4].Y = boundary.Top;
             temp[4].Width = 1;
             temp[4].Height = boundary.Height;
@@ -44,6 +44,26 @@ namespace GameStateManagement
             temp[5].Y = boundary.Top;
             temp[5].Width = 1;
             temp[5].Height = boundary.Height;
+
+            temp[6].X = boundary.Left - 62;
+            temp[6].Y = boundary.Top;
+            temp[6].Width = 62;
+            temp[6].Height = 1;
+
+            temp[7].X = boundary.Right;
+            temp[7].Y = boundary.Top;
+            temp[7].Width = 62;
+            temp[7].Height = 1;
+
+            temp[8].X = boundary.Left - 62;
+            temp[8].Y = boundary.Bottom;
+            temp[8].Width = 62;
+            temp[8].Height = 1;
+
+            temp[9].X = boundary.Right;
+            temp[9].Y = boundary.Bottom;
+            temp[9].Width = 62;
+            temp[9].Height = 1;
 
             return temp;
         }

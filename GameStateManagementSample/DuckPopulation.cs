@@ -28,6 +28,28 @@ namespace GameStateManagement
 
         private int m_duck_count;
 
+        public Rectangle DuckOneRectangle
+        {
+            get { return m_pongballs[0].PongBall_Rect; }
+        }
+
+        public Rectangle DuckTwoRectangle
+        {
+            get { return m_pongballs[1].PongBall_Rect; }
+        }
+
+        public Direction DuckOneHit
+        {
+            get { return m_pongballs[0].Ball_Hit; }
+            set { m_pongballs[0].Ball_Hit = value; }
+        }
+
+        public Direction DuckTwoHit
+        {
+            get { return m_pongballs[1].Ball_Hit; }
+            set { m_pongballs[1].Ball_Hit = value; }
+        }
+
         public float DuckOneXVelocity
         {
             get { return m_pongballs[0].X_Vel; }

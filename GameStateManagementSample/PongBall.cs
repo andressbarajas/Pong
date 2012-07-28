@@ -130,6 +130,13 @@ namespace GameStateManagement
 
         Direction m_dir = Direction.None;
 
+        public Direction Ball_Hit
+        {
+            get { return m_hit; }
+            set { m_hit = value; }
+        }
+
+
         #endregion
 
         #region Fields
@@ -144,7 +151,7 @@ namespace GameStateManagement
 
         protected List<AnimatedSprite>  m_animList;
         protected AnimatedSprite        m_currAnim;
-        protected CollisionData          m_currAnimBData;
+        protected CollisionData         m_currAnimBData;
 
         #endregion
 

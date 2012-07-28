@@ -176,6 +176,47 @@ namespace GameStateManagement
                             Ball_State = BallState.DeadBall;
                         }
                     }
+                    else if (PongBall_Rect.Intersects(m_scrn_boundary[6].m_rect))
+                    {
+                        if (CollisionUtils.IntersectPixels(m_pongBallTransform, PongBall_Rect.Width,
+                           PongBall_Rect.Height, m_currAnimBData.m_color_data,
+                           m_scrn_boundary[6].m_transformation, m_scrn_boundary[6].m_rect.Width,
+                           m_scrn_boundary[6].m_rect.Height, m_scrn_boundary[6].m_color_data))
+                        {
+                            Ball_State = BallState.DeadBall;
+                        }
+                    }
+                    else if (PongBall_Rect.Intersects(m_scrn_boundary[7].m_rect))
+                    {
+                        if (CollisionUtils.IntersectPixels(m_pongBallTransform, PongBall_Rect.Width,
+                           PongBall_Rect.Height, m_currAnimBData.m_color_data,
+                           m_scrn_boundary[7].m_transformation, m_scrn_boundary[7].m_rect.Width,
+                           m_scrn_boundary[7].m_rect.Height, m_scrn_boundary[7].m_color_data))
+                        {
+                            Ball_State = BallState.DeadBall;
+                        }
+                    }
+                    else if (PongBall_Rect.Intersects(m_scrn_boundary[8].m_rect))
+                    {
+                        if (CollisionUtils.IntersectPixels(m_pongBallTransform, PongBall_Rect.Width,
+                           PongBall_Rect.Height, m_currAnimBData.m_color_data,
+                           m_scrn_boundary[8].m_transformation, m_scrn_boundary[8].m_rect.Width,
+                           m_scrn_boundary[8].m_rect.Height, m_scrn_boundary[8].m_color_data))
+                        {
+                            Ball_State = BallState.DeadBall;
+                        }
+                    }
+                    else if (PongBall_Rect.Intersects(m_scrn_boundary[9].m_rect))
+                    {
+                        if (CollisionUtils.IntersectPixels(m_pongBallTransform, PongBall_Rect.Width,
+                           PongBall_Rect.Height, m_currAnimBData.m_color_data,
+                           m_scrn_boundary[9].m_transformation, m_scrn_boundary[9].m_rect.Width,
+                           m_scrn_boundary[9].m_rect.Height, m_scrn_boundary[9].m_color_data))
+                        {
+                            Ball_State = BallState.DeadBall;
+                        }
+                    }
+
                 }
 
                 m_currAnim.X_Pos = X_Pos;

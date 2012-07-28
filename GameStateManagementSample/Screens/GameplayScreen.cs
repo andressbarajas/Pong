@@ -36,64 +36,37 @@ namespace GameStateManagement
         Texture2D tree;
         Texture2D ground;
         Texture2D bush;
-        Texture2D boundingbox; // Debug texture
-        Texture2D paddle;
-        Texture2D duck;
-        Texture2D flyingaway;
-        Texture2D laughingdog;
+        Texture2D ScreenTexture; // Debug texture
+        
         Texture2D walkingdog;
         Texture2D flyawaysign;
-        Texture2D duckcount;
-        Texture2D score;
-        Texture2D clouds;
-        Texture2D duckcall;
-        Texture2D shot;
         Texture2D flash;
 
         /* * * * * * * * * * * * SOUNDS * * * * * * * * * * * */
 
         SoundEffect dogbark;
-        SoundEffect flapwing;
-        SoundEffect doglaugh;
-        SoundEffect duckquack;
         SoundEffect startround;
+        SoundEffect m_shot;
 
         /* * * * * * * * * * * ANIMATIONS * * * * * * * * * */
         
-        AnimatedSprite dscduck = new AnimatedSprite();  // Descend Flight Duck
-        AnimatedSprite ascduck = new AnimatedSprite();  // Ascend Flight Duck
-        AnimatedSprite awayduck = new AnimatedSprite(); // Flyaway Duck
-        AnimatedSprite ldog = new AnimatedSprite();     // Laughing Dog Animation
         AnimatedSprite wdog = new AnimatedSprite();     // Walking Dog Animation (with sound)
-        AnimatedSprite wdog2 = new AnimatedSprite();    // Walking Dog Animation (without sound)
         AnimatedSprite sdog = new AnimatedSprite();     // Sniff Dog Animation
         AnimatedSprite sprdog = new AnimatedSprite();   // Suprised Dog Animation
 
         /* * * * * * * * * ANIMATION SCENE * * * * * * * * */
 
-        AnimationScene m_dog_laugh = new AnimationScene();
-        AnimationScene m_flyaway = new AnimationScene();
-        //AnimationScene wscene = new AnimationScene();
+        AnimationScene m_intro = new AnimationScene();
 
         // Needed
         Rectangle boxrec = new Rectangle(224, 64, 832, 512);
-        //Start position for duck
-        Rectangle startpos;
-
         Rectangle m_background_color_rect = new Rectangle(128, 64, 1024, 612);
 
         Sprite m_fly_sign = new Sprite();
-        Sprite m_count = new Sprite();
-        Sprite m_score = new Sprite();
-        Sprite m_cloud = new Sprite();
-        Sprite m_shot = new Sprite();
-        Sprite m_duckcall = new Sprite();
 
         /**************************/
         bool m_paused = false;
         bool m_played_intro = false;
-        bool m_built_intermission = false;
-        bool m_finished_intermission = false;
 
         DuckPopulation m_ducks;
 
@@ -105,12 +78,12 @@ namespace GameStateManagement
 
         Texture2D[] m_player_textures = new Texture2D[5];
 
-        DuckHuntBall m_pongBall;
-        AnimationScene m_intro = new AnimationScene();
+
+        
 
         Drawable m_flash;
-        
-        AnimationManager m_intermission = new AnimationManager();
+        Drawable m_duck1_flash = new Image();
+        Drawable m_duck2_flash = new Image();
 
         private SpriteFont m_num;
         private SpriteFont m_score_fnt;
@@ -147,83 +120,26 @@ namespace GameStateManagement
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            /*  LOAD SOUNDS AND TEXTURES */
+            /*  LOAD TEXTURES, SOUNDS AND FONTS */
 
             tree = content.Load<Texture2D>("tree");
             ground = content.Load<Texture2D>("ground");
             bush = content.Load<Texture2D>("bush");
-            m_player_textures[0] = content.Load<Texture2D>("panel");
-            duck = content.Load<Texture2D>("blackduck");
-            flyingaway = content.Load<Texture2D>("flyaway");
-            laughingdog = content.Load<Texture2D>("laughdog");
+            m_player_textures[0] = content.Load<Texture2D>("panel");            
             walkingdog = content.Load<Texture2D>("walkdog");
             flyawaysign = content.Load<Texture2D>("flyawaysign");
-            duckcount = content.Load<Texture2D>("duckcount");
             m_player_textures[1] = content.Load<Texture2D>("score");
             m_player_textures[2] = content.Load<Texture2D>("clouds");
             m_player_textures[3] = content.Load<Texture2D>("duckcall");
             m_player_textures[4] = content.Load<Texture2D>("shot");
 
+            m_shot = content.Load<SoundEffect>("sshot");
+            startround = content.Load<SoundEffect>("startround");
 
             m_num = content.Load<SpriteFont>("bitfont");
             m_score_fnt = content.Load<SpriteFont>("bigfont");
-
-            startround = content.Load<SoundEffect>("startround");
-            doglaugh = content.Load<SoundEffect>("doglaugh");
-            //flapwing = content.Load<SoundEffect>("wingflaps");
-            //duckquack = content.Load<SoundEffect>("quack");
-
+            
             /* SETUP ALL ANIMATIONSPRITES */
-
-            dscduck.BuildAnimation(duck, 1, 9, true, new int[16] {3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4});
-            dscduck.SetFrame(0, 5, flapwing);
-            dscduck.SetFrame(1, 5, null);
-            dscduck.SetFrame(2, 5, flapwing);
-            dscduck.SetFrame(3, 5, null);
-            dscduck.SetFrame(4, 5, flapwing);
-            dscduck.SetFrame(5, 5, null);
-            dscduck.SetFrame(6, 5, flapwing);
-            dscduck.SetFrame(7, 5, null);
-            dscduck.SetFrame(8, 5, flapwing); //duckquack);
-            dscduck.SetFrame(9, 5, null);
-            dscduck.SetFrame(10, 5, flapwing);
-            dscduck.SetFrame(11, 5, null);
-            dscduck.SetFrame(12, 5, flapwing);
-            dscduck.SetFrame(13, 5, null);
-            dscduck.SetFrame(14, 5, flapwing);
-            dscduck.SetFrame(15, 5, null);
-
-            ascduck.BuildAnimation(duck, 1, 9, true, new int[16] {0, 1, 2, 1, 0, 1 , 2, 1, 0, 1, 2, 1, 0, 1, 2, 1});
-            ascduck.SetFrame(0, 5, null);
-            ascduck.SetFrame(1, 5, flapwing);
-            ascduck.SetFrame(2, 5, null);
-            ascduck.SetFrame(3, 5, flapwing);
-            ascduck.SetFrame(4, 5, null);
-            ascduck.SetFrame(5, 5, flapwing);
-            ascduck.SetFrame(6, 5, null);
-            ascduck.SetFrame(7, 5, flapwing);
-            ascduck.SetFrame(8, 5, null); //duckquack);
-            ascduck.SetFrame(9, 5, flapwing);
-            ascduck.SetFrame(10, 5, null);
-            ascduck.SetFrame(11, 5, flapwing);
-            ascduck.SetFrame(12, 5, null);
-            ascduck.SetFrame(13, 5, flapwing);
-            ascduck.SetFrame(14, 5, null);
-            ascduck.SetFrame(15, 5, flapwing);
-
-            awayduck.BuildAnimation(flyingaway, 1, 3, true, new int[4] { 0, 1, 2, 1 });
-            awayduck.SetFrame(0, 8, null);
-            awayduck.SetFrame(1, 8, null);
-            awayduck.SetFrame(2, 8, null);
-            awayduck.SetFrame(3, 8, null);
-
-            ldog.BuildAnimation(laughingdog, 1, 2, true, new int[2] { 0, 1 });
-            ldog.SetFrame(0, 6, null);
-            ldog.SetFrame(1, 6, null);
-           
-            sprdog.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 5 });
-            sprdog.SetFrame(0, 100, null);
-
             wdog.BuildAnimation(walkingdog, 1, 8, true, new int[4] { 1, 2, 3, 4 });
             wdog.SetFrame(0, 8, null);
             wdog.SetFrame(1, 8, null);
@@ -231,7 +147,7 @@ namespace GameStateManagement
             wdog.SetFrame(3, 8, null);
             wdog.X_Pos = 150;
             wdog.Y_Pos = 535;
-            
+
             sdog.BuildAnimation(walkingdog, 1, 8, true, new int[6] { 1, 0, 1, 0, 1, 0 });
             sdog.SetFrame(0, 8, null);
             sdog.SetFrame(1, 8, null);
@@ -240,7 +156,10 @@ namespace GameStateManagement
             sdog.SetFrame(4, 8, null);
             sdog.SetFrame(5, 8, null);
 
-            /*   INTRO ANIMATION MADE */
+            sprdog.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 5 });
+            sprdog.SetFrame(0, 100, null);
+
+            /*   MAKE INTRO ANIMATION   */
             m_intro.AddAnimation(new DirXYMover(wdog, 180, 0, 1.7f));
             m_intro.AddAnimation(new TimeOutDrawable(sdog, 49, true));
             m_intro.AddAnimation(new DirXYMover(wdog, 180, 0, 1.7f));
@@ -250,25 +169,21 @@ namespace GameStateManagement
             m_intro.BuildScene(new int[6] { 0, 1, 2, 3, 4, 5 });
             m_intro.Scene_State = DrawableState.Active;
 
-            /* Intermission Animation */
-            m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, -47, 1.4f), doglaugh);
-            m_dog_laugh.AddAnimation(new TimeOutDrawable(ldog, 60, true));
-            m_dog_laugh.AddAnimation(new DirXYMover(ldog, 0, 47, 1.6f));
+            /* Make a texture for bg. NOT gonna be needed when I change the dimension of screen */
+            ScreenTexture = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
+            ScreenTexture.SetData(new Color[] { Color.White });
 
-            boundingbox = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
-            boundingbox.SetData(new Color[] { Color.White });
-
+            /* Build the SHOT animations */
             flash = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
             flash.SetData(new Color[] { new Color(255, 255, 255, 128) });
 
-            m_flash = new TimeOutDrawable(new Image(128, 64, 1024, 612, flash), 5, false);
+            m_flash = new TimeOutDrawable(new Image(128, 64, 1024, 612, flash), 8, false);
             m_flash.Draw_State = DrawableState.Finished;
-
-            startpos = new Rectangle(ScreenManager.GraphicsDevice.Viewport.Width / 2, 564, 1, 1);
-
-            m_player1 = new Player(0); //Paddle(1, paddle, boxrec);
+            
+            /* Create Players */
+            m_player1 = new Player(0); 
             m_player1.LoadContent(m_player_textures, m_num, m_score_fnt, boxrec);
-            m_player2 = new Player(1); //Paddle(0, paddle, boxrec);
+            m_player2 = new Player(1); 
             m_player2.LoadContent(m_player_textures, m_num, m_score_fnt, boxrec);
 
             newbound = Boundary.CreateBoundRects(boxrec);
@@ -280,50 +195,18 @@ namespace GameStateManagement
             bounddata[3] = new CollisionData(newbound[3]);
             bounddata[4] = new CollisionData(newbound[4]);
             bounddata[5] = new CollisionData(newbound[5]);
+            bounddata[6] = new CollisionData(newbound[6]);
+            bounddata[7] = new CollisionData(newbound[7]);
+            bounddata[8] = new CollisionData(newbound[8]);
+            bounddata[9] = new CollisionData(newbound[9]);
 
             m_ducks = new DuckPopulation(content, bounddata);
-
-            /* Setup Pong Ball */
-            m_pongBall = new DuckHuntBall(startpos.X, 540, bounddata);
-            m_pongBall.AddAnimation(dscduck);
-            m_pongBall.AddAnimation(ascduck);
-            m_pongBall.Init_Vel_Mag = 5.0f; // Must reset ball if you edit the magnitude;
-            m_pongBall.ResetBall();
-            if ((m_pongBall.X_Vel > 0 && m_pongBall.Y_Vel < 0) || (m_pongBall.X_Vel < 0 && m_pongBall.Y_Vel < 0))
-            {
-                m_pongBall.SetCurrentAnimation(1);
-            }
-            else
-            {
-                m_pongBall.SetCurrentAnimation(0);
-            }
 
             // FLY AWAY SIGN
             m_fly_sign.Sprite_Texture = flyawaysign;
             m_fly_sign.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_fly_sign.Sprite_Texture.Width / 2;
             m_fly_sign.Y_Pos = 320;
-
-
-            m_count.Sprite_Texture = duckcount;
-            m_count.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_count.Sprite_Texture.Width / 2;
-            m_count.Y_Pos = 600;
-
-            m_score.Sprite_Texture = score;
-            m_score.X_Pos = 138;
-            m_score.Y_Pos = 600-2;
-
-            m_cloud.Sprite_Texture = clouds;
-            m_cloud.X_Pos = 268;
-            m_cloud.Y_Pos = 608;
-
-            m_duckcall.Sprite_Texture = duckcall;
-            m_duckcall.X_Pos = 268 + 90;
-            m_duckcall.Y_Pos = 608;
-
-            m_shot.Sprite_Texture = shot;
-            m_shot.X_Pos = 268 + 2*90;
-            m_shot.Y_Pos = 608;
-
+            
             //m_fly_sign.Draw_State = DrawableState.Active;
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
@@ -378,12 +261,12 @@ namespace GameStateManagement
                     m_intro.Update();  
                 }
                 if (m_intro.Scene_State == DrawableState.Finished && 
-                    m_ducks.BallsAlive()) //m_pongBall.Ball_State != BallState.DeadBall)
+                    m_ducks.BallsAlive()) 
                 {
-                    m_ducks.UpdateBalls(m_player1.CData, m_player2.CData);// m_pongBall.Update(m_player1.Texture_Data, m_player2.Texture_Data); 
+                    m_ducks.UpdateBalls(m_player1.CData, m_player2.CData);
                 }
 
-                if (m_intro.Scene_State == DrawableState.Finished &&  //m_pongBall.Ball_State == BallState.DeadBall && // 
+                if (m_intro.Scene_State == DrawableState.Finished &&  
                     m_ducks.BallsDead())
                 {
                     if (m_ducks.DuckOneState == BallState.DeadBall && m_ducks.DuckOneDir == Direction.Right)
@@ -408,63 +291,26 @@ namespace GameStateManagement
                     m_ducks.BuildIntermission();
                 }
 
-                if (m_intro.Scene_State == DrawableState.Finished &&  //m_pongBall.Ball_State == BallState.DeadBall && // 
-                  // (m_ducks.BallsDead() ||      //!m_finished_intermission &&                     
-                    m_ducks.Intermission())//)      //m_intro.Scene_State == DrawableState.Finished) 
-                {    /*
-                    if (!m_built_intermission)
-                    {
-                        // Flyaway Duck 
-                        m_flyaway.Clear();
-                        awayduck.X_Pos = m_pongBall.X_Pos;
-                        awayduck.Y_Pos = m_pongBall.Y_Pos;
-                        m_flyaway.AddAnimation(new DirXYMover(awayduck, 0, -m_pongBall.Y_Pos, 2.0f)); //m_pongBall.Curr_Vel_Mag));
-                        m_flyaway.BuildScene(new int[1] { 0 });
-                        m_flyaway.Scene_State = DrawableState.Active;
-                          
-                        // Laughing Dog 
-                        ldog.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - ldog.Width / 2;
-                        ldog.Y_Pos = 530;
-                        m_dog_laugh.BuildScene(new int[3] { 0, 1, 2 });
-                        m_dog_laugh.Scene_State = DrawableState.Active;
-
-                        // Intermission 
-                        m_intermission.AddScene(m_flyaway);
-                        m_intermission.AddScene(m_dog_laugh);
-                        m_intermission.Build(new int[2] { 0, 1 });
-
-                        // Change
-                        m_intermission.Manager_State = DrawableState.Active;
-                       
-                        // Built intermission scene
-                        m_built_intermission = true;
-                    }
-
-                    m_intermission.Update();
-
-                    if (m_intermission.Manager_State == DrawableState.Finished) 
-                    {
-                        m_finished_intermission = true;
-                    }
-                      * */
-
+                if (m_intro.Scene_State == DrawableState.Finished &&     
+                    m_ducks.Intermission())
+                { 
                     m_ducks.UpdateIntermission();
                 }
-                else if (!m_ducks.Intermission() && //m_intermission.Manager_State == DrawableState.Finished &&  // 
-                         m_ducks.BallsLimbo()) //m_pongBall.Ball_State == BallState.DeadBall) // 
+                else if (!m_ducks.Intermission() && 
+                         m_ducks.BallsLimbo()) 
                 {
-                    /*
-                    m_pongBall.ResetBall();
-                    m_intermission.ClearList();
-                    m_built_intermission = false;
-                    m_finished_intermission = false;
-                     * */
                     m_ducks.ReleaseDuck();
                 }
 
                 if (m_intro.Scene_State == DrawableState.Finished)
                 {
                     m_flash.Update();
+                    m_duck1_flash.Update();
+                    m_duck1_flash.X_Pos = m_ducks.DuckOneRectangle.X;
+                    m_duck1_flash.Y_Pos = m_ducks.DuckOneRectangle.Y;                                      
+                    m_duck2_flash.Update();
+                    m_duck2_flash.X_Pos = m_ducks.DuckOneRectangle.X;
+                    m_duck2_flash.Y_Pos = m_ducks.DuckOneRectangle.Y;
                     m_ducks.UpdateCounter();
                     m_player1.UpdateItems();
                     m_player2.UpdateItems();
@@ -522,7 +368,7 @@ namespace GameStateManagement
             }
 
             // (Player 2)
-            if (((keyboardState2.IsKeyDown(Keys.OemComma) &&                   // Handle Keyboard
+            if (((keyboardState2.IsKeyDown(Keys.OemComma) &&            // Handle Keyboard
                 p2keyOldState.IsKeyUp(Keys.OemComma)) ||
                 (gamePadState2.Buttons.X == ButtonState.Pressed &&      // Handle Gamepad
                 p2padOldState.Buttons.X == ButtonState.Released)) &&
@@ -583,6 +429,7 @@ namespace GameStateManagement
                 {
                     m_ducks.DuckOneXVelocity *= -1.5f;
                     m_ducks.DuckOneYVelocity *= 1.5f;
+                    m_ducks.DuckOneHit = Direction.None;
                     if (m_ducks.DuckOneDir == Direction.Right)
                     {
                         m_ducks.DuckOneDir = Direction.Left;
@@ -591,12 +438,17 @@ namespace GameStateManagement
                     {
                         m_ducks.DuckOneDir = Direction.Right;
                     }
+
+                    m_duck1_flash = new TimeOutDrawable(new Image(m_ducks.DuckOneRectangle.X,
+                                                              m_ducks.DuckOneRectangle.Y,
+                                                              40, 40, flash), 5, false);
                 }
 
                 if (m_ducks.DuckTwoState == BallState.Active)
                 {
                     m_ducks.DuckTwoXVelocity *= -1.5f;
                     m_ducks.DuckTwoYVelocity *= 1.5f;
+                    m_ducks.DuckTwoHit = Direction.None;
                     if (m_ducks.DuckTwoDir == Direction.Right)
                     {
                         m_ducks.DuckTwoDir = Direction.Left;
@@ -605,10 +457,16 @@ namespace GameStateManagement
                     {
                         m_ducks.DuckTwoDir = Direction.Right;
                     }
+
+                    m_duck2_flash = new TimeOutDrawable(new Image(m_ducks.DuckTwoRectangle.X,
+                                                              m_ducks.DuckTwoRectangle.Y,
+                                                              40, 40, flash), 8, false);
                 }
+                m_duck1_flash.Tint = new Color(255, 255, 255, 128);
+                m_duck2_flash.Tint = new Color(255, 255, 255, 128);
                 m_flash.Reset();
-                // Play shot sound
                 m_player1.ShotNum -= 1;
+                m_shot.Play();
             }
 
             // (Player 2)
@@ -625,6 +483,7 @@ namespace GameStateManagement
                 {
                     m_ducks.DuckOneXVelocity *= -1.5f;
                     m_ducks.DuckOneYVelocity *= 1.5f;
+                    m_ducks.DuckOneHit = Direction.None;
                     if (m_ducks.DuckOneDir == Direction.Right)
                     {
                         m_ducks.DuckOneDir = Direction.Left;
@@ -633,12 +492,17 @@ namespace GameStateManagement
                     {
                         m_ducks.DuckOneDir = Direction.Right;
                     }
+
+                    m_duck1_flash = new TimeOutDrawable(new Image(m_ducks.DuckOneRectangle.X,
+                                                              m_ducks.DuckOneRectangle.Y,
+                                                              40, 40, flash), 8, false);
                 }
 
                 if (m_ducks.DuckTwoState == BallState.Active)
                 {
                     m_ducks.DuckTwoXVelocity *= -1.5f;
                     m_ducks.DuckTwoYVelocity *= 1.5f;
+                    m_ducks.DuckTwoHit = Direction.None;
                     if (m_ducks.DuckTwoDir == Direction.Right)
                     {
                         m_ducks.DuckTwoDir = Direction.Left;
@@ -647,9 +511,14 @@ namespace GameStateManagement
                     {
                         m_ducks.DuckTwoDir = Direction.Right;
                     }
+                    m_duck2_flash = new TimeOutDrawable(new Image(m_ducks.DuckTwoRectangle.X,
+                                                              m_ducks.DuckTwoRectangle.Y,
+                                                              40, 40, flash), 8, false);
                 }
+                m_duck1_flash.Tint = new Color(255, 255, 255, 128);
+                m_duck2_flash.Tint = new Color(255, 255, 255, 128);
                 m_flash.Reset();
-                // Play shot sound
+                m_shot.Play();
                 m_player2.ShotNum -= 1;
             }
 
@@ -690,12 +559,12 @@ namespace GameStateManagement
 
             if (m_ducks.IntermissionScene == 0)
             {
-                spriteBatch.Draw(boundingbox, m_background_color_rect, new Color(247, 206, 176, 255));
+                spriteBatch.Draw(ScreenTexture, m_background_color_rect, new Color(247, 206, 176, 255));
                 m_fly_sign.Draw(spriteBatch);      
             }
             else 
             {
-                spriteBatch.Draw(boundingbox, m_background_color_rect, new Color(49, 192, 250, 255));
+                spriteBatch.Draw(ScreenTexture, m_background_color_rect, new Color(49, 192, 250, 255));
             }
 
             // Draw tree
@@ -730,39 +599,39 @@ namespace GameStateManagement
             m_player1.DrawItems(spriteBatch);
             m_player2.DrawItems(spriteBatch);
 
+
+            /* Draw Shot */
             m_flash.Draw(spriteBatch);
+            m_duck1_flash.Draw(spriteBatch);
+            m_duck2_flash.Draw(spriteBatch);
 
-            //int t = 2000;
+            // spriteBatch.Draw(ScreenTexture, m_background_color_rect, Color.PaleGoldenrod);
+            /*
+            spriteBatch.Draw(ScreenTexture, boxrec, Color.Black); //new Color(0, 0, 0, 255));
 
-            //spriteBatch.DrawString(m_num, t.ToString(), new Vector2(320, 320), Color.Red);
+           // spriteBatch.Draw(ScreenTexture, startpos, Color.Beige);
 
-            //m_count.Draw(spriteBatch);
+            
+            spriteBatch.Draw(ScreenTexture, newbound[0], Color.Red);
 
-            //m_score.Draw(spriteBatch);
+            spriteBatch.Draw(ScreenTexture, newbound[1], Color.Purple);
 
-            //m_cloud.Draw(spriteBatch);
+            spriteBatch.Draw(ScreenTexture, newbound[2], Color.White);
 
-            //m_duckcall.Draw(spriteBatch);
+            spriteBatch.Draw(ScreenTexture, newbound[3], Color.White);
 
-            //m_shot.Draw(spriteBatch);
+            spriteBatch.Draw(ScreenTexture, newbound[4], Color.White);
 
-           // spriteBatch.Draw(boundingbox, m_background_color_rect, Color.PaleGoldenrod);
+            spriteBatch.Draw(ScreenTexture, newbound[5], Color.White);
 
-            //spriteBatch.Draw(boundingbox, boxrec, Color.Black); //new Color(0, 0, 0, 255));
+            spriteBatch.Draw(ScreenTexture, newbound[6], Color.White);
 
-            //spriteBatch.Draw(boundingbox, startpos, Color.Beige);
+            spriteBatch.Draw(ScreenTexture, newbound[7], Color.White);
 
-            //spriteBatch.Draw(boundingbox, newbound[0], Color.Red);
+            spriteBatch.Draw(ScreenTexture, newbound[8], Color.White);
 
-            //spriteBatch.Draw(boundingbox, newbound[1], Color.Purple);
-
-            //spriteBatch.Draw(boundingbox, newbound[2], Color.White);
-
-            //spriteBatch.Draw(boundingbox, newbound[3], Color.White);
-
-            //spriteBatch.Draw(boundingbox, newbound[4], Color.White);
-
-            //spriteBatch.Draw(boundingbox, newbound[5], Color.White);
+            spriteBatch.Draw(ScreenTexture, newbound[9], Color.White);
+             * */
 
             spriteBatch.End();
 
