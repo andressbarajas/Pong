@@ -65,11 +65,13 @@ namespace GameStateManagement
         public Direction DuckOneDir
         {
             get { return m_pongballs[0].Ball_Dir; }
+            set { m_pongballs[0].Ball_Dir = value; }
         }
 
         public Direction DuckTwoDir
         {
             get { return m_pongballs[1].Ball_Dir; }
+            set { m_pongballs[1].Ball_Dir = value; }
         }
 
         public int IntermissionScene

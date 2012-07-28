@@ -569,6 +569,33 @@ namespace GameStateManagement
                 m_player1.ShotNum != 0 &&
                 m_ducks.BallsAlive())
             {
+                if (m_ducks.DuckOneState == BallState.Active)
+                {
+                    m_ducks.DuckOneXVelocity *= -1.5f;
+                    m_ducks.DuckOneYVelocity *= 1.5f;
+                    if (m_ducks.DuckOneDir == Direction.Right)
+                    {
+                        m_ducks.DuckOneDir = Direction.Left;
+                    }
+                    else if (m_ducks.DuckOneDir == Direction.Left)
+                    {
+                        m_ducks.DuckOneDir = Direction.Right;
+                    }
+                }
+
+                if (m_ducks.DuckTwoState == BallState.Active)
+                {
+                    m_ducks.DuckTwoXVelocity *= -1.5f;
+                    m_ducks.DuckTwoYVelocity *= 1.5f;
+                    if (m_ducks.DuckTwoDir == Direction.Right)
+                    {
+                        m_ducks.DuckTwoDir = Direction.Left;
+                    }
+                    else if (m_ducks.DuckTwoDir == Direction.Left)
+                    {
+                        m_ducks.DuckTwoDir = Direction.Right;
+                    }
+                }
                 // Play shot sound
                 m_player1.ShotNum -= 1;
             }
@@ -583,7 +610,33 @@ namespace GameStateManagement
                 m_player2.ShotNum != 0 &&
                 m_ducks.BallsAlive())
             {
-                
+                if (m_ducks.DuckOneState == BallState.Active)
+                {
+                    m_ducks.DuckOneXVelocity *= -1.5f;
+                    m_ducks.DuckOneYVelocity *= 1.5f;
+                    if (m_ducks.DuckOneDir == Direction.Right)
+                    {
+                        m_ducks.DuckOneDir = Direction.Left;
+                    }
+                    else if (m_ducks.DuckOneDir == Direction.Left)
+                    {
+                        m_ducks.DuckOneDir = Direction.Right;
+                    }
+                }
+
+                if (m_ducks.DuckTwoState == BallState.Active)
+                {
+                    m_ducks.DuckTwoXVelocity *= -1.5f;
+                    m_ducks.DuckTwoYVelocity *= 1.5f;
+                    if (m_ducks.DuckTwoDir == Direction.Right)
+                    {
+                        m_ducks.DuckTwoDir = Direction.Left;
+                    }
+                    else if (m_ducks.DuckTwoDir == Direction.Left)
+                    {
+                        m_ducks.DuckTwoDir = Direction.Right;
+                    }
+                }
                 // Play shot sound
                 m_player2.ShotNum -= 1;
             }
