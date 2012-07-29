@@ -354,8 +354,8 @@ namespace GameStateManagement
                 m_flyaway_scn_inter.Scene_State = DrawableState.Active;
 
                 /* Laughing Dog */
-                m_laughdog_anim.X_Pos = 612 - m_laughdog_anim.Width / 2;
-                m_laughdog_anim.Y_Pos = 530;
+                m_laughdog_anim.X_Pos = 512 - m_laughdog_anim.Width / 2;
+                m_laughdog_anim.Y_Pos = 466;
                 m_dog_laugh_scn_inter.BuildScene(new int[3] { 0, 1, 2 });
                 m_dog_laugh_scn_inter.Scene_State = DrawableState.Active;
 
@@ -454,8 +454,8 @@ namespace GameStateManagement
             int x, y;
             Sprite temp;
 
-            x = 706; 
-            y = 630;
+            x = 578; 
+            y = 566;
 
             // Create the ducks for the counter
             for (int i = 0; i < 10; i++)
@@ -471,8 +471,8 @@ namespace GameStateManagement
             }
 
             m_counter_spr.Sprite_Texture = m_countbg_txt;
-            m_counter_spr.X_Pos = 640 - (m_countbg_txt.Width/2);
-            m_counter_spr.Y_Pos = 600;
+            m_counter_spr.X_Pos = 512 - (m_countbg_txt.Width/2);
+            m_counter_spr.Y_Pos = 536;
 
             //            Intermission Stuff
 
@@ -541,7 +541,7 @@ namespace GameStateManagement
             ascduck.SetFrame(14, 5, null);
             ascduck.SetFrame(15, 5, m_flapwing_snd);
 
-            duckball = new DuckHuntBall(640, 540, boundary);
+            duckball = new DuckHuntBall(512, 476, boundary);
             duckball.AddAnimation(dscduck);
             duckball.AddAnimation(ascduck);
             duckball.Ball_State = BallState.Limbo;

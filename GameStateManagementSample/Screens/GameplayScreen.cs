@@ -61,8 +61,8 @@ namespace GameStateManagement
         AnimationScene m_intro = new AnimationScene();
 
         // Needed
-        Rectangle boxrec = new Rectangle(224, 64, 832, 512);
-        Rectangle m_background_color_rect = new Rectangle(128, 64, 1024, 612);
+        Rectangle boxrec = new Rectangle(96, 0, 832, 512);
+        Rectangle m_background_color_rect = new Rectangle(0, 0, 1024, 612);
 
         Sprite m_fly_sign = new Sprite();
 
@@ -152,8 +152,8 @@ namespace GameStateManagement
             wdog.SetFrame(1, 8, null);
             wdog.SetFrame(2, 8, null);
             wdog.SetFrame(3, 8, null);
-            wdog.X_Pos = 150;
-            wdog.Y_Pos = 535;
+            wdog.X_Pos = 22;
+            wdog.Y_Pos = 471;
 
             sdog.BuildAnimation(walkingdog, 1, 8, true, new int[6] { 1, 0, 1, 0, 1, 0 });
             sdog.SetFrame(0, 8, null);
@@ -184,7 +184,7 @@ namespace GameStateManagement
             flash = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
             flash.SetData(new Color[] { new Color(255, 255, 255, 128) });
 
-            m_flash = new TimeOutDrawable(new Image(128, 64, 1024, 612, flash), 8, false);
+            m_flash = new TimeOutDrawable(new Image(0, 0, 1024, 612, flash), 8, false);
             m_flash.Draw_State = DrawableState.Finished;
             
             /* Create Players */
@@ -212,7 +212,7 @@ namespace GameStateManagement
             // FLY AWAY SIGN
             m_fly_sign.Sprite_Texture = flyawaysign;
             m_fly_sign.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_fly_sign.Sprite_Texture.Width / 2;
-            m_fly_sign.Y_Pos = 320;
+            m_fly_sign.Y_Pos = 256;
             
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
@@ -355,7 +355,12 @@ namespace GameStateManagement
             if ((input.IsPauseGame(null) || gamePadDisconnected) && m_intro.Scene_State == DrawableState.Finished)// || m_ducks.GameOver())
             {
                 m_paused = true;
+                this.ScreenState = ScreenState.Hidden;
                 ScreenManager.AddScreen(new PauseMenuScreen(), null);
+            }
+            if (this.ScreenState != ScreenState.Hidden && m_intro.Scene_State == DrawableState.Finished)
+            {
+                m_paused = false;
             }
             
              // Handle Cloud Input
@@ -574,11 +579,13 @@ namespace GameStateManagement
                 spriteBatch.Draw(ScreenTexture, m_background_color_rect, new Color(49, 192, 250, 255));
             }
 
+            m_clouds.Draw(spriteBatch);
+
             // Draw tree
-            spriteBatch.Draw(tree, new Vector2(250, 300), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(tree, new Vector2(122, 236), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
             
             // Draw Bush
-            spriteBatch.Draw(bush, new Vector2(950, 420), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(bush, new Vector2(822, 356), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
 
             // Draw Duck Balls
             m_ducks.DrawBalls(spriteBatch);
@@ -587,10 +594,12 @@ namespace GameStateManagement
             m_ducks.DrawIntermission(spriteBatch);
 
             // Draw left ground + grass
-            spriteBatch.Draw(ground, new Vector2(128, 500), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(ground, new Vector2(0, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
 
             // Draw right ground + grass
-            spriteBatch.Draw(ground, new Vector2(640, 500), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(ground, new Vector2(512, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
+
+            
 
             // Draw Paddles 
             m_player1.DrawPaddle(spriteBatch);
@@ -601,7 +610,7 @@ namespace GameStateManagement
 
             m_ducks.DrawCounter(spriteBatch);
 
-            m_clouds.Draw(spriteBatch);
+            
 
             m_player1.DrawItems(spriteBatch);
             m_player2.DrawItems(spriteBatch);

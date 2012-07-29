@@ -31,6 +31,8 @@ namespace GameStateManagement
             // Create our menu entries.
             MenuEntry resumeGameMenuEntry = new MenuEntry("Resume Game");
             MenuEntry quitGameMenuEntry = new MenuEntry("Quit Game");
+
+            //IsPopup = true;
             
             // Hook up menu event handlers.
             resumeGameMenuEntry.Selected += OnCancel;

@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\tree.xnb</Output>
-      <Time>2012-07-09T18:13:24.1681639-07:00</Time>
+      <Time>2012-07-29T02:20:08.0059048-07:00</Time>
     </Item>
     <Item>
       <Source>ground.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\ground.xnb</Output>
-      <Time>2012-07-09T18:52:39.3098703-07:00</Time>
+      <Time>2012-07-29T02:20:31.769264-07:00</Time>
     </Item>
     <Item>
       <Source>bush.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bush.xnb</Output>
-      <Time>2012-07-09T19:09:50.516852-07:00</Time>
+      <Time>2012-07-29T02:21:32.6727474-07:00</Time>
     </Item>
     <Item>
       <Source>panel.png</Source>

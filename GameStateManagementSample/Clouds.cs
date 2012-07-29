@@ -81,11 +81,11 @@ namespace GameStateManagement
             {              
                 temp = new Sprite();
                 temp.Sprite_Texture = m_textures[i];
-                temp.X_Pos = (float)HelperUtils.GetRandomNumber(1024 + 128, 1024 + 128 + 412);
+                temp.X_Pos = (float)HelperUtils.GetRandomNumber(1024, 1024 + 412);
                 temp.Y_Pos = (float)HelperUtils.GetRandomNumber(64, 250);
                 m_clouds[i] = new CloudI();
                 m_clouds[i].m_used = false;
-                m_clouds[i].m_cloud = new LinearXYMover(temp, 128 - m_textures[i].Width, (int)temp.Y_Pos, 1.0f);    
+                m_clouds[i].m_cloud = new LinearXYMover(temp, -m_textures[i].Width, (int)temp.Y_Pos, 1.0f);    
                 m_clouds[i].m_coldata = new CollisionData((int)temp.X_Pos, (int)temp.Y_Pos, m_textures[i],
                      new Rectangle(0, 0, m_textures[i].Width, m_textures[i].Height), m_clouds[i].m_cloud.Origin,
                      m_clouds[i].m_cloud.Scale, m_clouds[i].m_cloud.Rotation, m_clouds[i].m_cloud.Effects);
