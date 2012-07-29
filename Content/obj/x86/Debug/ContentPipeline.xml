@@ -247,6 +247,33 @@
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\sshot.xnb</Output>
       <Time>2012-07-28T11:32:43.121934-07:00</Time>
     </Item>
+    <Item>
+      <Source>smallcloud.png</Source>
+      <Name>smallcloud</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\smallcloud.xnb</Output>
+      <Time>2012-07-28T21:47:27.0763964-07:00</Time>
+    </Item>
+    <Item>
+      <Source>medcloud.png</Source>
+      <Name>medcloud</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\medcloud.xnb</Output>
+      <Time>2012-07-28T21:47:08.7931643-07:00</Time>
+    </Item>
+    <Item>
+      <Source>bigcloud.png</Source>
+      <Name>bigcloud</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bigcloud.xnb</Output>
+      <Time>2012-07-28T21:46:56.6095429-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -157,7 +157,7 @@ namespace GameStateManagement
 
         #region Update and Draw
 
-        public virtual void Update(CollisionData player1, CollisionData player2) { }
+        public virtual void Update(CollisionData player1, CollisionData player2, CloudI[] clouds) { }
         
         public void Draw(SpriteBatch spritebatch)
         {
@@ -233,13 +233,13 @@ namespace GameStateManagement
             float[] velocities = new float[2];
 
             // Randomly decide if we are going left or right
-            if (GetRandomNumber(0.0, 10.0) < 6.0)
+            if (HelperUtils.GetRandomNumber(0.0, 10.0) < 6.0)
             {
-                angle = (float)GetRandomNumber(30.0, 70.0); // Right
+                angle = (float)HelperUtils.GetRandomNumber(30.0, 70.0); // Right
             }
             else 
             {
-                angle = (float)GetRandomNumber(110.0, 150.0); // Left
+                angle = (float)HelperUtils.GetRandomNumber(110.0, 150.0); // Left
             }
 
             // Generate X velocity
@@ -251,13 +251,7 @@ namespace GameStateManagement
             return velocities;
         }
 
-        /* Random Num generator taken from http://stackoverflow.com/questions/1064901/random-number-between-2-double-numbers */
-        private double GetRandomNumber(double minimum, double maximum)
-        {
-            Random random = new Random();
-            return random.NextDouble() * (maximum - minimum) + minimum;
-        }
-
+        
         #endregion
     }
 }

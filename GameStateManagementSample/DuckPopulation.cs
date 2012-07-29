@@ -220,10 +220,10 @@ namespace GameStateManagement
             m_intermission2.Draw(spritebatch);
         }
 
-        public void UpdateBalls(CollisionData p1paddle, CollisionData p2paddle)
+        public void UpdateBalls(CollisionData p1paddle, CollisionData p2paddle, CloudI[] clouds)
         {
-            m_pongballs[0].Update(p1paddle, p2paddle);
-            m_pongballs[1].Update(p1paddle, p2paddle);
+            m_pongballs[0].Update(p1paddle, p2paddle, clouds);
+            m_pongballs[1].Update(p1paddle, p2paddle, clouds);
         }
 
         public void DrawBalls(SpriteBatch spritebatch)

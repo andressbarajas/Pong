@@ -18,7 +18,7 @@ namespace GameStateManagement
         {
             m_transformation = Matrix.CreateTranslation(new Vector3(rect.X, rect.Y, 0.0f));
 
-            m_rect = CollisionUtils.CalculateBoundingRectangle(new Rectangle(0, 0, rect.Width, rect.Height), m_transformation);
+            m_rect = HelperUtils.CalculateBoundingRectangle(new Rectangle(0, 0, rect.Width, rect.Height), m_transformation);
 
             m_color_data = new Color[m_rect.Width * m_rect.Height];
 
@@ -37,7 +37,7 @@ namespace GameStateManagement
                                Matrix.CreateRotationZ(rotation) *
                                Matrix.CreateTranslation(new Vector3(rect.X, rect.Y, 0.0f));
 
-            m_rect = CollisionUtils.CalculateBoundingRectangle(new Rectangle(0, 0, rect.Width, rect.Height), m_transformation);
+            m_rect = HelperUtils.CalculateBoundingRectangle(new Rectangle(0, 0, rect.Width, rect.Height), m_transformation);
 
             m_color_data = data;
         }
@@ -50,8 +50,8 @@ namespace GameStateManagement
                                ((effects == SpriteEffects.FlipHorizontally) ? Matrix.CreateRotationY(MathHelper.Pi) : Matrix.Identity) * 
                                Matrix.CreateRotationZ(rotation) *
                                Matrix.CreateTranslation(new Vector3(xpos, ypos, 0.0f));
-
-            m_rect = CollisionUtils.CalculateBoundingRectangle(new Rectangle(0, 0, src_rect.Width, src_rect.Height), m_transformation);
+            
+            m_rect = HelperUtils.CalculateBoundingRectangle(new Rectangle(0, 0, src_rect.Width, src_rect.Height), m_transformation);
 
             m_color_data = new Color[src_rect.Width * src_rect.Height];
             texture.GetData<Color>(0, src_rect, m_color_data, 0, src_rect.Width * src_rect.Height);

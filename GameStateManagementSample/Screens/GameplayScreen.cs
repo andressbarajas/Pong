@@ -42,6 +42,8 @@ namespace GameStateManagement
         Texture2D flyawaysign;
         Texture2D flash;
 
+        Texture2D[] clouds = new Texture2D[3];
+
         /* * * * * * * * * * * * SOUNDS * * * * * * * * * * * */
 
         SoundEffect dogbark;
@@ -79,7 +81,7 @@ namespace GameStateManagement
         Texture2D[] m_player_textures = new Texture2D[5];
 
 
-        
+        Clouds m_clouds;
 
         Drawable m_flash;
         Drawable m_duck1_flash = new Image();
@@ -132,12 +134,17 @@ namespace GameStateManagement
             m_player_textures[2] = content.Load<Texture2D>("clouds");
             m_player_textures[3] = content.Load<Texture2D>("duckcall");
             m_player_textures[4] = content.Load<Texture2D>("shot");
+            clouds[0] = content.Load<Texture2D>("smallcloud");
+            clouds[1] = content.Load<Texture2D>("medcloud");
+            clouds[2] = content.Load<Texture2D>("bigcloud");
 
             m_shot = content.Load<SoundEffect>("sshot");
             startround = content.Load<SoundEffect>("startround");
 
             m_num = content.Load<SpriteFont>("bitfont");
             m_score_fnt = content.Load<SpriteFont>("bigfont");
+
+            m_clouds = new Clouds(clouds);
             
             /* SETUP ALL ANIMATIONSPRITES */
             wdog.BuildAnimation(walkingdog, 1, 8, true, new int[4] { 1, 2, 3, 4 });
@@ -207,7 +214,6 @@ namespace GameStateManagement
             m_fly_sign.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_fly_sign.Sprite_Texture.Width / 2;
             m_fly_sign.Y_Pos = 320;
             
-            //m_fly_sign.Draw_State = DrawableState.Active;
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
             // while, giving you a chance to admire the beautiful loading screen.
@@ -263,7 +269,7 @@ namespace GameStateManagement
                 if (m_intro.Scene_State == DrawableState.Finished && 
                     m_ducks.BallsAlive()) 
                 {
-                    m_ducks.UpdateBalls(m_player1.CData, m_player2.CData);
+                    m_ducks.UpdateBalls(m_player1.CData, m_player2.CData, m_clouds.CloudsA);
                 }
 
                 if (m_intro.Scene_State == DrawableState.Finished &&  
@@ -305,6 +311,7 @@ namespace GameStateManagement
                 if (m_intro.Scene_State == DrawableState.Finished)
                 {
                     m_flash.Update();
+                    m_clouds.Update();
                     m_duck1_flash.Update();
                     m_duck1_flash.X_Pos = m_ducks.DuckOneRectangle.X;
                     m_duck1_flash.Y_Pos = m_ducks.DuckOneRectangle.Y;                                      
@@ -362,7 +369,7 @@ namespace GameStateManagement
                 m_player1.CloudNum != 0 &&
                 m_ducks.BallsAlive())
             {
-               
+                m_clouds.Reset();
                 // Play duck call sound
                 m_player1.CloudNum -= 1;
             }
@@ -377,8 +384,8 @@ namespace GameStateManagement
                 m_player2.CloudNum != 0 &&
                 m_ducks.BallsAlive())
             {
-                m_ducks.ReleaseDuck();
-                // Play duck call sound
+                m_clouds.Reset();
+                
                 m_player2.CloudNum -= 1;
             }
             
@@ -525,7 +532,7 @@ namespace GameStateManagement
             if (m_intro.Scene_State == DrawableState.Finished) // &&
                 //m_pongBall.Ball_State != BallState.OutofBounds && )
             {
-                m_paused = false;
+               // m_paused = false;
                 m_player1.UpdatePaddle(keyboardState1, gamePadState1);
                 m_player2.UpdatePaddle(keyboardState2, gamePadState2);
             }
@@ -573,12 +580,10 @@ namespace GameStateManagement
             // Draw Bush
             spriteBatch.Draw(bush, new Vector2(950, 420), null, Color.White, 0f, Vector2.Zero, 2.0f, SpriteEffects.None, 0f);
 
-            // Draw Duck(ball)
-            //m_pongBall.Draw(spriteBatch);
+            // Draw Duck Balls
             m_ducks.DrawBalls(spriteBatch);
 
             // Draw Intermission
-            //m_intermission.Draw(spriteBatch);
             m_ducks.DrawIntermission(spriteBatch);
 
             // Draw left ground + grass
@@ -595,6 +600,8 @@ namespace GameStateManagement
             m_intro.Draw(spriteBatch);
 
             m_ducks.DrawCounter(spriteBatch);
+
+            m_clouds.Draw(spriteBatch);
 
             m_player1.DrawItems(spriteBatch);
             m_player2.DrawItems(spriteBatch);
