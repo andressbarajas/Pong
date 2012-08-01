@@ -172,12 +172,13 @@ namespace GameStateManagement
             {
                 if (m_ducks[i].m_ball_index != -1)
                 {
-                    if (m_pongballs[m_ducks[i].m_ball_index].Ball_State == BallState.Limbo)
+                    if (m_pongballs[m_ducks[i].m_ball_index].Ball_State == BallState.Limbo && !GameOver())
                     {
                         temp = new Sprite();
                         temp.Sprite_Texture = m_duckcount_txt;
                         temp.X_Pos = m_ducks[i].m_spr.X_Pos;
                         temp.Y_Pos = m_ducks[i].m_spr.Y_Pos;
+                 
                         m_ducks[i].m_spr = temp;
                         m_ducks[i].m_spr.Tint = new Color(222, 41, 0, 255);  //222, 41, 0
                         m_ducks[i].m_ball_index = -1;
@@ -220,7 +221,7 @@ namespace GameStateManagement
             m_intermission2.Draw(spritebatch);
         }
 
-        public void UpdateBalls(CollisionData p1paddle, CollisionData p2paddle, CloudI[] clouds)
+        public void UpdateBalls(CollisionData p1paddle, CollisionData p2paddle, Cloud[] clouds)
         {
             m_pongballs[0].Update(p1paddle, p2paddle, clouds);
             m_pongballs[1].Update(p1paddle, p2paddle, clouds);
@@ -386,11 +387,9 @@ namespace GameStateManagement
         public bool OneBallAlive()
         {
             return ((m_pongballs[0].Ball_State == BallState.Active &&
-                    (m_pongballs[1].Ball_State != BallState.Active ||
-                    m_pongballs[1].Ball_State != BallState.OutofBounds)) ||
+                    m_pongballs[1].Ball_State == BallState.Limbo) ||
                     (m_pongballs[1].Ball_State == BallState.Active &&
-                    (m_pongballs[0].Ball_State != BallState.Active ||
-                    m_pongballs[0].Ball_State != BallState.OutofBounds))); 
+                    m_pongballs[0].Ball_State == BallState.Limbo)); 
         }
 
         public bool BallsLimbo()
@@ -407,6 +406,15 @@ namespace GameStateManagement
         public bool GameOver()
         {
             return (m_duck_count == 0 && !BallsAlive() && !Intermission()) ? true : false;
+        }
+
+        public void SetAllDucksToBlink()
+        {
+            for (int i = 0; i < m_ducks.Length; i++)
+            {
+                m_ducks[i].m_ball_index = 0;
+                m_ducks[i].m_spr = new Blinker(m_ducks[i].m_spr, new Color(255, 255, 255, 255), 25);   
+            }
         }
 
         public void Reset()
@@ -432,6 +440,7 @@ namespace GameStateManagement
 
         #endregion
 
+
         #region Private Methods
 
         private void LoadContent()
@@ -444,8 +453,8 @@ namespace GameStateManagement
             m_countbg_txt = m_content.Load<Texture2D>("duckcount");
            
             m_doglaugh_snd = m_content.Load<SoundEffect>("doglaugh");
-            //m_flapwing_snd = m_content.Load<SoundEffect>("wingflaps");
-            //m_duckquack_snd = m_content.Load<SoundEffect>("quack");
+            m_flapwing_snd = m_content.Load<SoundEffect>("wingflaps");
+            m_duckquack_snd = m_content.Load<SoundEffect>("quack");
         }
 
         private void BuildAnimations()
@@ -464,34 +473,32 @@ namespace GameStateManagement
                 temp.Sprite_Texture = m_duckcount_txt;
                 temp.X_Pos = x;
                 temp.Y_Pos = y;
-                //temp.Draw_State = DrawableState.Active;
                 m_ducks[i] = new Duck();
                 m_ducks[i].m_spr = temp;
                 x -= (m_duckcount_txt.Width + 2);
             }
 
             m_counter_spr.Sprite_Texture = m_countbg_txt;
-            m_counter_spr.X_Pos = 512 - (m_countbg_txt.Width/2);
+            m_counter_spr.X_Pos = 512 - (m_countbg_txt.Width / 2);
             m_counter_spr.Y_Pos = 536;
 
             //            Intermission Stuff
 
             m_flyawayduck_anim_1.BuildAnimation(m_flyingaway_txt, 1, 3, true, new int[4] { 0, 1, 2, 1 });
-            m_flyawayduck_anim_1.SetFrame(0, 8, null);
-            m_flyawayduck_anim_1.SetFrame(1, 8, null);
-            m_flyawayduck_anim_1.SetFrame(2, 8, null);
-            m_flyawayduck_anim_1.SetFrame(3, 8, null);
+            m_flyawayduck_anim_1.SetFrame(0, 4, null);
+            m_flyawayduck_anim_1.SetFrame(1, 4, m_flapwing_snd);
+            m_flyawayduck_anim_1.SetFrame(2, 4, null);
+            m_flyawayduck_anim_1.SetFrame(3, 4, m_flapwing_snd);
 
             m_flyawayduck_anim_2.BuildAnimation(m_flyingaway_txt, 1, 3, true, new int[4] { 0, 1, 2, 1 });
-            m_flyawayduck_anim_2.SetFrame(0, 8, null);
-            m_flyawayduck_anim_2.SetFrame(1, 8, null);
-            m_flyawayduck_anim_2.SetFrame(2, 8, null);
-            m_flyawayduck_anim_2.SetFrame(3, 8, null);
+            m_flyawayduck_anim_2.SetFrame(0, 4, null);
+            m_flyawayduck_anim_2.SetFrame(1, 4, m_flapwing_snd);
+            m_flyawayduck_anim_2.SetFrame(2, 4, null);
+            m_flyawayduck_anim_2.SetFrame(3, 4, m_flapwing_snd);
 
             m_laughdog_anim.BuildAnimation(m_laughingdog_txt, 1, 2, true, new int[2] { 0, 1 });
             m_laughdog_anim.SetFrame(0, 6, null);
             m_laughdog_anim.SetFrame(1, 6, null);
-            // Set location
 
             m_dog_laugh_scn_inter.AddAnimation(new DirXYMover(m_laughdog_anim, 0, -47, 1.4f), m_doglaugh_snd);
             m_dog_laugh_scn_inter.AddAnimation(new TimeOutDrawable(m_laughdog_anim, 60, true));
@@ -503,44 +510,54 @@ namespace GameStateManagement
         {
             DuckHuntBall duckball;
             AnimatedSprite dscduck = new AnimatedSprite();
-            AnimatedSprite ascduck = new AnimatedSprite();          
+            AnimatedSprite ascduck = new AnimatedSprite();
 
-            dscduck.BuildAnimation(m_duck_txt, 1, 9, true, new int[16] { 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4 });
-            dscduck.SetFrame(0, 5, m_flapwing_snd);
-            dscduck.SetFrame(1, 5, null);
-            dscduck.SetFrame(2, 5, m_flapwing_snd);
-            dscduck.SetFrame(3, 5, null);
-            dscduck.SetFrame(4, 5, m_flapwing_snd);
-            dscduck.SetFrame(5, 5, null);
-            dscduck.SetFrame(6, 5, m_flapwing_snd);
-            dscduck.SetFrame(7, 5, null);
-            dscduck.SetFrame(8, 5, m_flapwing_snd); //m_duckquack_snd);
-            dscduck.SetFrame(9, 5, null);
-            dscduck.SetFrame(10, 5, m_flapwing_snd);
-            dscduck.SetFrame(11, 5, null);
-            dscduck.SetFrame(12, 5, m_flapwing_snd);
-            dscduck.SetFrame(13, 5, null);
-            dscduck.SetFrame(14, 5, m_flapwing_snd);
-            dscduck.SetFrame(15, 5, null);
+            int flapspeed = 4;
 
-            ascduck.BuildAnimation(m_duck_txt, 1, 9, true, new int[16] { 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1 });
-            ascduck.SetFrame(0, 5, null);
-            ascduck.SetFrame(1, 5, m_flapwing_snd);
-            ascduck.SetFrame(2, 5, null);
-            ascduck.SetFrame(3, 5, m_flapwing_snd);
-            ascduck.SetFrame(4, 5, null);
-            ascduck.SetFrame(5, 5, m_flapwing_snd);
-            ascduck.SetFrame(6, 5, null);
-            ascduck.SetFrame(7, 5, m_flapwing_snd);
-            ascduck.SetFrame(8, 5, null); //m_duckquack_snd);
-            ascduck.SetFrame(9, 5, m_flapwing_snd);
-            ascduck.SetFrame(10, 5, null);
-            ascduck.SetFrame(11, 5, m_flapwing_snd);
-            ascduck.SetFrame(12, 5, null);
-            ascduck.SetFrame(13, 5, m_flapwing_snd);
-            ascduck.SetFrame(14, 5, null);
-            ascduck.SetFrame(15, 5, m_flapwing_snd);
+            dscduck.BuildAnimation(m_duck_txt, 1, 9, true, new int[20] { 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4, 3, 4, 5, 4 });
+            dscduck.SetFrame(0, flapspeed, null);
+            dscduck.SetFrame(1, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(2, flapspeed, null);
+            dscduck.SetFrame(3, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(4, flapspeed, null);
+            dscduck.SetFrame(5, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(6, flapspeed, null);
+            dscduck.SetFrame(7, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(8, flapspeed, m_duckquack_snd);
+            dscduck.SetFrame(9, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(10, flapspeed, null);
+            dscduck.SetFrame(11, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(12, flapspeed, null);
+            dscduck.SetFrame(13, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(14, flapspeed, null);
+            dscduck.SetFrame(15, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(16, flapspeed, null);
+            dscduck.SetFrame(17, flapspeed, m_flapwing_snd);
+            dscduck.SetFrame(18, flapspeed, null);
+            dscduck.SetFrame(19, flapspeed, m_flapwing_snd);
 
+            ascduck.BuildAnimation(m_duck_txt, 1, 9, true, new int[20] { 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1 });
+            ascduck.SetFrame(0, flapspeed, null);
+            ascduck.SetFrame(1, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(2, flapspeed, null);
+            ascduck.SetFrame(3, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(4, flapspeed, null);
+            ascduck.SetFrame(5, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(6, flapspeed, null);
+            ascduck.SetFrame(7, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(8, flapspeed, m_duckquack_snd);
+            ascduck.SetFrame(9, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(10, flapspeed, null);
+            ascduck.SetFrame(11, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(12, flapspeed, null);
+            ascduck.SetFrame(13, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(14, flapspeed, null);
+            ascduck.SetFrame(15, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(16, flapspeed, null);
+            ascduck.SetFrame(17, flapspeed, m_flapwing_snd);
+            ascduck.SetFrame(18, flapspeed, null);
+            ascduck.SetFrame(19, flapspeed, m_flapwing_snd);
+           
             duckball = new DuckHuntBall(512, 476, boundary);
             duckball.AddAnimation(dscduck);
             duckball.AddAnimation(ascduck);

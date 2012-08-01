@@ -66,6 +66,14 @@ namespace GameStateManagement
 
         private Color m_tint = Color.White;
 
+        public virtual float Layer
+        {
+            get { return m_layer; }
+            set { m_layer = value; }
+        }
+
+        private float m_layer = 1.0f;
+
         public virtual SpriteEffects Effects
         {
             get { return m_effects; }

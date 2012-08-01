@@ -25,7 +25,7 @@ namespace GameStateManagement
 
         #region Update
 
-        public override void Update(CollisionData p1paddle, CollisionData p2paddle, CloudI[] clouds) 
+        public override void Update(CollisionData p1paddle, CollisionData p2paddle, Cloud[] clouds) 
         {
             if (Ball_State != BallState.DeadBall && Ball_State != BallState.Limbo)
             {
@@ -145,17 +145,11 @@ namespace GameStateManagement
 
                     for (int i = 0; i < clouds.Length; i++)
                     {
-                        if (clouds[i].m_used != true && PongBall_Rect.Intersects(clouds[i].m_coldata.m_rect))
+                        if (clouds[i].m_duck_used != true && PongBall_Rect.Intersects(clouds[i].m_collision_rect))
                         {
-                            if (HelperUtils.IntersectPixels(m_pongBallTransform, PongBall_Rect.Width,
-                                PongBall_Rect.Height, m_currAnimBData.m_color_data,
-                                clouds[i].m_coldata.m_transformation, clouds[i].m_coldata.m_rect.Width,
-                                clouds[i].m_coldata.m_rect.Height, clouds[i].m_coldata.m_color_data))
-                            {
-                                Y_Vel = -Y_Vel;
-                                clouds[i].m_used = true;
-                                m_hit = Direction.None;
-                            }
+                            Y_Vel = -Y_Vel;
+                            clouds[i].m_duck_used = true;
+                            m_hit = Direction.None;
                         }
                     }
 
@@ -219,7 +213,9 @@ namespace GameStateManagement
                            m_scrn_boundary[8].m_transformation, m_scrn_boundary[8].m_rect.Width,
                            m_scrn_boundary[8].m_rect.Height, m_scrn_boundary[8].m_color_data))
                         {
-                            Ball_State = BallState.DeadBall;
+                            Y_Vel = -Y_Vel;
+                            m_hit = Direction.Bottom;
+                            //Ball_State = BallState.DeadBall;
                         }
                     }
                     else if (PongBall_Rect.Intersects(m_scrn_boundary[9].m_rect))
@@ -229,7 +225,9 @@ namespace GameStateManagement
                            m_scrn_boundary[9].m_transformation, m_scrn_boundary[9].m_rect.Width,
                            m_scrn_boundary[9].m_rect.Height, m_scrn_boundary[9].m_color_data))
                         {
-                            Ball_State = BallState.DeadBall;
+                            Y_Vel = -Y_Vel;
+                            m_hit = Direction.Bottom;
+                            //Ball_State = BallState.DeadBall;
                         }
                     }
 

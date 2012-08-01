@@ -134,7 +134,7 @@ namespace GameStateManagement
         {
             if (Draw_State != DrawableState.Finished && m_texture != null)
             {  
-                spritebatch.Draw(m_texture, new Vector2(X_Pos, Y_Pos), m_frames[m_currentFrame].m_source, Tint, Rotation, Origin, Scale, Effects, 0); 
+                spritebatch.Draw(m_texture, new Vector2(X_Pos, Y_Pos), m_frames[m_currentFrame].m_source, Tint, Rotation, Origin, Scale, Effects, Layer); 
             }
         }
         #endregion

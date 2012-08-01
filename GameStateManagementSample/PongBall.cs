@@ -157,7 +157,7 @@ namespace GameStateManagement
 
         #region Update and Draw
 
-        public virtual void Update(CollisionData player1, CollisionData player2, CloudI[] clouds) { }
+        public virtual void Update(CollisionData player1, CollisionData player2, Cloud[] clouds) { }
         
         public void Draw(SpriteBatch spritebatch)
         {
@@ -233,13 +233,13 @@ namespace GameStateManagement
             float[] velocities = new float[2];
 
             // Randomly decide if we are going left or right
-            if (HelperUtils.GetRandomNumber(0.0, 10.0) < 6.0)
+            if (HelperUtils.GetRandomNumber(0.0, 10.0) < 5.01)
             {
-                angle = (float)HelperUtils.GetRandomNumber(30.0, 70.0); // Right
+                angle = (float)HelperUtils.GetRandomNumber(30.0, 50.0); // Right
             }
             else 
             {
-                angle = (float)HelperUtils.GetRandomNumber(110.0, 150.0); // Left
+                angle = (float)HelperUtils.GetRandomNumber(140.0, 160.0); // Left
             }
 
             // Generate X velocity

@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bush.xnb</Output>
-      <Time>2012-07-29T02:21:32.6727474-07:00</Time>
+      <Time>2012-07-29T09:29:50.3068628-07:00</Time>
     </Item>
     <Item>
       <Source>panel.png</Source>
@@ -128,7 +128,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\wingflaps.xnb</Output>
-      <Time>2012-07-17T17:17:43.7103076-07:00</Time>
+      <Time>2012-07-31T17:25:55.4669169-07:00</Time>
     </Item>
     <Item>
       <Source>quack.wav</Source>
@@ -137,7 +137,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\quack.xnb</Output>
-      <Time>2012-07-17T17:26:41.6286937-07:00</Time>
+      <Time>2012-07-31T17:23:44.8224445-07:00</Time>
     </Item>
     <Item>
       <Source>startround.wav</Source>
@@ -254,7 +254,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\smallcloud.xnb</Output>
-      <Time>2012-07-28T21:47:27.0763964-07:00</Time>
+      <Time>2012-07-29T23:00:29.9171251-07:00</Time>
     </Item>
     <Item>
       <Source>medcloud.png</Source>
@@ -263,7 +263,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\medcloud.xnb</Output>
-      <Time>2012-07-28T21:47:08.7931643-07:00</Time>
+      <Time>2012-07-29T23:00:07.6118493-07:00</Time>
     </Item>
     <Item>
       <Source>bigcloud.png</Source>
@@ -272,7 +272,25 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bigcloud.xnb</Output>
-      <Time>2012-07-28T21:46:56.6095429-07:00</Time>
+      <Time>2012-07-29T22:59:41.4283517-07:00</Time>
+    </Item>
+    <Item>
+      <Source>dogbark.wav</Source>
+      <Name>dogbark</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\dogbark.xnb</Output>
+      <Time>2012-07-17T16:47:17.6908136-07:00</Time>
+    </Item>
+    <Item>
+      <Source>roundend.wav</Source>
+      <Name>roundend</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\roundend.xnb</Output>
+      <Time>2012-07-31T20:28:27.2043205-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

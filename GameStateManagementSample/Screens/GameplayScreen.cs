@@ -49,12 +49,16 @@ namespace GameStateManagement
         SoundEffect dogbark;
         SoundEffect startround;
         SoundEffect m_shot;
+        SoundEffect endround;
 
         /* * * * * * * * * * * ANIMATIONS * * * * * * * * * */
         
         AnimatedSprite wdog = new AnimatedSprite();     // Walking Dog Animation (with sound)
         AnimatedSprite sdog = new AnimatedSprite();     // Sniff Dog Animation
         AnimatedSprite sprdog = new AnimatedSprite();   // Suprised Dog Animation
+        AnimatedSprite jdog1 = new AnimatedSprite();
+        AnimatedSprite jdog2 = new AnimatedSprite();
+        AnimatedSprite jdog3 = new AnimatedSprite();
 
         /* * * * * * * * * ANIMATION SCENE * * * * * * * * */
 
@@ -69,6 +73,9 @@ namespace GameStateManagement
         /**************************/
         bool m_paused = false;
         bool m_played_intro = false;
+        bool m_built_ending = false;
+
+        CountTimer m_endround = new CountTimer();
 
         DuckPopulation m_ducks;
 
@@ -80,9 +87,10 @@ namespace GameStateManagement
 
         Texture2D[] m_player_textures = new Texture2D[5];
 
-
-        Clouds m_clouds;
-
+        Clouds m_clouds_p1;
+        Clouds m_clouds_p2;
+        Cloud[] m_clouds; 
+        
         Drawable m_flash;
         Drawable m_duck1_flash = new Image();
         Drawable m_duck2_flash = new Image();
@@ -92,15 +100,11 @@ namespace GameStateManagement
 
         /****************************/
 
-        private KeyboardState p1keyOldState;
-        private KeyboardState p2keyOldState;
-        private GamePadState p1padOldState;
-        private GamePadState p2padOldState;
-
         float pauseAlpha;
 
+
         #endregion
-        
+
         #region Initialization
 
 
@@ -138,13 +142,24 @@ namespace GameStateManagement
             clouds[1] = content.Load<Texture2D>("medcloud");
             clouds[2] = content.Load<Texture2D>("bigcloud");
 
+            dogbark = content.Load<SoundEffect>("dogbark");
             m_shot = content.Load<SoundEffect>("sshot");
             startround = content.Load<SoundEffect>("startround");
+            endround = content.Load<SoundEffect>("roundend");
 
             m_num = content.Load<SpriteFont>("bitfont");
             m_score_fnt = content.Load<SpriteFont>("bigfont");
 
-            m_clouds = new Clouds(clouds);
+            m_clouds_p1 = new Clouds(0, clouds);
+            m_clouds_p2 = new Clouds(1, clouds);
+            m_clouds = new Cloud[m_clouds_p1.CloudsA.Length*2]; 
+
+            m_clouds[0] = m_clouds_p1.CloudsA[0];
+            m_clouds[1] = m_clouds_p1.CloudsA[1];
+            m_clouds[2] = m_clouds_p1.CloudsA[2];
+            m_clouds[3] = m_clouds_p2.CloudsA[0];
+            m_clouds[4] = m_clouds_p2.CloudsA[1];
+            m_clouds[5] = m_clouds_p2.CloudsA[2];
             
             /* SETUP ALL ANIMATIONSPRITES */
             wdog.BuildAnimation(walkingdog, 1, 8, true, new int[4] { 1, 2, 3, 4 });
@@ -166,6 +181,15 @@ namespace GameStateManagement
             sprdog.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 5 });
             sprdog.SetFrame(0, 100, null);
 
+            jdog1.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 6 });
+            jdog1.SetFrame(0, 1000, dogbark);
+
+            jdog2.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 6 });
+            jdog2.SetFrame(0, 50, dogbark);
+
+            jdog3.BuildAnimation(walkingdog, 1, 8, true, new int[1] { 7 });
+            jdog3.SetFrame(0, 50, dogbark);
+
             /*   MAKE INTRO ANIMATION   */
             m_intro.AddAnimation(new DirXYMover(wdog, 180, 0, 1.7f));
             m_intro.AddAnimation(new TimeOutDrawable(sdog, 49, true));
@@ -173,7 +197,11 @@ namespace GameStateManagement
             m_intro.AddAnimation(new TimeOutDrawable(sdog, 49, true));
             m_intro.AddAnimation(new DirXYMover(wdog, 10, 0, 1.7f));
             m_intro.AddAnimation(new TimeOutDrawable(sprdog, 49, true));
-            m_intro.BuildScene(new int[6] { 0, 1, 2, 3, 4, 5 });
+            m_intro.AddAnimation(new DirXYMover(jdog1, 5, -50, 3.5f));
+            m_intro.AddAnimation(new DirXYMover(jdog1, 15, -25, 3.0f));
+            m_intro.AddAnimation(new DirXYMover(jdog2, 15, -25, 3.0f));
+            m_intro.AddAnimation(new DirXYMover(jdog3, 40, 40, 3.0f));
+            m_intro.BuildScene(new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
             m_intro.Scene_State = DrawableState.Active;
 
             /* Make a texture for bg. NOT gonna be needed when I change the dimension of screen */
@@ -256,6 +284,11 @@ namespace GameStateManagement
             else
                 pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
 
+            if (!otherScreenHasFocus)
+            {
+                m_paused = false;
+            }
+
             if (!m_paused)
             {
                 if(m_intro.Scene_State != DrawableState.Finished) {
@@ -269,7 +302,7 @@ namespace GameStateManagement
                 if (m_intro.Scene_State == DrawableState.Finished && 
                     m_ducks.BallsAlive()) 
                 {
-                    m_ducks.UpdateBalls(m_player1.CData, m_player2.CData, m_clouds.CloudsA);
+                    m_ducks.UpdateBalls(m_player1.CData, m_player2.CData, m_clouds);
                 }
 
                 if (m_intro.Scene_State == DrawableState.Finished &&  
@@ -311,7 +344,16 @@ namespace GameStateManagement
                 if (m_intro.Scene_State == DrawableState.Finished)
                 {
                     m_flash.Update();
-                    m_clouds.Update();
+                    m_clouds_p1.Update();
+                    m_clouds_p2.Update();
+
+                    m_clouds[0] = m_clouds_p1.CloudsA[0];
+                    m_clouds[1] = m_clouds_p1.CloudsA[1];
+                    m_clouds[2] = m_clouds_p1.CloudsA[2];
+                    m_clouds[3] = m_clouds_p2.CloudsA[0];
+                    m_clouds[4] = m_clouds_p2.CloudsA[1];
+                    m_clouds[5] = m_clouds_p2.CloudsA[2];
+
                     m_duck1_flash.Update();
                     m_duck1_flash.X_Pos = m_ducks.DuckOneRectangle.X;
                     m_duck1_flash.Y_Pos = m_ducks.DuckOneRectangle.Y;                                      
@@ -321,6 +363,30 @@ namespace GameStateManagement
                     m_ducks.UpdateCounter();
                     m_player1.UpdateItems();
                     m_player2.UpdateItems();
+
+                    if (m_ducks.DuckOneState == BallState.Active)
+                    {
+                        m_ducks.DuckOneXVelocity += m_ducks.DuckOneXVelocity * 0.0001f;
+                        m_ducks.DuckOneYVelocity += m_ducks.DuckOneYVelocity * 0.0001f;
+                    }
+                    else if (m_ducks.DuckTwoState == BallState.Active)
+                    {
+                        m_ducks.DuckTwoXVelocity += m_ducks.DuckTwoXVelocity * 0.0001f;
+                        m_ducks.DuckTwoYVelocity += m_ducks.DuckTwoYVelocity * 0.0001f;
+                    }
+                }
+
+                if (!m_built_ending && m_ducks.GameOver())
+                {
+                    endround.Play();
+                    m_endround.Start(4);
+                    m_ducks.SetAllDucksToBlink();
+                    m_built_ending = true;
+                }
+                if (m_endround.isRunning && m_endround.CheckTime(gameTime))
+                {
+                    ScreenManager.AddScreen(new PauseMenuScreen(), null);
+                    m_paused = true;
                 }
             }
         }
@@ -334,6 +400,8 @@ namespace GameStateManagement
         {
             if (input == null)
                 throw new ArgumentNullException("input");
+
+            PlayerIndex playerIndex;
 
             // Look up inputs for the active player profile.
             //int playerIndex = (int)ControllingPlayer.Value;
@@ -352,44 +420,39 @@ namespace GameStateManagement
                                        !gamePadState2.IsConnected &&
                                        input.GamePadWasConnected[1];
 
-            if ((input.IsPauseGame(null) || gamePadDisconnected) && m_intro.Scene_State == DrawableState.Finished)// || m_ducks.GameOver())
+            if ((input.IsPauseGame(null) || gamePadDisconnected) && m_intro.Scene_State == DrawableState.Finished)
             {
                 m_paused = true;
-                this.ScreenState = ScreenState.Hidden;
                 ScreenManager.AddScreen(new PauseMenuScreen(), null);
             }
-            if (this.ScreenState != ScreenState.Hidden && m_intro.Scene_State == DrawableState.Finished)
-            {
-                m_paused = false;
-            }
-            
+
+            input.IsNewKeyPress(Keys.D, PlayerIndex.One, out playerIndex);
+
              // Handle Cloud Input
              // (Player 1)
-            if (((keyboardState1.IsKeyDown(Keys.D) &&                   // Handle Keyboard
-                p1keyOldState.IsKeyUp(Keys.D)) ||
-                (gamePadState1.Buttons.X == ButtonState.Pressed &&      // Handle Gamepad
-                p1padOldState.Buttons.X == ButtonState.Released)) &&
-                m_intro.Scene_State == DrawableState.Finished && 
-                !m_ducks.Intermission() && 
-                m_player1.CloudNum != 0 &&
-                m_ducks.BallsAlive())
+            if ((input.IsNewKeyPress(Keys.D, PlayerIndex.One, out playerIndex) ||
+               input.IsNewButtonPress(Buttons.X, PlayerIndex.One, out playerIndex)) &&
+               m_intro.Scene_State == DrawableState.Finished &&
+               !m_ducks.Intermission() &&
+               m_player1.CloudNum != 0 &&
+               m_ducks.BallsAlive() &&
+               m_clouds_p1.State == DrawableState.Finished)
             {
-                m_clouds.Reset();
-                // Play duck call sound
+                m_clouds_p1.Reset();
+                
                 m_player1.CloudNum -= 1;
             }
 
             // (Player 2)
-            if (((keyboardState2.IsKeyDown(Keys.OemComma) &&            // Handle Keyboard
-                p2keyOldState.IsKeyUp(Keys.OemComma)) ||
-                (gamePadState2.Buttons.X == ButtonState.Pressed &&      // Handle Gamepad
-                p2padOldState.Buttons.X == ButtonState.Released)) &&
+            if ((input.IsNewKeyPress(Keys.OemComma, PlayerIndex.Two, out playerIndex) ||
+                input.IsNewButtonPress(Buttons.X, PlayerIndex.Two, out playerIndex)) &&
                 m_intro.Scene_State == DrawableState.Finished &&
                 !m_ducks.Intermission() &&
                 m_player2.CloudNum != 0 &&
-                m_ducks.BallsAlive())
+                m_ducks.BallsAlive()  &&
+                m_clouds_p2.State == DrawableState.Finished)
             {
-                m_clouds.Reset();
+                m_clouds_p2.Reset();
                 
                 m_player2.CloudNum -= 1;
             }
@@ -397,10 +460,8 @@ namespace GameStateManagement
 
             // Handle Duck Calls
             // (Player 1)
-            if (((keyboardState1.IsKeyDown(Keys.F) &&                   // Handle Keyboard
-                p1keyOldState.IsKeyUp(Keys.F)) ||
-                (gamePadState1.Buttons.Y == ButtonState.Pressed &&      // Handle Gamepad
-                p1padOldState.Buttons.Y == ButtonState.Released)) &&
+            if ((input.IsNewKeyPress(Keys.F, PlayerIndex.One, out playerIndex) ||
+                input.IsNewButtonPress(Buttons.Y, PlayerIndex.One, out playerIndex)) &&
                 m_intro.Scene_State == DrawableState.Finished && 
                 !m_ducks.Intermission() && 
                 m_player1.DuckCallNum != 0 &&
@@ -412,10 +473,8 @@ namespace GameStateManagement
             }
 
             // (Player 2)
-            if (((keyboardState2.IsKeyDown(Keys.OemPeriod) &&                   // Handle Keyboard
-                p2keyOldState.IsKeyUp(Keys.OemPeriod)) ||
-                (gamePadState2.Buttons.Y == ButtonState.Pressed &&      // Handle Gamepad
-                p2padOldState.Buttons.Y == ButtonState.Released)) &&
+            if ((input.IsNewKeyPress(Keys.OemPeriod, PlayerIndex.Two, out playerIndex) ||
+                input.IsNewButtonPress(Buttons.Y, PlayerIndex.Two, out playerIndex)) &&
                 m_intro.Scene_State == DrawableState.Finished &&
                 !m_ducks.Intermission() &&
                 m_player2.DuckCallNum != 0 &&
@@ -428,10 +487,8 @@ namespace GameStateManagement
 
             // Handle Shot Input
             // (Player 1)
-            if (((keyboardState1.IsKeyDown(Keys.G) &&                   // Handle Keyboard
-                p1keyOldState.IsKeyUp(Keys.G)) ||
-                (gamePadState1.Buttons.B == ButtonState.Pressed &&      // Handle Gamepad
-                p1padOldState.Buttons.B == ButtonState.Released)) &&
+            if ((input.IsNewKeyPress(Keys.G, PlayerIndex.One, out playerIndex) ||
+               input.IsNewButtonPress(Buttons.B, PlayerIndex.One, out playerIndex)) &&
                 m_intro.Scene_State == DrawableState.Finished &&
                 !m_ducks.Intermission() &&
                 m_player1.ShotNum != 0 &&
@@ -482,10 +539,8 @@ namespace GameStateManagement
             }
 
             // (Player 2)
-            if (((keyboardState2.IsKeyDown(Keys.OemQuestion) &&                   // Handle Keyboard
-                p2keyOldState.IsKeyUp(Keys.OemQuestion)) ||
-                (gamePadState2.Buttons.B == ButtonState.Pressed &&      // Handle Gamepad
-                p2padOldState.Buttons.B == ButtonState.Released)) &&
+            if ((input.IsNewKeyPress(Keys.OemQuestion, PlayerIndex.Two, out playerIndex) ||
+                input.IsNewButtonPress(Buttons.B, PlayerIndex.Two, out playerIndex)) &&
                 m_intro.Scene_State == DrawableState.Finished &&
                 !m_ducks.Intermission() &&
                 m_player2.ShotNum != 0 &&
@@ -534,19 +589,11 @@ namespace GameStateManagement
                 m_player2.ShotNum -= 1;
             }
 
-            if (m_intro.Scene_State == DrawableState.Finished) // &&
-                //m_pongBall.Ball_State != BallState.OutofBounds && )
-            {
-               // m_paused = false;
-                m_player1.UpdatePaddle(keyboardState1, gamePadState1);
-                m_player2.UpdatePaddle(keyboardState2, gamePadState2);
-            }
-
-            // Save old state
-            p1keyOldState = keyboardState1;
-            p2keyOldState = keyboardState2;
-            p1padOldState = gamePadState1;
-            p2padOldState = gamePadState2;
+            if (m_intro.Scene_State == DrawableState.Finished) 
+            {            
+                m_player1.UpdatePaddle(keyboardState1, gamePadState1, m_clouds_p2.CloudsA);
+                m_player2.UpdatePaddle(keyboardState2, gamePadState2, m_clouds_p1.CloudsA);
+            }  
         }
 
 
@@ -556,36 +603,29 @@ namespace GameStateManagement
         public override void Draw(GameTime gameTime)
         {
             // This game has a blue background. Why? Because!
-            ScreenManager.GraphicsDevice.Clear(Color.Black);//new Color(49, 192, 250, 255));
-            /*
-            if (m_pongBall.Ball_State == BallState.DeadBall &&
-                         !m_finished_intermission &&
-                         m_intro.Scene_State == DrawableState.Finished)
-                ScreenManager.GraphicsDevice.Clear(Color.White);
-            */
+            ScreenManager.GraphicsDevice.Clear(Color.Black);
+            
             // Our player and enemy are both actually just text strings.
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
             //spriteBatch.Begin();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
 
             if (m_ducks.IntermissionScene == 0)
             {
-                spriteBatch.Draw(ScreenTexture, m_background_color_rect, new Color(247, 206, 176, 255));
+                spriteBatch.Draw(ScreenTexture, m_background_color_rect, null, new Color(247, 206, 176, 255), 0.0f, Vector2.Zero, SpriteEffects.None, 0);
                 m_fly_sign.Draw(spriteBatch);      
             }
             else 
             {
-                spriteBatch.Draw(ScreenTexture, m_background_color_rect, new Color(49, 192, 250, 255));
+                spriteBatch.Draw(ScreenTexture, m_background_color_rect, null, new Color(49, 192, 250, 255), 0.0f, Vector2.Zero, SpriteEffects.None, 0);
             }
 
-            m_clouds.Draw(spriteBatch);
-
             // Draw tree
-            spriteBatch.Draw(tree, new Vector2(122, 236), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(tree, new Vector2(122, 236), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0); 
             
             // Draw Bush
-            spriteBatch.Draw(bush, new Vector2(822, 356), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(bush, new Vector2(822, 356), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0); 
 
             // Draw Duck Balls
             m_ducks.DrawBalls(spriteBatch);
@@ -594,12 +634,13 @@ namespace GameStateManagement
             m_ducks.DrawIntermission(spriteBatch);
 
             // Draw left ground + grass
-            spriteBatch.Draw(ground, new Vector2(0, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(ground, new Vector2(0, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
 
             // Draw right ground + grass
-            spriteBatch.Draw(ground, new Vector2(512, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(ground, new Vector2(512, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
 
-            
+            m_clouds_p1.Draw(spriteBatch);
+            m_clouds_p2.Draw(spriteBatch);
 
             // Draw Paddles 
             m_player1.DrawPaddle(spriteBatch);
@@ -607,11 +648,9 @@ namespace GameStateManagement
 
             // Draw Intro
             m_intro.Draw(spriteBatch);
-
             m_ducks.DrawCounter(spriteBatch);
 
             
-
             m_player1.DrawItems(spriteBatch);
             m_player2.DrawItems(spriteBatch);
 
@@ -647,7 +686,7 @@ namespace GameStateManagement
             spriteBatch.Draw(ScreenTexture, newbound[8], Color.White);
 
             spriteBatch.Draw(ScreenTexture, newbound[9], Color.White);
-             * */
+            */ 
 
             spriteBatch.End();
 

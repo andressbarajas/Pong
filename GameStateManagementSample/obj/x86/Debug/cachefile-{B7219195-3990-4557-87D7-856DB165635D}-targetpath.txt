@@ -28,3 +28,5 @@ Content\sshot.xnb
 Content\smallcloud.xnb
 Content\medcloud.xnb
 Content\bigcloud.xnb
+Content\dogbark.xnb
+Content\roundend.xnb

@@ -10,6 +10,7 @@ namespace GameStateManagement
 {
     public class HelperUtils
     {
+        
         private static readonly Random random = new Random();
         private static readonly object syncLock = new object();
 
@@ -23,7 +24,30 @@ namespace GameStateManagement
                 return random.NextDouble() * (maximum - minimum) + minimum;
             }
         }
+        /*
+        public static float BackLayer()
+        {
+            float returnvalue = background;
+            background -= 0.00001f;
+            if (background == 0.66666f) { background = 1.0f; }
+            return returnvalue;
+        }
 
+        public static float MidLayer() {
+            float returnvalue = midground;
+            midground -= 0.00001f;
+            if (midground == 0.33333f) { midground = 1.0f; }
+            return returnvalue;
+        }
+
+        public static float ForeLayer()
+        {
+            float returnvalue = foreground;
+            foreground -= 0.00001f;
+            if (foreground == 0.0f) { foreground = 0.33333f; }
+            return returnvalue;
+        }
+         * */
 
         /// <summary>
         /// Determines if there is overlap of the non-transparent pixels

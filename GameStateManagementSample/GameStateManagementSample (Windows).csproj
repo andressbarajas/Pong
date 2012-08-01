@@ -71,12 +71,11 @@
     <Compile Include="AnimationScene.cs" />
     <Compile Include="Blinker.cs" />
     <Compile Include="Boundary.cs" />
-    <Compile Include="Cloud.cs" />
     <Compile Include="Clouds.cs" />
     <Compile Include="CollisionData.cs" />
+    <Compile Include="CountTimer.cs" />
     <Compile Include="DirXYMover.cs" />
     <Compile Include="Drawable.cs" />
-    <Compile Include="DuckCall.cs" />
     <Compile Include="DuckHuntBall.cs" />
     <Compile Include="DuckPopulation.cs" />
     <Compile Include="Game.cs" />
@@ -89,7 +88,6 @@
     <Compile Include="Player.cs" />
     <Compile Include="PongBall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Score.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
     <Compile Include="ScreenManager\InputState.cs" />
     <Compile Include="ScreenManager\ScreenManager.cs" />
@@ -103,7 +101,6 @@
     <Compile Include="Screens\OptionsMenuScreen.cs" />
     <Compile Include="Screens\PauseMenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
-    <Compile Include="Shot.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteDecorator.cs" />
     <Compile Include="TimeOutDrawable.cs" />

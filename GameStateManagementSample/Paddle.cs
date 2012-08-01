@@ -13,13 +13,21 @@ namespace GameStateManagement
     {
         #region Properties
 
-        public float Velocity
+        public float AbsVelocity
         {
-            get { return m_velocity; }
-            set { m_velocity = value; }
+            get { return m_abs_velocity; }
+            set { m_abs_velocity = value; }
         }
 
-        float m_velocity = 7.0f;
+        private float m_abs_velocity = 7.0f;
+
+        public float CurrVelocity
+        {
+            get { return m_curr_velocity; }
+            set { m_curr_velocity = value; }
+        }
+
+        private float m_curr_velocity;
 
         public Rectangle Rect
         {
@@ -27,7 +35,7 @@ namespace GameStateManagement
             set { m_rect = value;  }
         }
 
-        Rectangle m_rect;
+        private Rectangle m_rect;
 
         public CollisionData Texture_Data
         {
@@ -35,14 +43,14 @@ namespace GameStateManagement
             set { m_texture_data = value; }
         }
 
-        CollisionData m_texture_data;
+        private CollisionData m_texture_data;
 
         #endregion
 
         #region Fields
 
         private int m_player;
-        private int m_xpos, m_ypos; 
+        private int m_xpos, m_ypos;
         private Rectangle m_scrn_boundary;
         private Texture2D m_texture;
         private Color[] m_colordata;
@@ -55,7 +63,8 @@ namespace GameStateManagement
         { 
             m_player = player;
             m_texture = texture;
-            m_scrn_boundary = boundary;  
+            m_scrn_boundary = boundary;
+            m_curr_velocity = m_abs_velocity;
 
             InitPaddle();
         }
@@ -64,27 +73,46 @@ namespace GameStateManagement
 
         #region Update and Draw
 
-        public void Update(KeyboardState keyboardState, GamePadState gamePadState)
+        public void Update(KeyboardState keyboardState, GamePadState gamePadState, Cloud[] clouds)
         {
+            float temp = 0.0f;
+
+            /* Handle collision with clouds */
+            for (int i = 0; i < clouds.Length; i++)
+            {
+                if (m_texture_data.m_rect.Intersects(clouds[i].m_coldata.m_rect))
+                {
+                    if (HelperUtils.IntersectPixels(m_texture_data.m_transformation, m_texture_data.m_rect.Width,
+                           m_texture_data.m_rect.Height, m_texture_data.m_color_data,
+                           clouds[i].m_coldata.m_transformation, clouds[i].m_coldata.m_rect.Width,
+                           clouds[i].m_coldata.m_rect.Height, clouds[i].m_coldata.m_color_data))
+                    {
+                        temp -= m_abs_velocity * clouds[i].m_slow_down;
+                    }
+                }
+            }
+
+            m_curr_velocity = m_abs_velocity + temp;
+
             if (m_player == 1)
             {
                 if (keyboardState.IsKeyDown(Keys.Up))
-                    m_ypos -= (int)(m_velocity);
+                    m_ypos -= (int)(m_curr_velocity);
 
                 if (keyboardState.IsKeyDown(Keys.Down))
-                    m_ypos += (int)(m_velocity);
+                    m_ypos += (int)(m_curr_velocity);
             }
             else if (m_player == 0)
             {
                 if (keyboardState.IsKeyDown(Keys.A))
-                    m_ypos -= (int)(m_velocity);
+                    m_ypos -= (int)(m_curr_velocity);
 
                 if (keyboardState.IsKeyDown(Keys.Z))
-                    m_ypos += (int)(m_velocity);
+                    m_ypos += (int)(m_curr_velocity);
             }
 
             Vector2 thumbstick = gamePadState.ThumbSticks.Left;
-            m_ypos -= (int)(thumbstick.Y * m_velocity);
+            m_ypos -= (int)(thumbstick.Y * m_curr_velocity);
 
             // Handle boundaries
             if (m_ypos < m_scrn_boundary.Top)
