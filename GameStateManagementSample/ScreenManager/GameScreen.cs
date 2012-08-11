@@ -158,7 +158,7 @@ namespace GameStateManagement
         public ScreenManager ScreenManager
         {
             get { return screenManager; }
-            internal set { screenManager = value; }
+            set { screenManager = value; } // took away internal
         }
 
         ScreenManager screenManager;

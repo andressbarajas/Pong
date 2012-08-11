@@ -47,250 +47,400 @@
       <Time>2010-09-15T13:43:52-07:00</Time>
     </Item>
     <Item>
-      <Source>tree.png</Source>
-      <Name>tree</Name>
+      <Source>DuckHunt\Sounds\dogbark.wav</Source>
+      <Name>DuckHunt\Sounds\dogbark</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\dogbark.xnb</Output>
+      <Time>2012-08-03T03:22:10.730789-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Textures\tree.png</Source>
+      <Name>DuckHunt\Textures\tree</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\tree.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\tree.xnb</Output>
       <Time>2012-07-29T02:20:08.0059048-07:00</Time>
     </Item>
     <Item>
-      <Source>ground.png</Source>
-      <Name>ground</Name>
+      <Source>DuckHunt\Textures\ground.png</Source>
+      <Name>DuckHunt\Textures\ground</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\ground.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\ground.xnb</Output>
       <Time>2012-07-29T02:20:31.769264-07:00</Time>
     </Item>
     <Item>
-      <Source>bush.png</Source>
-      <Name>bush</Name>
+      <Source>DuckHunt\Textures\bush.png</Source>
+      <Name>DuckHunt\Textures\bush</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bush.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\bush.xnb</Output>
       <Time>2012-07-29T09:29:50.3068628-07:00</Time>
     </Item>
     <Item>
-      <Source>panel.png</Source>
-      <Name>panel</Name>
+      <Source>DuckHunt\Textures\panel.png</Source>
+      <Name>DuckHunt\Textures\panel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\panel.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\panel.xnb</Output>
       <Time>2012-07-11T23:15:08.75886-07:00</Time>
     </Item>
     <Item>
-      <Source>flyaway.png</Source>
-      <Name>flyaway</Name>
+      <Source>DuckHunt\Textures\flyaway.png</Source>
+      <Name>DuckHunt\Textures\flyaway</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\flyaway.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\flyaway.xnb</Output>
       <Time>2012-07-16T20:14:19.2855752-07:00</Time>
     </Item>
     <Item>
-      <Source>blackduck.png</Source>
-      <Name>blackduck</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="PremultiplyAlpha">False</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\blackduck.xnb</Output>
-      <Time>2012-07-12T21:20:22.3455909-07:00</Time>
-    </Item>
-    <Item>
-      <Source>laughdog.png</Source>
-      <Name>laughdog</Name>
+      <Source>DuckHunt\Textures\laughdog.png</Source>
+      <Name>DuckHunt\Textures\laughdog</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\laughdog.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\laughdog.xnb</Output>
       <Time>2012-07-17T04:34:01.0187594-07:00</Time>
     </Item>
     <Item>
-      <Source>walkdog.png</Source>
-      <Name>walkdog</Name>
+      <Source>DuckHunt\Textures\walkdog.png</Source>
+      <Name>DuckHunt\Textures\walkdog</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\walkdog.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\walkdog.xnb</Output>
       <Time>2012-07-17T04:55:39.1770098-07:00</Time>
     </Item>
     <Item>
-      <Source>wingflaps.wav</Source>
-      <Name>wingflaps</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\wingflaps.xnb</Output>
-      <Time>2012-07-31T17:25:55.4669169-07:00</Time>
-    </Item>
-    <Item>
-      <Source>quack.wav</Source>
-      <Name>quack</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\quack.xnb</Output>
-      <Time>2012-07-31T17:23:44.8224445-07:00</Time>
-    </Item>
-    <Item>
-      <Source>startround.wav</Source>
-      <Name>startround</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\startround.xnb</Output>
-      <Time>2012-07-17T22:27:08.8742353-07:00</Time>
-    </Item>
-    <Item>
-      <Source>doglaugh.wav</Source>
-      <Name>doglaugh</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\doglaugh.xnb</Output>
-      <Time>2012-07-18T17:12:35.150311-07:00</Time>
-    </Item>
-    <Item>
-      <Source>flyawaysign.png</Source>
-      <Name>flyawaysign</Name>
+      <Source>DuckHunt\Textures\flyawaysign.png</Source>
+      <Name>DuckHunt\Textures\flyawaysign</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\flyawaysign.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\flyawaysign.xnb</Output>
       <Time>2012-07-20T01:21:53.8031754-07:00</Time>
     </Item>
     <Item>
-      <Source>duckcount.png</Source>
-      <Name>duckcount</Name>
+      <Source>DuckHunt\Textures\duckcount.png</Source>
+      <Name>DuckHunt\Textures\duckcount</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\duckcount.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\duckcount.xnb</Output>
       <Time>2012-07-23T22:00:36.9572199-07:00</Time>
     </Item>
     <Item>
-      <Source>score.png</Source>
-      <Name>score</Name>
+      <Source>DuckHunt\Textures\score.png</Source>
+      <Name>DuckHunt\Textures\score</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\score.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\score.xnb</Output>
       <Time>2012-07-23T22:04:14.1976453-07:00</Time>
     </Item>
     <Item>
-      <Source>clouds.png</Source>
-      <Name>clouds</Name>
+      <Source>DuckHunt\Textures\clouds.png</Source>
+      <Name>DuckHunt\Textures\clouds</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\clouds.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\clouds.xnb</Output>
       <Time>2012-07-23T21:51:13.2389771-07:00</Time>
     </Item>
     <Item>
-      <Source>duckcall.png</Source>
-      <Name>duckcall</Name>
+      <Source>DuckHunt\Textures\duckcall.png</Source>
+      <Name>DuckHunt\Textures\duckcall</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\duckcall.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\duckcall.xnb</Output>
       <Time>2012-07-23T21:53:47.9098237-07:00</Time>
     </Item>
     <Item>
-      <Source>shot.png</Source>
-      <Name>shot</Name>
+      <Source>DuckHunt\Textures\shot.png</Source>
+      <Name>DuckHunt\Textures\shot</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\shot.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\shot.xnb</Output>
       <Time>2012-07-23T21:47:24.7689093-07:00</Time>
     </Item>
     <Item>
-      <Source>duck.png</Source>
-      <Name>duck</Name>
+      <Source>DuckHunt\Textures\duck.png</Source>
+      <Name>DuckHunt\Textures\duck</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\duck.xnb</Output>
-      <Time>2012-07-23T14:28:16.4351744-07:00</Time>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\duck.xnb</Output>
+      <Time>2012-07-12T21:20:22.3455909-07:00</Time>
     </Item>
     <Item>
-      <Source>bitfont.png</Source>
-      <Name>bitfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bitfont.xnb</Output>
-      <Time>2012-07-27T00:34:47.1371884-07:00</Time>
-    </Item>
-    <Item>
-      <Source>bigfont.png</Source>
-      <Name>bigfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bigfont.xnb</Output>
-      <Time>2012-07-27T17:16:56.4306869-07:00</Time>
-    </Item>
-    <Item>
-      <Source>sshot.wav</Source>
-      <Name>sshot</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\sshot.xnb</Output>
-      <Time>2012-07-28T11:32:43.121934-07:00</Time>
-    </Item>
-    <Item>
-      <Source>smallcloud.png</Source>
-      <Name>smallcloud</Name>
+      <Source>DuckHunt\Textures\smallcloud.png</Source>
+      <Name>DuckHunt\Textures\smallcloud</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\smallcloud.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\smallcloud.xnb</Output>
       <Time>2012-07-29T23:00:29.9171251-07:00</Time>
     </Item>
     <Item>
-      <Source>medcloud.png</Source>
-      <Name>medcloud</Name>
+      <Source>DuckHunt\Textures\medcloud.png</Source>
+      <Name>DuckHunt\Textures\medcloud</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\medcloud.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\medcloud.xnb</Output>
       <Time>2012-07-29T23:00:07.6118493-07:00</Time>
     </Item>
     <Item>
-      <Source>bigcloud.png</Source>
-      <Name>bigcloud</Name>
+      <Source>DuckHunt\Textures\bigcloud.png</Source>
+      <Name>DuckHunt\Textures\bigcloud</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\bigcloud.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\bigcloud.xnb</Output>
       <Time>2012-07-29T22:59:41.4283517-07:00</Time>
     </Item>
     <Item>
-      <Source>dogbark.wav</Source>
-      <Name>dogbark</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
+      <Source>DuckHunt\Textures\resume.png</Source>
+      <Name>DuckHunt\Textures\resume</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\dogbark.xnb</Output>
-      <Time>2012-07-17T16:47:17.6908136-07:00</Time>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\resume.xnb</Output>
+      <Time>2012-08-02T19:38:40.3900857-07:00</Time>
     </Item>
     <Item>
-      <Source>roundend.wav</Source>
-      <Name>roundend</Name>
+      <Source>DuckHunt\Textures\pauset.png</Source>
+      <Name>DuckHunt\Textures\pauset</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\pauset.xnb</Output>
+      <Time>2012-08-02T19:30:19.1984192-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Textures\quit.png</Source>
+      <Name>DuckHunt\Textures\quit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\quit.xnb</Output>
+      <Time>2012-08-02T19:47:02.1397842-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Textures\playagain.png</Source>
+      <Name>DuckHunt\Textures\playagain</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\playagain.xnb</Output>
+      <Time>2012-08-03T01:55:34.3585735-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\wingflap.wav</Source>
+      <Name>DuckHunt\Sounds\wingflap</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\roundend.xnb</Output>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\wingflap.xnb</Output>
+      <Time>2012-07-31T17:25:55.4669169-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\quack.wav</Source>
+      <Name>DuckHunt\Sounds\quack</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\quack.xnb</Output>
+      <Time>2012-07-31T17:23:44.8224445-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\startround.wav</Source>
+      <Name>DuckHunt\Sounds\startround</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\startround.xnb</Output>
+      <Time>2012-07-17T22:27:08.8742353-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\doglaugh.wav</Source>
+      <Name>DuckHunt\Sounds\doglaugh</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\doglaugh.xnb</Output>
+      <Time>2012-07-18T17:12:35.150311-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\shot.wav</Source>
+      <Name>DuckHunt\Sounds\shot</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\shot.xnb</Output>
+      <Time>2012-07-28T11:32:43.121934-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\roundend.wav</Source>
+      <Name>DuckHunt\Sounds\roundend</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\roundend.xnb</Output>
       <Time>2012-07-31T20:28:27.2043205-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\pause.wav</Source>
+      <Name>DuckHunt\Sounds\pause</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\pause.xnb</Output>
+      <Time>2012-08-02T17:45:02.275017-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Sounds\select.wav</Source>
+      <Name>DuckHunt\Sounds\select</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\select.xnb</Output>
+      <Time>2012-08-02T18:07:44.8157969-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Textures\ducklife.png</Source>
+      <Name>DuckHunt\Textures\ducklife</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\ducklife.xnb</Output>
+      <Time>2012-07-23T14:28:16.4351744-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\lilfont.png</Source>
+      <Name>Fonts\lilfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\lilfont.xnb</Output>
+      <Time>2012-07-27T00:34:47.1371884-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\bigfont.png</Source>
+      <Name>Fonts\bigfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\bigfont.xnb</Output>
+      <Time>2012-07-27T17:16:56.4306869-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\nesfont.png</Source>
+      <Name>Fonts\nesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\nesfont.xnb</Output>
+      <Time>2012-08-03T15:20:58.1182448-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\bignesfont.png</Source>
+      <Name>Fonts\bignesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\bignesfont.xnb</Output>
+      <Time>2012-08-03T15:35:53.5874627-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\lilnesfont.png</Source>
+      <Name>Fonts\lilnesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\lilnesfont.xnb</Output>
+      <Time>2012-08-03T15:35:09.6859517-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\hugenesfont.png</Source>
+      <Name>Fonts\hugenesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\hugenesfont.xnb</Output>
+      <Time>2012-08-03T15:50:09.4394146-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Levels\pong.png</Source>
+      <Name>Levels\pong</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Levels\pong.xnb</Output>
+      <Time>2012-08-03T18:27:11.1803074-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Levels\duckhuntpong.png</Source>
+      <Name>Levels\duckhuntpong</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Levels\duckhuntpong.xnb</Output>
+      <Time>2012-08-03T17:23:57.3633135-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Textures\pongpaddle.png</Source>
+      <Name>Pong\Textures\pongpaddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\pongpaddle.xnb</Output>
+      <Time>2012-08-09T19:16:47.7171603-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Textures\pongball.png</Source>
+      <Name>Pong\Textures\pongball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\pongball.xnb</Output>
+      <Time>2012-08-09T19:16:37.5115766-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Sounds\paddlehit.wav</Source>
+      <Name>Pong\Sounds\paddlehit</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Sounds\paddlehit.xnb</Output>
+      <Time>2012-08-09T23:35:08.1602044-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Sounds\wallbounce.wav</Source>
+      <Name>Pong\Sounds\wallbounce</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Sounds\wallbounce.xnb</Output>
+      <Time>2012-08-09T23:30:04.0258089-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Sounds\deadball.wav</Source>
+      <Name>Pong\Sounds\deadball</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Sounds\deadball.xnb</Output>
+      <Time>2012-08-10T00:30:01.9826002-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

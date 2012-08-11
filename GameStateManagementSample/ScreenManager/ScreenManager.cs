@@ -247,8 +247,10 @@ namespace GameStateManagement
             {
                 screen.LoadContent();
             }
-
-            screens.Add(screen);
+            if (screen.ScreenManager != null)
+            {
+                screens.Add(screen);
+            }
 
             // update the TouchPanel to respond to gestures this screen is interested in
             TouchPanel.EnabledGestures = screen.EnabledGestures;

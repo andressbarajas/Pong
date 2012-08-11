@@ -19,7 +19,7 @@ namespace GameStateManagement
             public Rectangle m_source;
             public SoundEffect m_soundEffect;
         }
-
+        /*
         public Direction Dir
         {
             get { return m_dir; }
@@ -27,8 +27,8 @@ namespace GameStateManagement
         }
 
         private Direction m_dir = Direction.Right; // Default direction we are facing is right
-
-        public int Width
+        */
+        public override int Width
         {
             get { return m_width; }
             set { m_width = value;  }
@@ -36,7 +36,7 @@ namespace GameStateManagement
 
         private int m_width;
 
-        public int Height
+        public override int Height
         {
             get { return m_height; }
             set { m_height = value; }
@@ -44,16 +44,18 @@ namespace GameStateManagement
 
         private int m_height;
 
-        public Texture2D Texture
+        public override Texture2D Texture
         {
             get { return m_texture; }
+            set { m_texture = value; }
         }
 
         private Texture2D m_texture;
 
-        public Rectangle Sprite_Src_Rect
+        public override Rectangle Sprite_Src_Rect
         {
             get { return m_frames[m_currentFrame].m_source; }
+            //set {};
         }
 
         #endregion
@@ -118,7 +120,7 @@ namespace GameStateManagement
                         }
                     }
                 }
-
+                /*
                 if (m_dir == Direction.Right)
                 {
                     Effects = SpriteEffects.None;
@@ -127,6 +129,7 @@ namespace GameStateManagement
                 {
                     Effects = SpriteEffects.FlipHorizontally;
                 } 
+                 * */
             }
         }
 
@@ -184,6 +187,7 @@ namespace GameStateManagement
             m_currentTick = 0;
             m_currentFrame = 0;
             Draw_State = DrawableState.Active;
+            Effects = SpriteEffects.None;
         }
 
         #endregion

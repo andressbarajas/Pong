@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 #endregion
 
 namespace GameStateManagement
@@ -24,9 +25,11 @@ namespace GameStateManagement
     /// </summary>
     abstract class MenuScreen : GameScreen
     {
+
         #region Fields
 
-        List<MenuEntry> menuEntries = new List<MenuEntry>();
+        
+        List<MenuItem> menuEntries = new List<MenuItem>();
         int selectedEntry = 0;
         string menuTitle;
 
@@ -39,11 +42,15 @@ namespace GameStateManagement
         /// Gets the list of menu entries, so derived classes can add
         /// or change the menu contents.
         /// </summary>
-        protected IList<MenuEntry> MenuEntries
+        protected IList<MenuItem> MenuEntries
         {
             get { return menuEntries; }
         }
 
+        public MenuItem SelectedItem
+        {
+            get { return menuEntries[selectedEntry]; }
+        }
 
         #endregion
 
@@ -56,9 +63,6 @@ namespace GameStateManagement
         public MenuScreen(string menuTitle)
         {
             this.menuTitle = menuTitle;
-
-            TransitionOnTime = TimeSpan.FromSeconds(0.5);
-            TransitionOffTime = TimeSpan.FromSeconds(0.5);
         }
 
 
@@ -73,6 +77,9 @@ namespace GameStateManagement
         /// </summary>
         public override void HandleInput(InputState input)
         {
+            /* Set current to false */
+            menuEntries[selectedEntry].Selected = false;
+
             // Move to the previous menu entry?
             if (input.IsMenuUp(ControllingPlayer))
             {
@@ -90,6 +97,8 @@ namespace GameStateManagement
                 if (selectedEntry >= menuEntries.Count)
                     selectedEntry = 0;
             }
+
+            menuEntries[selectedEntry].Selected = true;
 
             // Accept or cancel the menu? We pass in our ControllingPlayer, which may
             // either be null (to accept input from any player) or a specific index.
@@ -140,43 +149,6 @@ namespace GameStateManagement
 
         #region Update and Draw
 
-
-        /// <summary>
-        /// Allows the screen the chance to position the menu entries. By default
-        /// all menu entries are lined up in a vertical list, centered on the screen.
-        /// </summary>
-        protected virtual void UpdateMenuEntryLocations()
-        {
-            // Make the menu slide into place during transitions, using a
-            // power curve to make things look more interesting (this makes
-            // the movement slow down as it nears the end).
-            float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
-
-            // start at Y = 175; each X value is generated per entry
-            Vector2 position = new Vector2(0f, 175f);
-
-            // update each menu entry's location in turn
-            for (int i = 0; i < menuEntries.Count; i++)
-            {
-                MenuEntry menuEntry = menuEntries[i];
-                
-                // each entry is to be centered horizontally
-                position.X = ScreenManager.GraphicsDevice.Viewport.Width / 2 - menuEntry.GetWidth(this) / 2;
-
-                if (ScreenState == ScreenState.TransitionOn)
-                    position.X -= transitionOffset * 256; // Move to the left
-                else
-                    position.X += transitionOffset * 512; // Move to the right
-
-                // set the entry's position
-                menuEntry.Position = position;
-
-                // move down for the next entry the size of this entry
-                position.Y += menuEntry.GetHeight(this);
-            }
-        }
-
-
         /// <summary>
         /// Updates the menu.
         /// </summary>
@@ -188,9 +160,7 @@ namespace GameStateManagement
             // Update each nested MenuEntry object.
             for (int i = 0; i < menuEntries.Count; i++)
             {
-                bool isSelected = IsActive && (i == selectedEntry);
-
-                menuEntries[i].Update(this, isSelected, gameTime);
+                menuEntries[i].Update();
             }
         }
 
@@ -201,7 +171,7 @@ namespace GameStateManagement
         public override void Draw(GameTime gameTime)
         {
             // make sure our entries are in the right place before we draw them
-            UpdateMenuEntryLocations();
+            //UpdateMenuEntryLocations();
 
             GraphicsDevice graphics = ScreenManager.GraphicsDevice;
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
@@ -212,12 +182,14 @@ namespace GameStateManagement
             // Draw each menu entry in turn.
             for (int i = 0; i < menuEntries.Count; i++)
             {
-                MenuEntry menuEntry = menuEntries[i];
+                MenuItem menuEntry = menuEntries[i];
 
-                bool isSelected = IsActive && (i == selectedEntry);
+                //bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.Draw(this, isSelected, gameTime);
+                //menuEntry.Draw(this, isSelected, gameTime);
+                menuEntry.Draw(spriteBatch);
             }
+            /*
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -234,7 +206,7 @@ namespace GameStateManagement
 
             spriteBatch.DrawString(font, menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, titleScale, SpriteEffects.None, 0);
-
+            */
             spriteBatch.End();
         }
 

@@ -12,7 +12,7 @@ namespace GameStateManagement
     {
         #region Properties
 
-        public Texture2D Sprite_Texture
+        public Texture2D Texture
         {
             get { return m_texture; }
             //set {  m_texture = value; }
@@ -20,9 +20,9 @@ namespace GameStateManagement
 
         private Texture2D m_texture;
 
-        public Rectangle? Sprite_Src_Rect
+        public Rectangle Sprite_Src_Rect
         {
-            get { return m_src_rect; }
+            get { return m_src_rect.Value; }
             set { m_src_rect = value; }
         }
 

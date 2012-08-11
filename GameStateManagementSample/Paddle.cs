@@ -1,11 +1,13 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input.Touch;
+
 
 namespace GameStateManagement
 {
@@ -49,11 +51,11 @@ namespace GameStateManagement
 
         #region Fields
 
-        private int m_player;
-        private int m_xpos, m_ypos;
-        private Rectangle m_scrn_boundary;
-        private Texture2D m_texture;
-        private Color[] m_colordata;
+        protected int m_player;
+        protected int m_xpos, m_ypos;
+        protected Rectangle m_scrn_boundary;
+        protected Texture2D m_texture;
+        protected Color[] m_colordata;
 
         #endregion
 
@@ -73,27 +75,8 @@ namespace GameStateManagement
 
         #region Update and Draw
 
-        public void Update(KeyboardState keyboardState, GamePadState gamePadState, Cloud[] clouds)
+        public virtual void Update(KeyboardState keyboardState, GamePadState gamePadState)
         {
-            float temp = 0.0f;
-
-            /* Handle collision with clouds */
-            for (int i = 0; i < clouds.Length; i++)
-            {
-                if (m_texture_data.m_rect.Intersects(clouds[i].m_coldata.m_rect))
-                {
-                    if (HelperUtils.IntersectPixels(m_texture_data.m_transformation, m_texture_data.m_rect.Width,
-                           m_texture_data.m_rect.Height, m_texture_data.m_color_data,
-                           clouds[i].m_coldata.m_transformation, clouds[i].m_coldata.m_rect.Width,
-                           clouds[i].m_coldata.m_rect.Height, clouds[i].m_coldata.m_color_data))
-                    {
-                        temp -= m_abs_velocity * clouds[i].m_slow_down;
-                    }
-                }
-            }
-
-            m_curr_velocity = m_abs_velocity + temp;
-
             if (m_player == 1)
             {
                 if (keyboardState.IsKeyDown(Keys.Up))

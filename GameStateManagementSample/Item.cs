@@ -67,7 +67,7 @@ namespace GameStateManagement
             m_font = font;
 
             m_icon = new Sprite();
-            m_icon.Sprite_Texture = texture;
+            m_icon.Texture = texture;
             m_icon.X_Pos = x;
             m_icon.Y_Pos = y;
 
@@ -98,6 +98,7 @@ namespace GameStateManagement
                 Tint = new Color(255, 255, 255, 128);
                 m_icon.Tint = Tint;
             }
+            m_icon.Update();
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

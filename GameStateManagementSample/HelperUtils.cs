@@ -48,6 +48,61 @@ namespace GameStateManagement
             return returnvalue;
         }
          * */
+        /* Input array must be [rows,cols] */
+        public static T[,] ResizeArray<T>(T[,] original, int x, int y)
+        {
+            T[,] newArray = new T[x, y];
+            int minX = Math.Min(original.GetLength(0), newArray.GetLength(0));
+            int minY = Math.Min(original.GetLength(1), newArray.GetLength(1));
+            /*
+            for (int i = 0; i < minY; ++i)
+                Array.Copy(original, i * original.GetLength(0), newArray, i * newArray.GetLength(0), minX);
+            */
+            for (int i = 0; i < minX; ++i)
+                Array.Copy(original, i * original.GetLength(1), newArray, i * newArray.GetLength(1), minY);
+
+            return newArray;
+        }
+
+
+        public static Rectangle BuildRect(Rectangle rect, float size)
+        {
+            Rectangle temp = new Rectangle();
+
+            temp.X = rect.Left - (int)(rect.Width * size);
+            temp.Y = rect.Top - (int)(rect.Height * size);
+            temp.Width = rect.Width + (int)(2* rect.Width * size);
+            temp.Height = rect.Height + (int)(2 * rect.Height * size);
+
+            return temp;
+        }
+
+        public static Rectangle[] BuildBorder(Rectangle rect, int width)
+        {
+            Rectangle[] temp = new Rectangle[4];
+
+            temp[0].X = rect.Left - width;
+            temp[0].Y = rect.Top - width;
+            temp[0].Width = width;
+            temp[0].Height = rect.Height + 2*width;
+
+            temp[1].X = rect.Left;
+            temp[1].Y = rect.Top-width;
+            temp[1].Width = rect.Width;
+            temp[1].Height = width;
+
+            temp[2].X = rect.Right;
+            temp[2].Y = rect.Top-width;
+            temp[2].Width = width;
+            temp[2].Height = rect.Height + 2 * width;
+
+            temp[3].X = rect.Left;
+            temp[3].Y = rect.Bottom;
+            temp[3].Width = rect.Width;
+            temp[3].Height = width;
+
+            return temp;
+        }
 
         /// <summary>
         /// Determines if there is overlap of the non-transparent pixels

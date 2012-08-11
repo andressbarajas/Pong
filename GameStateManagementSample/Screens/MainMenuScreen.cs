@@ -9,6 +9,8 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 #endregion
 
 namespace GameStateManagement
@@ -18,29 +20,25 @@ namespace GameStateManagement
     /// </summary>
     class MainMenuScreen : MenuScreen
     {
+        #region Fields
+
+        ContentManager m_content;
+
+        SpriteFont m_fnt;
+
+        // Create our menu entries.
+        MenuFontItem m_play;
+        MenuFontItem m_exit;
+
+        #endregion
+
         #region Initialization
-
-
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
         public MainMenuScreen()
             : base("Main Menu")
         {
-            // Create our menu entries.
-            MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
-            MenuEntry optionsMenuEntry = new MenuEntry("Options");
-            MenuEntry exitMenuEntry = new MenuEntry("Exit");
-
-            // Hook up menu event handlers.
-            playGameMenuEntry.Selected += PlayGameMenuEntrySelected;
-            optionsMenuEntry.Selected += OptionsMenuEntrySelected;
-            exitMenuEntry.Selected += OnCancel;
-
-            // Add entries to the menu.
-            MenuEntries.Add(playGameMenuEntry);
-            MenuEntries.Add(optionsMenuEntry);
-            MenuEntries.Add(exitMenuEntry);
         }
 
 
@@ -54,45 +52,46 @@ namespace GameStateManagement
         /// </summary>
         void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
+            /*
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                               new GameplayScreen());
+                               new DuckHuntGameplayScreen());
+             * */
+            ScreenManager.AddScreen(new LevelSelectorScreen(), null);
         }
-
-
-        /// <summary>
-        /// Event handler for when the Options menu entry is selected.
-        /// </summary>
-        void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            ScreenManager.AddScreen(new OptionsMenuScreen(), e.PlayerIndex);
-        }
-
 
         /// <summary>
         /// When the user cancels the main menu, ask if they want to exit the sample.
         /// </summary>
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            const string message = "Are you sure you want to exit this sample?";
-
-            MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(message);
-
-            confirmExitMessageBox.Accepted += ConfirmExitMessageBoxAccepted;
-
-            ScreenManager.AddScreen(confirmExitMessageBox, playerIndex);
-        }
-
-
-        /// <summary>
-        /// Event handler for when the user selects ok on the "are you sure
-        /// you want to exit" message box.
-        /// </summary>
-        void ConfirmExitMessageBoxAccepted(object sender, PlayerIndexEventArgs e)
-        {
             ScreenManager.Game.Exit();
         }
 
+        #endregion
 
+        #region Public Methods
+
+        public override void LoadContent()
+        {
+            if (m_content == null)
+                m_content = new ContentManager(ScreenManager.Game.Services, "Content");
+
+            m_fnt = m_content.Load<SpriteFont>("Fonts\\nesfont");
+
+            m_play = new MenuFontItem(ScreenManager.GraphicsDevice.Viewport.Width / 2 - (int)m_fnt.MeasureString("Play").X/2, 150, "Play", m_fnt);
+            m_play.Selected_Tint = Color.Yellow;
+            m_exit = new MenuFontItem(ScreenManager.GraphicsDevice.Viewport.Width / 2 - (int)m_fnt.MeasureString("Play").X/2, 155 + (int)m_fnt.MeasureString("Exit").Y, "Exit", m_fnt);
+            m_exit.Selected_Tint = Color.Yellow;
+
+            // Hook up menu event handlers.
+            m_play.m_selected_events += PlayGameMenuEntrySelected;
+            //optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+            m_exit.m_selected_events += OnCancel;
+
+            // Add entries to the menu.
+            MenuEntries.Add(m_play);
+            MenuEntries.Add(m_exit);
+        }
         #endregion
     }
 }

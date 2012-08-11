@@ -65,15 +65,15 @@ namespace GameStateManagement
         }
 
         private Color m_tint = Color.White;
-
+        
         public virtual float Layer
         {
             get { return m_layer; }
             set { m_layer = value; }
         }
 
-        private float m_layer = 1.0f;
-
+        private float m_layer = 0.0f;
+        
         public virtual SpriteEffects Effects
         {
             get { return m_effects; }
@@ -89,6 +89,30 @@ namespace GameStateManagement
         }
 
         private DrawableState m_state = DrawableState.Finished;
+
+        public virtual int Width
+        {
+            get;
+            set;
+        }
+
+        public virtual int Height
+        {
+            get;
+            set;
+        }
+
+        public virtual Texture2D Texture
+        {
+            get;
+            set;
+        }
+
+        public virtual Rectangle Sprite_Src_Rect
+        {
+            get;
+            set;
+        }
  
         #endregion
 

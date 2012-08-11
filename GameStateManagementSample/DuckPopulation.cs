@@ -175,7 +175,7 @@ namespace GameStateManagement
                     if (m_pongballs[m_ducks[i].m_ball_index].Ball_State == BallState.Limbo && !GameOver())
                     {
                         temp = new Sprite();
-                        temp.Sprite_Texture = m_duckcount_txt;
+                        temp.Texture = m_duckcount_txt;
                         temp.X_Pos = m_ducks[i].m_spr.X_Pos;
                         temp.Y_Pos = m_ducks[i].m_spr.Y_Pos;
                  
@@ -223,8 +223,10 @@ namespace GameStateManagement
 
         public void UpdateBalls(CollisionData p1paddle, CollisionData p2paddle, Cloud[] clouds)
         {
-            m_pongballs[0].Update(p1paddle, p2paddle, clouds);
-            m_pongballs[1].Update(p1paddle, p2paddle, clouds);
+            m_pongballs[0].Update(p1paddle, p2paddle);
+            m_pongballs[0].Update(clouds);
+            m_pongballs[1].Update(p1paddle, p2paddle);
+            m_pongballs[1].Update(clouds);
         }
 
         public void DrawBalls(SpriteBatch spritebatch)
@@ -245,7 +247,15 @@ namespace GameStateManagement
                 if (m_pongballs[0].Ball_State == BallState.DeadBall ||
                     m_pongballs[0].Ball_State == BallState.Limbo)
                 {
-                    m_pongballs[0].ResetBall();
+                    if (HelperUtils.GetRandomNumber(0.0, 10.0) < 5.01)
+                    {
+                        m_pongballs[0].ResetBall(30.0f, 50.0f);
+                    }
+                    else
+                    {
+                        m_pongballs[0].ResetBall(140.0f, 160.0f);
+                    }
+
                     if ((m_pongballs[0].X_Vel > 0 && m_pongballs[0].Y_Vel < 0) || (m_pongballs[0].X_Vel < 0 && m_pongballs[0].Y_Vel < 0))
                     {
                         m_pongballs[0].SetCurrentAnimation(1);
@@ -266,7 +276,14 @@ namespace GameStateManagement
                 else if (m_pongballs[1].Ball_State == BallState.DeadBall ||
                          m_pongballs[1].Ball_State == BallState.Limbo)
                 {
-                    m_pongballs[1].ResetBall();
+                    if (HelperUtils.GetRandomNumber(0.0, 10.0) < 5.01)
+                    {
+                        m_pongballs[1].ResetBall(30.0f, 50.0f);
+                    }
+                    else
+                    {
+                        m_pongballs[1].ResetBall(140.0f, 160.0f);
+                    }
                     if ((m_pongballs[1].X_Vel > 0 && m_pongballs[1].Y_Vel < 0) || (m_pongballs[1].X_Vel < 0 && m_pongballs[1].Y_Vel < 0))
                     {
                         m_pongballs[1].SetCurrentAnimation(1);
@@ -445,16 +462,16 @@ namespace GameStateManagement
 
         private void LoadContent()
         {
-             /*  LOAD SOUNDS AND TEXTURES */ 
-            m_duck_txt = m_content.Load<Texture2D>("blackduck");
-            m_flyingaway_txt = m_content.Load<Texture2D>("flyaway");
-            m_laughingdog_txt = m_content.Load<Texture2D>("laughdog");
-            m_duckcount_txt = m_content.Load<Texture2D>("duck");
-            m_countbg_txt = m_content.Load<Texture2D>("duckcount");
-           
-            m_doglaugh_snd = m_content.Load<SoundEffect>("doglaugh");
-            m_flapwing_snd = m_content.Load<SoundEffect>("wingflaps");
-            m_duckquack_snd = m_content.Load<SoundEffect>("quack");
+             /*  LOAD SOUNDS AND TEXTURES */
+            m_duck_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\duck");
+            m_flyingaway_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\flyaway");
+            m_laughingdog_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\laughdog");
+            m_duckcount_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\ducklife");
+            m_countbg_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\duckcount");
+
+            m_doglaugh_snd = m_content.Load<SoundEffect>("DuckHunt\\Sounds\\doglaugh");
+            m_flapwing_snd = m_content.Load<SoundEffect>("DuckHunt\\Sounds\\wingflap");
+            m_duckquack_snd = m_content.Load<SoundEffect>("DuckHunt\\Sounds\\quack");
         }
 
         private void BuildAnimations()
@@ -470,7 +487,7 @@ namespace GameStateManagement
             for (int i = 0; i < 10; i++)
             {
                 temp = new Sprite();
-                temp.Sprite_Texture = m_duckcount_txt;
+                temp.Texture = m_duckcount_txt;
                 temp.X_Pos = x;
                 temp.Y_Pos = y;
                 m_ducks[i] = new Duck();
@@ -478,7 +495,7 @@ namespace GameStateManagement
                 x -= (m_duckcount_txt.Width + 2);
             }
 
-            m_counter_spr.Sprite_Texture = m_countbg_txt;
+            m_counter_spr.Texture = m_countbg_txt;
             m_counter_spr.X_Pos = 512 - (m_countbg_txt.Width / 2);
             m_counter_spr.Y_Pos = 536;
 
