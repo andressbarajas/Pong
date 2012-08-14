@@ -1,3 +1,4 @@
 C:\Users\Andy\Desktop\GSMSample_4_0_WIN_XBOX\Content\obj\Xbox 360\Debug\ResolveAssemblyReference.cache
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\GSMSample_4_0_WIN_XBOX\Content\obj\Xbox 360\Debug\ResolveAssemblyReference.cache
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\obj\Xbox 360\Debug\ResolveAssemblyReference.cache
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\obj\Xbox 360\Debug\LevelSelection\LevelSnds.xml

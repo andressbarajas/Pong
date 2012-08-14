@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 #endregion
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     /// <summary>
     /// The screen manager is a component which manages one or more GameScreen

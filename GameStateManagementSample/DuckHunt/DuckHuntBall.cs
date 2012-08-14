@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class DuckHuntBall : Ball
     {

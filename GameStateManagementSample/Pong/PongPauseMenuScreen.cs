@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Audio;
 #endregion
 
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     class PongPauseMenuScreen : MenuScreen
     {

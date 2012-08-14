@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class Paddle
     {
@@ -79,23 +79,36 @@ namespace GameStateManagement
         {
             if (m_player == 1)
             {
-                if (keyboardState.IsKeyDown(Keys.Up))
+                if (keyboardState.IsKeyDown(Keys.Up) || gamePadState.IsButtonDown(Buttons.DPadUp)) 
+                {
                     m_ypos -= (int)(m_curr_velocity);
-
-                if (keyboardState.IsKeyDown(Keys.Down))
+                }
+                else if (keyboardState.IsKeyDown(Keys.Down) || gamePadState.IsButtonDown(Buttons.DPadDown))
+                {
                     m_ypos += (int)(m_curr_velocity);
+                }
+                else
+                {
+                    Vector2 thumbstick = gamePadState.ThumbSticks.Left;
+                    m_ypos -= (int)(thumbstick.Y * m_curr_velocity);
+                }
             }
             else if (m_player == 0)
             {
-                if (keyboardState.IsKeyDown(Keys.A))
+                if (keyboardState.IsKeyDown(Keys.A) || gamePadState.IsButtonDown(Buttons.DPadUp))
+                {
                     m_ypos -= (int)(m_curr_velocity);
-
-                if (keyboardState.IsKeyDown(Keys.Z))
+                }
+                else if (keyboardState.IsKeyDown(Keys.Z) || gamePadState.IsButtonDown(Buttons.DPadDown))
+                {
                     m_ypos += (int)(m_curr_velocity);
+                }
+                else
+                {
+                    Vector2 thumbstick = gamePadState.ThumbSticks.Left;
+                    m_ypos -= (int)(thumbstick.Y * m_curr_velocity);
+                }
             }
-
-            Vector2 thumbstick = gamePadState.ThumbSticks.Left;
-            m_ypos -= (int)(thumbstick.Y * m_curr_velocity);
 
             // Handle boundaries
             if (m_ypos < m_scrn_boundary.Top)

@@ -6,11 +6,14 @@ using Microsoft.Xna.Framework;
 
 /* Taken from http://www.austincc.edu/cchrist1/GAME1343/TransformedCollision/TransformedCollision.htm */
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class HelperUtils
     {
-        
+        public const int Screen_Width = 1024;
+        public const int Screen_Height = 612;
+        public static Rectangle SafeBoundary;
+        public const float SafeAreaPortion = 0.05f;
         private static readonly Random random = new Random();
         private static readonly object syncLock = new object();
 

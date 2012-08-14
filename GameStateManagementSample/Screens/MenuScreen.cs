@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 #endregion
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     /// <summary>
     /// Base class for screens that contain a menu of options. The user can

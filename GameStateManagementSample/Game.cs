@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 #endregion
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     // Testing
 
@@ -51,8 +51,27 @@ namespace GameStateManagement
             Content.RootDirectory = "Content";
 
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 612;
+
+            #if WINDOWS
+
+            graphics.PreferredBackBufferWidth = HelperUtils.Screen_Width;
+            graphics.PreferredBackBufferHeight = HelperUtils.Screen_Height;
+            HelperUtils.SafeBoundary = new Rectangle(0, 0, 1024, 612);
+
+            #endif
+
+            #if XBOX
+
+            graphics.PreferredBackBufferWidth = HelperUtils.Screen_Width + (int)(2 * HelperUtils.Screen_Width * HelperUtils.SafeAreaPortion);
+            graphics.PreferredBackBufferHeight = HelperUtils.Screen_Height + (int)(2 * HelperUtils.Screen_Height * HelperUtils.SafeAreaPortion);
+
+            HelperUtils.SafeBoundary = new Rectangle(
+                (int)(HelperUtils.Screen_Width * HelperUtils.SafeAreaPortion),
+                (int)(HelperUtils.Screen_Height * HelperUtils.SafeAreaPortion),
+                HelperUtils.Screen_Width, //(int)(HelperUtils.Screen_Width * (1 - 2 * HelperUtils.SafeAreaPortion)),
+                HelperUtils.Screen_Height);//(int)(HelperUtils.Screen_Height * (1 - 2 * HelperUtils.SafeAreaPortion)));
+             
+            #endif
 
             // Create the screen manager component.
             screenManager = new ScreenManager(this);

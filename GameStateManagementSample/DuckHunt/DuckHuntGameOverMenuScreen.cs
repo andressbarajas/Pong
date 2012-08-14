@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 #endregion
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     /// <summary>
     /// The pause menu comes up over the top of the game,
@@ -23,14 +23,13 @@ namespace GameStateManagement
 
         ContentManager m_content;
 
-        Texture2D m_quit_txt;
-        Texture2D m_playagain_txt;
+        SpriteFont m_menu_fnt;
         Texture2D m_duck_txt;
 
         // Create our menu entries.
-        MenuSpriteItem m_playagain;
-        MenuSpriteItem m_quit;
-        MenuSpriteItem m_selected;
+        MenuFontItem m_playagain;
+        MenuFontItem m_quit;
+        MenuFontItem m_selected;
 
         SoundEffect m_selector_snd;
         AnimatedSprite m_selector;
@@ -78,7 +77,7 @@ namespace GameStateManagement
             if (m_selected != SelectedItem)
             {
                 m_selector_snd.Play();
-                m_selected = (MenuSpriteItem)SelectedItem;
+                m_selected = (MenuFontItem)SelectedItem;
             }
             m_selector.X_Pos = SelectedItem.X_Pos - (int)(m_selector.Width * 1.5);
             m_selector.Y_Pos = SelectedItem.Y_Pos + SelectedItem.Height / 2 - m_selector.Height/2;
@@ -96,13 +95,12 @@ namespace GameStateManagement
                 m_content = new ContentManager(ScreenManager.Game.Services, "Content");
 
             m_duck_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\duck");
-            m_playagain_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\playagain");
-            m_quit_txt = m_content.Load<Texture2D>("DuckHunt\\Textures\\quit");
+            m_menu_fnt = m_content.Load<SpriteFont>("Fonts\\bigfont");
 
             m_selector_snd = m_content.Load<SoundEffect>("DuckHunt\\Sounds\\select");
 
-            m_playagain = new MenuSpriteItem(ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_playagain_txt.Width / 2, 150, m_playagain_txt);
-            m_quit = new MenuSpriteItem(ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_quit_txt.Width / 2, 155 + m_playagain.Height, m_quit_txt);
+            m_playagain = new MenuFontItem(ScreenManager.GraphicsDevice.Viewport.Width / 2 - (int)m_menu_fnt.MeasureString("PLAY AGAIN").X / 2, 150, "PLAY AGAIN",m_menu_fnt);
+            m_quit = new MenuFontItem(ScreenManager.GraphicsDevice.Viewport.Width / 2 - (int)m_menu_fnt.MeasureString("QUIT").X / 2, 155 + m_playagain.Height, "QUIT",m_menu_fnt);
 
             m_selector = new AnimatedSprite();
             m_selector.BuildAnimation(m_duck_txt, 1, 9, true, new int[4] { 3, 4, 5, 4 });
@@ -111,7 +109,7 @@ namespace GameStateManagement
             m_selector.SetFrame(2, 9, null);
             m_selector.SetFrame(3, 9, null);
             m_selector.X_Pos = m_playagain.X_Pos - (int)(m_selector.Width * 1.5);
-            m_selector.Y_Pos = m_playagain.Y_Pos + m_playagain_txt.Height / 2 - m_selector.Height / 2;
+            m_selector.Y_Pos = m_playagain.Y_Pos + m_playagain.Height / 2 - m_selector.Height / 2;
 
             // Hook up menu event handlers.
             m_playagain.m_selected_events += PlayAgain;

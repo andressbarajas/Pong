@@ -5,7 +5,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework; 
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class CountTimer
     {

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class AnimatedSprite : Drawable
     {
@@ -52,10 +52,10 @@ namespace GameStateManagement
 
         private Texture2D m_texture;
 
-        public override Rectangle Sprite_Src_Rect
+        public override Rectangle? Sprite_Src_Rect
         {
             get { return m_frames[m_currentFrame].m_source; }
-            //set {};
+            set { }
         }
 
         #endregion

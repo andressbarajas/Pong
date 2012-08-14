@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class CollisionData
     {
@@ -42,7 +42,7 @@ namespace GameStateManagement
             m_color_data = data;
         }
 
-        public CollisionData(int xpos, int ypos, Texture2D texture, Rectangle src_rect, Vector2 origin, float scale, float rotation, SpriteEffects effects)
+        public CollisionData(int xpos, int ypos, Texture2D texture, Rectangle? src_rect, Vector2 origin, float scale, float rotation, SpriteEffects effects)
         {
             m_transformation = Matrix.CreateTranslation(new Vector3(-origin, 0.0f)) *
                                Matrix.CreateScale(scale) *
@@ -50,11 +50,19 @@ namespace GameStateManagement
                                ((effects == SpriteEffects.FlipHorizontally) ? Matrix.CreateRotationY(MathHelper.Pi) : Matrix.Identity) * 
                                Matrix.CreateRotationZ(rotation) *
                                Matrix.CreateTranslation(new Vector3(xpos, ypos, 0.0f));
-            
-            m_rect = HelperUtils.CalculateBoundingRectangle(new Rectangle(0, 0, src_rect.Width, src_rect.Height), m_transformation);
 
-            m_color_data = new Color[src_rect.Width * src_rect.Height];
-            texture.GetData<Color>(0, src_rect, m_color_data, 0, src_rect.Width * src_rect.Height);
+            if (src_rect.HasValue)
+            {
+                m_rect = HelperUtils.CalculateBoundingRectangle(new Rectangle(0, 0, src_rect.Value.Width, src_rect.Value.Height), m_transformation);
+                m_color_data = new Color[src_rect.Value.Width * src_rect.Value.Height];
+                texture.GetData<Color>(0, src_rect, m_color_data, 0, src_rect.Value.Width * src_rect.Value.Height);
+            }
+            else
+            {
+                HelperUtils.CalculateBoundingRectangle(new Rectangle(0, 0, texture.Width, texture.Height), m_transformation);
+                m_color_data = new Color[texture.Width * texture.Height];
+                texture.GetData<Color>(0, src_rect, m_color_data, 0, texture.Width * texture.Height);
+            }
         }
     }
 }

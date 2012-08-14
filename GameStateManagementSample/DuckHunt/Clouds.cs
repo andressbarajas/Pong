@@ -6,12 +6,12 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class Cloud : ScreenObject
     {
         public Cloud() { }
-        public float m_slow_down = 0.35f;
+        public float m_slow_down = 0.30f;
         public bool m_used;
         public Drawable m_cloud;
         public CollisionData m_coldata;
@@ -135,11 +135,11 @@ namespace GameStateManagement
                 {
                     temp = new Sprite();
                     temp.Texture = m_textures[tnum];
-                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(-412, 0 - m_textures[tnum].Width);
-                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(0, 200);
+                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(-412 - HelperUtils.SafeBoundary.X, HelperUtils.SafeBoundary.X + -m_textures[tnum].Width);
+                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(HelperUtils.SafeBoundary.Y, HelperUtils.SafeBoundary.Y + 200);
                     m_clouds[i] = new Cloud();
                     m_clouds[i].m_used = false;
-                    m_clouds[i].m_cloud = new LinearXYMover(temp, 1024, (int)temp.Y_Pos, 1.0f);
+                    m_clouds[i].m_cloud = new LinearXYMover(temp, 2*HelperUtils.SafeBoundary.X + 1024, (int)temp.Y_Pos, 1.0f);
                     m_clouds[i].m_collision_rect = new Rectangle((int)temp.X_Pos + m_textures[tnum].Width / 4, (int)temp.Y_Pos + m_textures[tnum].Height / 2, m_textures[tnum].Width / 2, 4);
                     m_clouds[i].m_coldata = new CollisionData((int)temp.X_Pos, (int)temp.Y_Pos, m_textures[tnum],
                          new Rectangle(0, 0, m_textures[tnum].Width, m_textures[tnum].Height), m_clouds[i].m_cloud.Origin,
@@ -151,11 +151,11 @@ namespace GameStateManagement
                 {
                     temp = new Sprite();
                     temp.Texture = m_textures[tnum];
-                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(-412, 0 - m_textures[tnum].Width);
-                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(0, 200);
+                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(-412 - HelperUtils.SafeBoundary.X, HelperUtils.SafeBoundary.X + -m_textures[tnum].Width);
+                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(HelperUtils.SafeBoundary.Y, HelperUtils.SafeBoundary.Y + 200);
                     m_clouds[i] = new Cloud();
                     m_clouds[i].m_used = false;
-                    m_clouds[i].m_cloud = new LinearXYMover(temp, 1024, (int)temp.Y_Pos, 1.0f);
+                    m_clouds[i].m_cloud = new LinearXYMover(temp, 2*HelperUtils.SafeBoundary.X + 1024, (int)temp.Y_Pos, 1.0f);
                     m_clouds[i].m_collision_rect = new Rectangle((int)temp.X_Pos + m_textures[tnum].Width / 4, (int)temp.Y_Pos + m_textures[tnum].Height / 2, m_textures[tnum].Width / 2, 4);
                     m_clouds[i].m_coldata = new CollisionData((int)temp.X_Pos, (int)temp.Y_Pos, m_textures[tnum],
                          new Rectangle(0, 0, m_textures[tnum].Width, m_textures[tnum].Height), m_clouds[i].m_cloud.Origin,
@@ -169,11 +169,11 @@ namespace GameStateManagement
                 {
                     temp = new Sprite();
                     temp.Texture = m_textures[tnum];
-                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(1024, 1024 + 412);
-                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(0, 200);
+                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(HelperUtils.SafeBoundary.X + 1024, HelperUtils.SafeBoundary.X + 1024 + 412);
+                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(HelperUtils.SafeBoundary.Y, HelperUtils.SafeBoundary.Y + 200);
                     m_clouds[i] = new Cloud();
                     m_clouds[i].m_used = false;
-                    m_clouds[i].m_cloud = new LinearXYMover(temp, -m_textures[tnum].Width, (int)temp.Y_Pos, 1.0f);
+                    m_clouds[i].m_cloud = new LinearXYMover(temp, -m_textures[tnum].Width - 2*HelperUtils.SafeBoundary.X, (int)temp.Y_Pos, 1.0f);
                     m_clouds[i].m_collision_rect = new Rectangle((int)temp.X_Pos + m_textures[tnum].Width / 4, (int)temp.Y_Pos + m_textures[tnum].Height / 2, m_textures[tnum].Width / 2, 4);
                     m_clouds[i].m_coldata = new CollisionData((int)temp.X_Pos, (int)temp.Y_Pos, m_textures[tnum],
                          new Rectangle(0, 0, m_textures[tnum].Width, m_textures[tnum].Height), m_clouds[i].m_cloud.Origin,
@@ -186,11 +186,11 @@ namespace GameStateManagement
                 {
                     temp = new Sprite();
                     temp.Texture = m_textures[tnum];
-                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(1024, 1024 + 412);
-                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(64, 200);
+                    temp.X_Pos = (float)HelperUtils.GetRandomNumber(HelperUtils.SafeBoundary.X + 1024, HelperUtils.SafeBoundary.X + 1024 + 412);
+                    temp.Y_Pos = (float)HelperUtils.GetRandomNumber(HelperUtils.SafeBoundary.Y, HelperUtils.SafeBoundary.Y + 200);
                     m_clouds[i] = new Cloud();
                     m_clouds[i].m_used = false;
-                    m_clouds[i].m_cloud = new LinearXYMover(temp, -m_textures[tnum].Width, (int)temp.Y_Pos, 1.0f);
+                    m_clouds[i].m_cloud = new LinearXYMover(temp, -m_textures[tnum].Width - 2*HelperUtils.SafeBoundary.X, (int)temp.Y_Pos, 1.0f);
                     m_clouds[i].m_collision_rect = new Rectangle((int)temp.X_Pos + m_textures[tnum].Width / 4, (int)temp.Y_Pos + m_textures[tnum].Height / 2, m_textures[tnum].Width / 2, 4);
                     m_clouds[i].m_coldata = new CollisionData((int)temp.X_Pos, (int)temp.Y_Pos, m_textures[tnum],
                          new Rectangle(0, 0, m_textures[tnum].Width, m_textures[tnum].Height), m_clouds[i].m_cloud.Origin,

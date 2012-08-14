@@ -38,10 +38,6 @@ C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSamp
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\smallcloud.xnb
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\medcloud.xnb
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\bigcloud.xnb
-C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\resume.xnb
-C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\pauset.xnb
-C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\quit.xnb
-C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\playagain.xnb
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\wingflap.xnb
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\quack.xnb
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\startround.xnb

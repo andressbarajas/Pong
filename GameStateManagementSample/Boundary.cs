@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class Boundary
     {
@@ -35,7 +35,7 @@ namespace GameStateManagement
             temp[3].Width = 20;
             temp[3].Height = boundary.Height;
 
-            temp[4].X = -29; // boundary.Left - 62;
+            temp[4].X = boundary.Left - 62 - 63;
             temp[4].Y = boundary.Top - 62;
             temp[4].Width = 63;
             temp[4].Height = boundary.Height + 124;

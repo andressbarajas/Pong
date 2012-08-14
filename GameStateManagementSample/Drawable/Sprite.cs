@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class Sprite : Drawable
     {
@@ -20,13 +20,13 @@ namespace GameStateManagement
 
         private Texture2D m_texture;
 
-        public override Rectangle Sprite_Src_Rect
+        public override Rectangle? Sprite_Src_Rect
         {
-            get { return new Rectangle(0, 0, m_texture.Width, m_texture.Height); }
+            get { if (m_src_rect.HasValue) { return m_src_rect.Value; } else { return null; } }
             set { m_src_rect = value; }
         }
 
-        private Rectangle m_src_rect;
+        private Rectangle? m_src_rect = null;
        
         public override int Width
         {

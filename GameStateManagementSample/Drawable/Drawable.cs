@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public enum DrawableState
     {
@@ -108,7 +108,7 @@ namespace GameStateManagement
             set;
         }
 
-        public virtual Rectangle Sprite_Src_Rect
+        public virtual Rectangle? Sprite_Src_Rect
         {
             get;
             set;

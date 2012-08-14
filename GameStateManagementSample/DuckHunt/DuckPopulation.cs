@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     public class DuckPopulation
     {
@@ -372,8 +372,8 @@ namespace GameStateManagement
                 m_flyaway_scn_inter.Scene_State = DrawableState.Active;
 
                 /* Laughing Dog */
-                m_laughdog_anim.X_Pos = 512 - m_laughdog_anim.Width / 2;
-                m_laughdog_anim.Y_Pos = 466;
+                m_laughdog_anim.X_Pos = HelperUtils.SafeBoundary.X + 512 - m_laughdog_anim.Width / 2;
+                m_laughdog_anim.Y_Pos = HelperUtils.SafeBoundary.Y + 466;
                 m_dog_laugh_scn_inter.BuildScene(new int[3] { 0, 1, 2 });
                 m_dog_laugh_scn_inter.Scene_State = DrawableState.Active;
 
@@ -480,8 +480,8 @@ namespace GameStateManagement
             int x, y;
             Sprite temp;
 
-            x = 578; 
-            y = 566;
+            x = HelperUtils.SafeBoundary.X + 578;
+            y = HelperUtils.SafeBoundary.Y + 566;
 
             // Create the ducks for the counter
             for (int i = 0; i < 10; i++)
@@ -496,8 +496,8 @@ namespace GameStateManagement
             }
 
             m_counter_spr.Texture = m_countbg_txt;
-            m_counter_spr.X_Pos = 512 - (m_countbg_txt.Width / 2);
-            m_counter_spr.Y_Pos = 536;
+            m_counter_spr.X_Pos = HelperUtils.SafeBoundary.X + 512 - (m_countbg_txt.Width / 2);
+            m_counter_spr.Y_Pos = HelperUtils.SafeBoundary.Y + 536;
 
             //            Intermission Stuff
 
@@ -574,8 +574,8 @@ namespace GameStateManagement
             ascduck.SetFrame(17, flapspeed, m_flapwing_snd);
             ascduck.SetFrame(18, flapspeed, null);
             ascduck.SetFrame(19, flapspeed, m_flapwing_snd);
-           
-            duckball = new DuckHuntBall(512, 476, boundary);
+
+            duckball = new DuckHuntBall(HelperUtils.SafeBoundary.X + 512, HelperUtils.SafeBoundary.Y + 476, boundary);
             duckball.AddAnimation(dscduck);
             duckball.AddAnimation(ascduck);
             duckball.Ball_State = BallState.Limbo;

@@ -1,0 +1,113 @@
+f99275b96a0b4935acad5c1f3fdd80a9
+0
+AndyB
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\
+129893877060000000
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\GameThumbnail.png
+2010-09-15T20:43:52.0000000Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\PongaThemes.application
+2012-08-14T09:28:44.4656569Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\PongaThemes.exe
+2012-08-14T09:28:44.2736460Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\PongaThemes.exe.manifest
+2012-08-14T09:28:44.4476559Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\background.xnb
+2012-07-10T01:20:18.0338357Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\blank.xnb
+2012-07-10T01:20:18.0538368Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\gamefont.xnb
+2012-07-10T01:20:18.4938620Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\gradient.xnb
+2012-07-10T01:20:18.0738379Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\menufont.xnb
+2012-07-10T01:20:18.3088514Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\dogbark.xnb
+2012-08-14T03:10:39.9258852Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\doglaugh.xnb
+2012-08-14T03:10:39.1158389Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\pause.xnb
+2012-08-14T03:10:39.8398803Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\quack.xnb
+2012-08-14T03:10:38.6298111Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\roundend.xnb
+2012-08-14T03:10:39.7688762Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\select.xnb
+2012-08-14T03:10:39.8958835Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\shot.xnb
+2012-08-14T03:10:39.2488465Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\startround.xnb
+2012-08-14T03:10:39.0028324Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Sounds\wingflap.xnb
+2012-08-14T03:10:38.6018095Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\bigcloud.xnb
+2012-08-14T03:10:36.8777108Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\bush.xnb
+2012-08-14T03:10:35.7736477Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\clouds.xnb
+2012-08-14T03:10:36.2206733Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\duck.xnb
+2012-08-14T03:10:35.3346226Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\duckcall.xnb
+2012-08-14T03:10:36.2606755Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\duckcount.xnb
+2012-08-14T03:10:36.1426688Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\ducklife.xnb
+2012-08-14T03:10:36.8957119Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\flyaway.xnb
+2012-08-14T03:10:35.8376513Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\flyawaysign.xnb
+2012-08-14T03:10:36.0896658Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\ground.xnb
+2012-08-14T03:10:35.7146443Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\laughdog.xnb
+2012-08-14T03:10:35.8866542Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\medcloud.xnb
+2012-08-14T03:10:36.8397087Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\panel.xnb
+2012-08-14T03:10:35.7956489Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\score.xnb
+2012-08-14T03:10:36.1856713Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\shot.xnb
+2012-08-14T03:10:36.2966776Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\smallcloud.xnb
+2012-08-14T03:10:36.8057067Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\tree.xnb
+2012-08-14T03:10:35.4756306Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\walkdog.xnb
+2012-08-14T03:10:36.0166616Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Fonts\atarifont.xnb
+2012-08-14T03:10:38.4097985Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Fonts\bigfont.xnb
+2012-08-14T03:10:36.7757050Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Fonts\bignesfont.xnb
+2012-08-14T03:10:37.1477263Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Fonts\hugenesfont.xnb
+2012-08-14T03:10:37.6997579Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Fonts\lilfont.xnb
+2012-08-14T03:10:36.4416859Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Fonts\lilnesfont.xnb
+2012-08-14T03:10:37.3337369Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Fonts\nesfont.xnb
+2012-08-14T03:10:37.0457204Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\LevelSelection\duckhuntpong.xnb
+2012-08-14T03:10:37.9127700Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\LevelSelection\LevelSnds.xgs
+2012-08-14T03:10:40.1078956Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\LevelSelection\pong.xnb
+2012-08-14T03:10:37.7977635Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\LevelSelection\Sound Bank.xsb
+2012-08-14T03:10:40.1268967Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\LevelSelection\Wave Bank.xwb
+2012-08-14T03:10:40.1258966Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Pong\Sounds\deadball.xnb
+2012-08-14T03:10:39.9578870Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Pong\Sounds\paddlehit.xnb
+2012-08-14T03:10:39.9638874Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Pong\Sounds\wallbounce.xnb
+2012-08-14T03:10:39.9708878Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Pong\Textures\pongball.xnb
+2012-08-14T03:10:37.9527723Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Pong\Textures\pongpaddle.xnb
+2012-08-14T03:10:37.9337712Z
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Pong\Textures\selector.xnb
+2012-08-14T03:10:38.4347999Z

@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 #endregion
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     /// <summary>
     /// The loading screen coordinates transitions between the menu system and the

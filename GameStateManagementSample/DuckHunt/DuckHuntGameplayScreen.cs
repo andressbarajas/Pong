@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 #endregion
 
-namespace GameStateManagement
+namespace PongaThemes
 {
     /// <summary>
     /// This screen implements the actual game logic. It is just a
@@ -66,8 +66,8 @@ namespace GameStateManagement
         AnimationScene m_intro = new AnimationScene();
 
         // Needed
-        Rectangle boxrec = new Rectangle(96, 0, 832, 512);
-        Rectangle m_background_color_rect = new Rectangle(0, 0, 1024, 612);
+        Rectangle boxrec = new Rectangle(HelperUtils.SafeBoundary.X + 96, HelperUtils.SafeBoundary.Y, 832, 512);
+        //Rectangle m_background_color_rect = new Rectangle(0, 0, 1024, 612);
 
         Sprite m_fly_sign = new Sprite();
 
@@ -178,8 +178,8 @@ namespace GameStateManagement
             wdog.SetFrame(1, 8, null);
             wdog.SetFrame(2, 8, null);
             wdog.SetFrame(3, 8, null);
-            wdog.X_Pos = 22;
-            wdog.Y_Pos = 471;
+            wdog.X_Pos = HelperUtils.SafeBoundary.X + 22;
+            wdog.Y_Pos = HelperUtils.SafeBoundary.Y + 471;
 
             sdog.BuildAnimation(walkingdog, 1, 8, true, new int[6] { 1, 0, 1, 0, 1, 0 });
             sdog.SetFrame(0, 8, null);
@@ -223,7 +223,7 @@ namespace GameStateManagement
             flash = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
             flash.SetData(new Color[] { new Color(255, 255, 255, 128) });
 
-            m_flash = new TimeOutDrawable(new Image(0, 0, 1024, 612, flash), 3, false);
+            m_flash = new TimeOutDrawable(new Image(HelperUtils.SafeBoundary.X, HelperUtils.SafeBoundary.Y, 1024, 612, flash), 3, false);
             m_flash.Draw_State = DrawableState.Finished;
             
             /* Create Players */
@@ -251,7 +251,7 @@ namespace GameStateManagement
             // FLY AWAY SIGN
             m_fly_sign.Texture = flyawaysign;
             m_fly_sign.X_Pos = ScreenManager.GraphicsDevice.Viewport.Width / 2 - m_fly_sign.Texture.Width / 2;
-            m_fly_sign.Y_Pos = 256;
+            m_fly_sign.Y_Pos = HelperUtils.SafeBoundary.Y + 256;
             
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
@@ -435,7 +435,7 @@ namespace GameStateManagement
             {
                 pause.Play();
                 m_paused = true;
-                ScreenManager.AddScreen(new DuckHuntPauseMenuScreen(), null);
+                ScreenManager.AddScreen(new DuckHuntPauseMenuScreen(this), null);
             }
 
              // Handle Cloud Input
@@ -620,19 +620,21 @@ namespace GameStateManagement
 
             if (m_ducks.IntermissionScene == 0)
             {
-                ScreenManager.GraphicsDevice.Clear(new Color(247, 206, 176, 255));
+                spriteBatch.Draw(ScreenTexture, HelperUtils.SafeBoundary, new Color(247, 206, 176, 255));
+                //ScreenManager.GraphicsDevice.Clear(new Color(247, 206, 176, 255));
                 m_fly_sign.Draw(spriteBatch);      
             }
             else 
             {
-                ScreenManager.GraphicsDevice.Clear(new Color(49, 192, 250, 255));
+                spriteBatch.Draw(ScreenTexture, HelperUtils.SafeBoundary, new Color(49, 192, 250, 255));
+                //ScreenManager.GraphicsDevice.Clear(new Color(49, 192, 250, 255));
             }
 
             // Draw tree
-            spriteBatch.Draw(tree, new Vector2(122, 236), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0); 
+            spriteBatch.Draw(tree, new Vector2(HelperUtils.SafeBoundary.X + 122, HelperUtils.SafeBoundary.Y + 236), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0); 
             
             // Draw Bush
-            spriteBatch.Draw(bush, new Vector2(822, 356), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0); 
+            spriteBatch.Draw(bush, new Vector2(HelperUtils.SafeBoundary.X + 822, HelperUtils.SafeBoundary.Y + 356), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0); 
 
             // Draw Duck Balls
             m_ducks.DrawBalls(spriteBatch);
@@ -641,10 +643,10 @@ namespace GameStateManagement
             m_ducks.DrawIntermission(spriteBatch);
 
             // Draw left ground + grass
-            spriteBatch.Draw(ground, new Vector2(0, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(ground, new Vector2(HelperUtils.SafeBoundary.X, HelperUtils.SafeBoundary.Y + 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
 
             // Draw right ground + grass
-            spriteBatch.Draw(ground, new Vector2(512, 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(ground, new Vector2(HelperUtils.SafeBoundary.X + 512, HelperUtils.SafeBoundary.Y + 436), null, Color.White, 0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
 
             m_clouds_p1.Draw(spriteBatch);
             m_clouds_p2.Draw(spriteBatch);
@@ -667,10 +669,17 @@ namespace GameStateManagement
             m_duck1_flash.Draw(spriteBatch);
             m_duck2_flash.Draw(spriteBatch);
 
-            // spriteBatch.Draw(ScreenTexture, m_background_color_rect, Color.PaleGoldenrod);
-            /*
-            spriteBatch.Draw(ScreenTexture, boxrec, Color.Black); //new Color(0, 0, 0, 255));
+            #if XBOX // Draw the WideScreen Lines (Top and bottom)
+            //Top
+            spriteBatch.Draw(ScreenTexture, new Rectangle(0, HelperUtils.SafeBoundary.Top - 63, 1024 + 2 * HelperUtils.SafeBoundary.X, 63), Color.Black);
+            //Bottom
+            spriteBatch.Draw(ScreenTexture, new Rectangle(0, HelperUtils.SafeBoundary.Bottom,1024 + 2 * HelperUtils.SafeBoundary.X, 63), Color.Black);     
+            #endif
 
+            // spriteBatch.Draw(ScreenTexture, m_background_color_rect, Color.PaleGoldenrod);
+            
+            //spriteBatch.Draw(ScreenTexture, boxrec, Color.Black); //new Color(0, 0, 0, 255));
+            /*
            // spriteBatch.Draw(ScreenTexture, startpos, Color.Beige);
 
             
