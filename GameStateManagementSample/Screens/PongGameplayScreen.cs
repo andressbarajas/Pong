@@ -177,11 +177,15 @@ namespace GameStateManagement
                     balldie.Play();
                     if (m_ball.Ball_Dir == Direction.Right)
                     {
+                        m_ball.Init_x = m_ball.X_Pos;
+                        m_ball.Init_y = m_ball.Y_Pos;
                         m_ball.ResetBall(50.0f, -50.0f);
                         m_player_1_score += 1;
                     }
                     else if (m_ball.Ball_Dir == Direction.Left)
                     {
+                        m_ball.Init_x = m_ball.X_Pos;
+                        m_ball.Init_y = m_ball.Y_Pos;
                         m_ball.ResetBall(140.0f, 210.0f);
                         m_player_2_score += 1;
                     }

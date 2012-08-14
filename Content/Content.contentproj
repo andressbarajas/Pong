@@ -317,21 +317,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levels\LevelSnds.xap">
+    <Compile Include="LevelSelection\LevelSnds.xap">
       <Name>LevelSnds</Name>
       <Importer>XactImporter</Importer>
       <Processor>XactProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levels\pong.png">
+    <Compile Include="LevelSelection\pong.png">
       <Name>pong</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levels\duckhuntpong.png">
+    <Compile Include="LevelSelection\duckhuntpong.png">
       <Name>duckhuntpong</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -368,6 +368,20 @@
       <Name>wallbounce</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fonts\atarifont.png">
+      <Name>atarifont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pong\Textures\selector.png">
+      <Name>selector</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

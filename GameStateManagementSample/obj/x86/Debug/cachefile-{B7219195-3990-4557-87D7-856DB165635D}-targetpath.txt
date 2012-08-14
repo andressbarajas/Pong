@@ -40,13 +40,15 @@ Content\Fonts\nesfont.xnb
 Content\Fonts\bignesfont.xnb
 Content\Fonts\lilnesfont.xnb
 Content\Fonts\hugenesfont.xnb
-Content\Levels\pong.xnb
-Content\Levels\duckhuntpong.xnb
 Content\Pong\Textures\pongpaddle.xnb
 Content\Pong\Textures\pongball.xnb
 Content\Pong\Sounds\paddlehit.xnb
 Content\Pong\Sounds\wallbounce.xnb
 Content\Pong\Sounds\deadball.xnb
-Content\Levels\LevelSnds.xgs
-Content\Levels\Wave Bank.xwb
-Content\Levels\Sound Bank.xsb
+Content\Fonts\atarifont.xnb
+Content\Pong\Textures\selector.xnb
+Content\LevelSelection\pong.xnb
+Content\LevelSelection\duckhuntpong.xnb
+Content\LevelSelection\LevelSnds.xgs
+Content\LevelSelection\Wave Bank.xwb
+Content\LevelSelection\Sound Bank.xsb

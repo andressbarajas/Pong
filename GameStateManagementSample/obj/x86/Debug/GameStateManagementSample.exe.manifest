@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GameStateManagementSample.exe" size="92672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GameStateManagementSample.exe" size="93184">
       <assemblyIdentity name="GameStateManagementSample" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>xmEtXkxYJvB1V/1dmQZlFKGA4fY=</dsig:DigestValue>
+        <dsig:DigestValue>ZMUg4/hMVJ5f7ML0ZjTJxbRRGiU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -386,6 +386,15 @@
       <dsig:DigestValue>HQtMHtpSTAVVubIiS+2O5KiiE/k=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="Content\Fonts\atarifont.xnb" size="529627">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>xlY4ARAOEenz6xdzMc2rJyt/t40=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\Fonts\bigfont.xnb" size="267483">
     <hash>
       <dsig:Transforms>
@@ -458,7 +467,7 @@
       <dsig:DigestValue>fBbVb9RY+RqCfEzVITpqUAYJkAQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Levels\duckhuntpong.xnb" size="127387">
+  <file name="Content\LevelSelection\duckhuntpong.xnb" size="127387">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -467,16 +476,16 @@
       <dsig:DigestValue>ieBi16cMQ8sYZipSMNCSMjj/4L8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Levels\LevelSnds.xgs" size="440">
+  <file name="Content\LevelSelection\LevelSnds.xgs" size="440">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>nT95LSpeGNVEK6m/pPVV/VnnpEc=</dsig:DigestValue>
+      <dsig:DigestValue>J/JgTFUDza2jEwyXBkesYf3eoOc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Levels\pong.xnb" size="127387">
+  <file name="Content\LevelSelection\pong.xnb" size="127387">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -485,22 +494,22 @@
       <dsig:DigestValue>W1XODCo9RghIGequdhFImGEvCmA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Levels\Sound Bank.xsb" size="266">
+  <file name="Content\LevelSelection\Sound Bank.xsb" size="266">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>DweTbVU1QF1U2KQ7H+R/Nrr+MJg=</dsig:DigestValue>
+      <dsig:DigestValue>gF/IYIvLpEqK6upGVa06UcwWtkE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Levels\Wave Bank.xwb" size="677548">
+  <file name="Content\LevelSelection\Wave Bank.xwb" size="677548">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>+5FmdfErcoS2PXVLkcCsNs+gpQc=</dsig:DigestValue>
+      <dsig:DigestValue>Fz+voGXNX85yb48/fVqpWhVQZuM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\menufont.xnb" size="70830">
@@ -555,6 +564,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>3+Xp5i28zp29iyC7pBjnzDUvvuc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Pong\Textures\selector.xnb" size="6911">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>zRorwvgTgJT6V/PCH9+6j9vmJBQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

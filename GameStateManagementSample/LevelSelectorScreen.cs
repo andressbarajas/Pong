@@ -42,13 +42,6 @@ namespace GameStateManagement
  
         #endregion
 
-        #region Events
-
-        //public event EventHandler<PlayerIndexEventArgs> Accepted;
-        //public event EventHandler<PlayerIndexEventArgs> Cancelled;
-
-        #endregion
-
         #region Initialization
 
 
@@ -63,9 +56,9 @@ namespace GameStateManagement
             m_pong = new Sprite();
             m_duckh = new Sprite();
 
-            m_engine = new AudioEngine("Content\\Levels\\LevelSnds.xgs");
-            m_soundBank = new SoundBank(m_engine, "Content\\Levels\\Sound Bank.xsb");
-            m_waveBank = new WaveBank(m_engine, "Content\\Levels\\Wave Bank.xwb");
+            m_engine = new AudioEngine("Content\\LevelSelection\\LevelSnds.xgs");
+            m_soundBank = new SoundBank(m_engine, "Content\\LevelSelection\\Sound Bank.xsb");
+            m_waveBank = new WaveBank(m_engine, "Content\\LevelSelection\\Wave Bank.xwb");
   
             TransitionOnTime = TimeSpan.FromSeconds(0.0);
             TransitionOffTime = TimeSpan.FromSeconds(0.0);
@@ -84,8 +77,8 @@ namespace GameStateManagement
             m_pln_txt = new Texture2D(ScreenManager.GraphicsDevice, 1, 1);
             m_pln_txt.SetData(new Color[] { Color.White });
 
-            m_pong_lvl = content.Load<Texture2D>("Levels\\pong");
-            m_duck_hunt_lvl = content.Load<Texture2D>("Levels\\duckhuntpong");
+            m_pong_lvl = content.Load<Texture2D>("LevelSelection\\pong");
+            m_duck_hunt_lvl = content.Load<Texture2D>("LevelSelection\\duckhuntpong");
 
             m_pong.Texture = m_pong_lvl;
             m_duckh.Texture = m_duck_hunt_lvl;
@@ -112,13 +105,8 @@ namespace GameStateManagement
 
         internal void PongSelected()
         {
-         
-            //Console.WriteLine("Pong Selected\n");
-
-            
              LoadingScreen.Load(ScreenManager, true, null,
-                               new PongGameplayScreen());
-             
+                               new PongGameplayScreen());     
         }
 
         /// <summary>
@@ -161,39 +149,6 @@ namespace GameStateManagement
             spriteBatch.Draw(m_pln_txt, HelperUtils.BuildRect(new Rectangle(0, 0, 1024, 612), -0.03f), new Color(0, 0, 0, 128));
             m_grid.Draw(spriteBatch);
             spriteBatch.End();
-
-            /*
-            // Darken down any other screens that were drawn beneath the popup.
-            ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
-
-            // Center the message text in the viewport.
-            Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
-            Vector2 viewportSize = new Vector2(viewport.Width, viewport.Height);
-            //Vector2 textSize = font.MeasureString(message);
-            Vector2 textPosition = (viewportSize - textSize) / 2;
-
-            // The background includes a border somewhat larger than the text itself.
-            const int hPad = 32;
-            const int vPad = 16;
-
-            Rectangle backgroundRectangle = new Rectangle((int)textPosition.X - hPad,
-                                                          (int)textPosition.Y - vPad,
-                                                          (int)textSize.X + hPad * 2,
-                                                          (int)textSize.Y + vPad * 2);
-
-            // Fade the popup alpha during transitions.
-            Color color = Color.White * TransitionAlpha;
-
-            spriteBatch.Begin();
-
-            // Draw the background rectangle.
-            spriteBatch.Draw(gradientTexture, backgroundRectangle, color);
-
-            // Draw the message box text.
-            spriteBatch.DrawString(font, message, textPosition, color);
-
-            spriteBatch.End();
-             * */
         }
 
         #endregion

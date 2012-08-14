@@ -135,6 +135,18 @@ namespace GameStateManagement
             set { m_hit = value; }
         }
 
+        public int Init_x
+        {
+            get { return m_init_x; }
+            set { m_init_x = value; }
+        }
+
+        public int Init_y
+        {
+            get { return m_init_y; }
+            set { m_init_y = value; }
+        }
+
 
         #endregion
 
@@ -234,16 +246,8 @@ namespace GameStateManagement
         {
             float angle;
             float[] velocities = new float[2];
-            /*
-            // Randomly decide if we are going left or right
-            if (HelperUtils.GetRandomNumber(0.0, 10.0) < 5.01)
-            {
-                angle = (float)HelperUtils.GetRandomNumber(30.0, 50.0); // Right
-            }
-            else 
-            {*/
-                angle = (float)HelperUtils.GetRandomNumber(min, max); //140.0, 160.0); // Left
-            //}
+            
+            angle = (float)HelperUtils.GetRandomNumber(min, max); 
 
             // Generate X velocity
             velocities[0] = (float)(vel_magnitude * Math.Cos(angle * (Math.PI / 180)));
