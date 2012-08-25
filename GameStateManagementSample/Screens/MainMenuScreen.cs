@@ -52,10 +52,6 @@ namespace PongaThemes
         /// </summary>
         void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            /*
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                               new DuckHuntGameplayScreen());
-             * */
             ScreenManager.AddScreen(new LevelSelectorScreen(), null);
         }
 
@@ -85,7 +81,6 @@ namespace PongaThemes
 
             // Hook up menu event handlers.
             m_play.m_selected_events += PlayGameMenuEntrySelected;
-            //optionsMenuEntry.Selected += OptionsMenuEntrySelected;
             m_exit.m_selected_events += OnCancel;
 
             // Add entries to the menu.

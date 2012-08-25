@@ -20,33 +20,6 @@
       <Time>2010-09-15T13:43:52-07:00</Time>
     </Item>
     <Item>
-      <Source>gradient.png</Source>
-      <Name>gradient</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\gradient.xnb</Output>
-      <Time>2010-09-15T13:43:52-07:00</Time>
-    </Item>
-    <Item>
-      <Source>menufont.spritefont</Source>
-      <Name>menufont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\menufont.xnb</Output>
-      <Time>2010-09-15T13:43:52-07:00</Time>
-    </Item>
-    <Item>
-      <Source>gamefont.spritefont</Source>
-      <Name>gamefont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\gamefont.xnb</Output>
-      <Time>2010-09-15T13:43:52-07:00</Time>
-    </Item>
-    <Item>
       <Source>DuckHunt\Textures\duck.png</Source>
       <Name>DuckHunt\Textures\duck</Name>
       <Importer>TextureImporter</Importer>
@@ -54,6 +27,15 @@
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\DuckHunt\Textures\duck.xnb</Output>
       <Time>2012-07-12T21:20:22.3455909-07:00</Time>
+    </Item>
+    <Item>
+      <Source>gradient.png</Source>
+      <Name>gradient</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\gradient.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
     </Item>
     <Item>
       <Source>DuckHunt\Textures\tree.png</Source>
@@ -317,6 +299,33 @@
       <Time>2012-08-13T16:01:21.1238498-07:00</Time>
     </Item>
     <Item>
+      <Source>background2.png</Source>
+      <Name>background2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\background2.xnb</Output>
+      <Time>2012-08-14T15:12:07.1281822-07:00</Time>
+    </Item>
+    <Item>
+      <Source>menufont.spritefont</Source>
+      <Name>menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\menufont.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>gamefont.spritefont</Source>
+      <Name>gamefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\gamefont.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
       <Source>DuckHunt\Sounds\wingflap.wav</Source>
       <Name>DuckHunt\Sounds\wingflap</Name>
       <Importer>WavImporter</Importer>
@@ -424,54 +433,46 @@
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\Pong\Sounds\wallbounce.xnb</Output>
       <Time>2012-08-09T23:30:04.0258089-07:00</Time>
     </Item>
-    <Item>
-      <Source>background2.png</Source>
-      <Name>background2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\background2.xnb</Output>
-      <Time>2012-08-14T15:12:07.1281822-07:00</Time>
-    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
+      <ContentProjectGUID>{B7219195-3990-4557-87D7-856DB165635D}</ContentProjectGUID>
       <TargetPlatform>Xbox360</TargetPlatform>
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>true</CompressContent>
       <RootDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\</RootDirectory>
       <LoggerRootDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\obj\Xbox 360\Debug\</IntermediateDirectory>
+      <IntermediateDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\obj\Xbox 360\Debug\</IntermediateDirectory>
       <OutputDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\Xbox 360\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-06-30T01:04:39.4130546-07:00</Value>
+        <Value>2012-08-14T23:36:57.459645-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

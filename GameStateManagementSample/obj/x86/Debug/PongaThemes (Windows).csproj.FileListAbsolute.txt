@@ -58,3 +58,4 @@ C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSamp
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\obj\x86\Debug\PongaThemes.application
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\obj\x86\Debug\PongaThemes.exe
 C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\obj\x86\Debug\PongaThemes.pdb
+C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\background2.xnb

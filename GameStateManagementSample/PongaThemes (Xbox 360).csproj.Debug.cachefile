@@ -1,9 +1,7 @@
 Content\background.xnb
 Content\blank.xnb
-Content\gradient.xnb
-Content\menufont.xnb
-Content\gamefont.xnb
 Content\DuckHunt\Textures\duck.xnb
+Content\gradient.xnb
 Content\DuckHunt\Textures\tree.xnb
 Content\DuckHunt\Textures\ground.xnb
 Content\DuckHunt\Textures\bush.xnb
@@ -33,6 +31,9 @@ Content\Pong\Textures\pongpaddle.xnb
 Content\Pong\Textures\pongball.xnb
 Content\Fonts\atarifont.xnb
 Content\Pong\Textures\selector.xnb
+Content\background2.xnb
+Content\menufont.xnb
+Content\gamefont.xnb
 Content\DuckHunt\Sounds\wingflap.xnb
 Content\DuckHunt\Sounds\quack.xnb
 Content\DuckHunt\Sounds\startround.xnb

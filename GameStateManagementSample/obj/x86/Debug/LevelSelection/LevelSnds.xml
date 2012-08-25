@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sections>
+  <WaveBank Name="Wave Bank">Wave Bank
+{
+    Name = Wave Bank;
+    Xbox File = Xbox\Wave Bank.xwb;
+    Windows File = Win\Wave Bank.xwb;
+    Xbox Bank Path Edited = 0;
+    Windows Bank Path Edited = 0;
+    Seek Tables = 1;
+    Compression Preset Name = &lt;none&gt;;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 2872765231;
+    PC Bank Last Modified High = 30243272;
+    Bank Last Revised Low = 2803421265;
+    Bank Last Revised High = 30243272;
+
+    Wave
+    {
+        Name = pong;
+        File = pong.wav;
+        Build Settings Last Modified Low = 2696125128;
+        Build Settings Last Modified High = 30243272;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 693960;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1740463743;
+            Last Modified High = 30243270;
+        }
+    }
+
+    Wave
+    {
+        Name = duckhunt;
+        File = duckhunt.wav;
+        Build Settings Last Modified Low = 2733967292;
+        Build Settings Last Modified High = 30243272;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 677376;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1752931986;
+            Last Modified High = 30242266;
+        }
+    }
+}
+
+</WaveBank>
+</Sections>

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace PongaThemes
 {
-    public class HelperUtils
+    abstract public class HelperUtils
     {
         public const int Screen_Width = 1024;
         public const int Screen_Height = 612;

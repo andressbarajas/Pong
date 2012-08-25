@@ -20,6 +20,15 @@
       <Time>2010-09-15T13:43:52-07:00</Time>
     </Item>
     <Item>
+      <Source>DuckHunt\Textures\duck.png</Source>
+      <Name>DuckHunt\Textures\duck</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\duck.xnb</Output>
+      <Time>2012-07-12T21:20:22.3455909-07:00</Time>
+    </Item>
+    <Item>
       <Source>gradient.png</Source>
       <Name>gradient</Name>
       <Importer>TextureImporter</Importer>
@@ -27,33 +36,6 @@
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\gradient.xnb</Output>
       <Time>2010-09-15T13:43:52-07:00</Time>
-    </Item>
-    <Item>
-      <Source>menufont.spritefont</Source>
-      <Name>menufont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\menufont.xnb</Output>
-      <Time>2010-09-15T13:43:52-07:00</Time>
-    </Item>
-    <Item>
-      <Source>gamefont.spritefont</Source>
-      <Name>gamefont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\gamefont.xnb</Output>
-      <Time>2010-09-15T13:43:52-07:00</Time>
-    </Item>
-    <Item>
-      <Source>DuckHunt\Sounds\dogbark.wav</Source>
-      <Name>DuckHunt\Sounds\dogbark</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\dogbark.xnb</Output>
-      <Time>2012-08-03T03:22:10.730789-07:00</Time>
     </Item>
     <Item>
       <Source>DuckHunt\Textures\tree.png</Source>
@@ -173,13 +155,22 @@
       <Time>2012-07-23T21:47:24.7689093-07:00</Time>
     </Item>
     <Item>
-      <Source>DuckHunt\Textures\duck.png</Source>
-      <Name>DuckHunt\Textures\duck</Name>
+      <Source>Fonts\lilfont.png</Source>
+      <Name>Fonts\lilfont</Name>
       <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+      <Processor>FontTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\duck.xnb</Output>
-      <Time>2012-07-12T21:20:22.3455909-07:00</Time>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\lilfont.xnb</Output>
+      <Time>2012-07-27T00:34:47.1371884-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\bigfont.png</Source>
+      <Name>Fonts\bigfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\bigfont.xnb</Output>
+      <Time>2012-07-27T17:16:56.4306869-07:00</Time>
     </Item>
     <Item>
       <Source>DuckHunt\Textures\smallcloud.png</Source>
@@ -207,6 +198,132 @@
       <Options>None</Options>
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\bigcloud.xnb</Output>
       <Time>2012-07-29T22:59:41.4283517-07:00</Time>
+    </Item>
+    <Item>
+      <Source>DuckHunt\Textures\ducklife.png</Source>
+      <Name>DuckHunt\Textures\ducklife</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\ducklife.xnb</Output>
+      <Time>2012-07-23T14:28:16.4351744-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\nesfont.png</Source>
+      <Name>Fonts\nesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\nesfont.xnb</Output>
+      <Time>2012-08-03T15:20:58.1182448-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\bignesfont.png</Source>
+      <Name>Fonts\bignesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\bignesfont.xnb</Output>
+      <Time>2012-08-03T15:35:53.5874627-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\lilnesfont.png</Source>
+      <Name>Fonts\lilnesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\lilnesfont.xnb</Output>
+      <Time>2012-08-03T15:35:09.6859517-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\hugenesfont.png</Source>
+      <Name>Fonts\hugenesfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\hugenesfont.xnb</Output>
+      <Time>2012-08-03T15:50:09.4394146-07:00</Time>
+    </Item>
+    <Item>
+      <Source>LevelSelection\pong.png</Source>
+      <Name>LevelSelection\pong</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\LevelSelection\pong.xnb</Output>
+      <Time>2012-08-03T18:27:11.1803074-07:00</Time>
+    </Item>
+    <Item>
+      <Source>LevelSelection\duckhuntpong.png</Source>
+      <Name>LevelSelection\duckhuntpong</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\LevelSelection\duckhuntpong.xnb</Output>
+      <Time>2012-08-03T17:23:57.3633135-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Textures\pongpaddle.png</Source>
+      <Name>Pong\Textures\pongpaddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\pongpaddle.xnb</Output>
+      <Time>2012-08-09T19:16:47.7171603-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Textures\pongball.png</Source>
+      <Name>Pong\Textures\pongball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\pongball.xnb</Output>
+      <Time>2012-08-09T19:16:37.5115766-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\atarifont.png</Source>
+      <Name>Fonts\atarifont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\atarifont.xnb</Output>
+      <Time>2012-08-13T15:57:34.4688859-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Pong\Textures\selector.png</Source>
+      <Name>Pong\Textures\selector</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\selector.xnb</Output>
+      <Time>2012-08-13T16:01:21.1238498-07:00</Time>
+    </Item>
+    <Item>
+      <Source>background2.png</Source>
+      <Name>background2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\background2.xnb</Output>
+      <Time>2012-08-14T15:12:07.1281822-07:00</Time>
+    </Item>
+    <Item>
+      <Source>menufont.spritefont</Source>
+      <Name>menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\menufont.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>gamefont.spritefont</Source>
+      <Name>gamefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\gamefont.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
     </Item>
     <Item>
       <Source>DuckHunt\Sounds\wingflap.wav</Source>
@@ -281,85 +398,22 @@
       <Time>2012-08-02T18:07:44.8157969-07:00</Time>
     </Item>
     <Item>
-      <Source>DuckHunt\Textures\ducklife.png</Source>
-      <Name>DuckHunt\Textures\ducklife</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+      <Source>DuckHunt\Sounds\dogbark.wav</Source>
+      <Name>DuckHunt\Sounds\dogbark</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Textures\ducklife.xnb</Output>
-      <Time>2012-07-23T14:28:16.4351744-07:00</Time>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\DuckHunt\Sounds\dogbark.xnb</Output>
+      <Time>2012-08-03T03:22:10.730789-07:00</Time>
     </Item>
     <Item>
-      <Source>Fonts\lilfont.png</Source>
-      <Name>Fonts\lilfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
+      <Source>Pong\Sounds\deadball.wav</Source>
+      <Name>Pong\Sounds\deadball</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\lilfont.xnb</Output>
-      <Time>2012-07-27T00:34:47.1371884-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\bigfont.png</Source>
-      <Name>Fonts\bigfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\bigfont.xnb</Output>
-      <Time>2012-07-27T17:16:56.4306869-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\nesfont.png</Source>
-      <Name>Fonts\nesfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\nesfont.xnb</Output>
-      <Time>2012-08-03T15:20:58.1182448-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\bignesfont.png</Source>
-      <Name>Fonts\bignesfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\bignesfont.xnb</Output>
-      <Time>2012-08-03T15:35:53.5874627-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\lilnesfont.png</Source>
-      <Name>Fonts\lilnesfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\lilnesfont.xnb</Output>
-      <Time>2012-08-03T15:35:09.6859517-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\hugenesfont.png</Source>
-      <Name>Fonts\hugenesfont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\hugenesfont.xnb</Output>
-      <Time>2012-08-03T15:50:09.4394146-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Pong\Textures\pongpaddle.png</Source>
-      <Name>Pong\Textures\pongpaddle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\pongpaddle.xnb</Output>
-      <Time>2012-08-09T19:16:47.7171603-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Pong\Textures\pongball.png</Source>
-      <Name>Pong\Textures\pongball</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\pongball.xnb</Output>
-      <Time>2012-08-09T19:16:37.5115766-07:00</Time>
+      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Sounds\deadball.xnb</Output>
+      <Time>2012-08-10T00:30:01.9826002-07:00</Time>
     </Item>
     <Item>
       <Source>Pong\Sounds\paddlehit.wav</Source>
@@ -379,99 +433,46 @@
       <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Sounds\wallbounce.xnb</Output>
       <Time>2012-08-09T23:30:04.0258089-07:00</Time>
     </Item>
-    <Item>
-      <Source>Pong\Sounds\deadball.wav</Source>
-      <Name>Pong\Sounds\deadball</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Sounds\deadball.xnb</Output>
-      <Time>2012-08-10T00:30:01.9826002-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\atarifont.png</Source>
-      <Name>Fonts\atarifont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>FontTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Fonts\atarifont.xnb</Output>
-      <Time>2012-08-13T15:57:34.4688859-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Pong\Textures\selector.png</Source>
-      <Name>Pong\Textures\selector</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\Pong\Textures\selector.xnb</Output>
-      <Time>2012-08-13T16:01:21.1238498-07:00</Time>
-    </Item>
-    <Item>
-      <Source>LevelSelection\pong.png</Source>
-      <Name>LevelSelection\pong</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\LevelSelection\pong.xnb</Output>
-      <Time>2012-08-03T18:27:11.1803074-07:00</Time>
-    </Item>
-    <Item>
-      <Source>LevelSelection\duckhuntpong.png</Source>
-      <Name>LevelSelection\duckhuntpong</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\LevelSelection\duckhuntpong.xnb</Output>
-      <Time>2012-08-03T17:23:57.3633135-07:00</Time>
-    </Item>
-    <Item>
-      <Source>background2.png</Source>
-      <Name>background2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\background2.xnb</Output>
-      <Time>2012-08-14T15:12:07.1281822-07:00</Time>
-    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
+      <ContentProjectGUID>{B7219195-3990-4557-87D7-856DB165635D}</ContentProjectGUID>
       <TargetPlatform>Windows</TargetPlatform>
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
       <RootDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\</RootDirectory>
       <LoggerRootDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\Content\obj\x86\Debug\</IntermediateDirectory>
+      <IntermediateDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\obj\x86\Debug\</IntermediateDirectory>
       <OutputDirectory>C:\Users\Andy\Documents\Visual Studio 2010\Projects\Pong\GameStateManagementSample\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T12:41:18-07:00</Value>
+        <Value>2011-09-01T16:22:30-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-06-30T01:04:39.4130546-07:00</Value>
+        <Value>2012-08-14T23:36:57.459645-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

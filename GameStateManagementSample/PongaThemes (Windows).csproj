@@ -190,9 +190,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="GameStateManagementSample %28Windows%29_TemporaryKey.pfx" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />

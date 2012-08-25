@@ -90,7 +90,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>HsNA3m/XCRaO7ORXzncO+zASiyo=</dsig:DigestValue>
+        <dsig:DigestValue>JdAhefxy58nlZlqeGESguX9izhQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -101,6 +101,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>W4P8DNd/e2qw0hCjbWq3ei/Uf/k=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\background2.xnb" size="2040">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>gJ6JWSE16PltZrKJaZ9jh8dKwKk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\blank.xnb" size="251">
@@ -451,7 +460,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>M3upTWJsslI/l3CMNw0TzQr7dnY=</dsig:DigestValue>
+      <dsig:DigestValue>D7vCO4EKWA7gQ/Lzysx0wWjV8Go=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\LevelSelection\pong.xnb" size="1264">
@@ -478,7 +487,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>zb3vJeOdrOxFBeKD54q6fnq35q0=</dsig:DigestValue>
+      <dsig:DigestValue>t5afz0bsheAV06JScemHf4vjRco=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\menufont.xnb" size="8398">
@@ -553,13 +562,13 @@
       <dsig:DigestValue>/y21PfwGnUAkwpPwwaFuIIyWENo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="GameThumbnail.png" size="8955">
+  <file name="GameThumbnail.png" size="789">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>cW7RDyZjZ4g9owUWl0+KSG4FJqo=</dsig:DigestValue>
+      <dsig:DigestValue>wWvt7weAe39Ko1Id/zq23vv+M/0=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
