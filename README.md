@@ -41,10 +41,10 @@ Windows:
 		 Keyboard G : B
 		 
    Player 2:
-		 Keyboard Up : Up
-		 Keyboard Down : Down
-		 Keyboard , : X
-		 Keyboard . : A
+		 Keyboard Up : Up |
+		 Keyboard Down : Down |
+		 Keyboard , : X |
+		 Keyboard . : A |
 		 Keyboard / : B
 	
 	Keyboard ESC : Pause/Quit
@@ -52,10 +52,10 @@ Windows:
 Xbox 360 :
 
     Player 1 & 2:
-         D-Pad Up : Up
-		 D-Pad Down : Down
-		 Button X
-		 Button A
+         D-Pad Up : Up |
+		 D-Pad Down : Down |
+		 Button X |
+		 Button A |
 		 Button B
 	
 	Back, Start : Pause/Quit
