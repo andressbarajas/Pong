@@ -136,11 +136,6 @@ namespace PongaThemes
             for (int i = 0; i < m_list.Count; i++)
             {
                 m_list[i].m_sprite.Update();
-                /*
-                for (int y = 0; y < m_list[i].m_border.Length; y++)
-                {
-                    
-                }*/
             }
         }
 
