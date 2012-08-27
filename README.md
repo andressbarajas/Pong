@@ -34,10 +34,10 @@ Controls
 Windows:
 
    Player 1:
-         Keyboard A : Up
-		 Keyboard Z : Down
-		 Keyboard D : X
-		 Keyboard F : A
+         Keyboard A : Up |
+		 Keyboard Z : Down |
+		 Keyboard D : X |
+		 Keyboard F : A |
 		 Keyboard G : B
 		 
    Player 2:
